@@ -47,10 +47,12 @@ jobs:
         run: |
           LATEST_TAG=$(git describe --tags --abbrev=0 || echo "v0.0.0")
           echo "Latest tag: $LATEST_TAG"
+          echo "LATEST_TAG=$LATEST_TAG" >> $GITHUB_ENV
           if [ "$LATEST_TAG" != "$(git rev-parse --short HEAD)" ]; then
             NEW_TAG="v$(date +%Y.%m.%d.%H%M%S)"
             git tag "$NEW_TAG"
             git push origin "$NEW_TAG"
+            echo "LATEST_TAG=$NEW_TAG" >> $GITHUB_ENV
           fi
 
       - name: Publish to Reposilite using Gradle
@@ -60,4 +62,5 @@ jobs:
           ./gradlew publishAllPublicationsToReposiliteRepository \
             -PreposiliteUrl=${{ secrets.REPOSILITE_URL }} \
             -PreposiliteUsername=${{ secrets.REPOSILITE_USERNAME }} \
-            -PreposilitePassword=${{ secrets.REPOSILITE_PASSWORD }}
+            -PreposilitePassword=${{ secrets.REPOSILITE_PASSWORD }} \
+            -Pversion=${{ env.LATEST_TAG }}

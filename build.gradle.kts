@@ -5,7 +5,7 @@ plugins {
 allprojects {
 
     group = "club.mcsports.generated"
-    version = "1.0.0"
+    version = findProperty("version") ?: "1.0.0"
 
     repositories {
         mavenCentral()

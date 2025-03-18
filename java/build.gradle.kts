@@ -4,9 +4,6 @@ plugins {
     id("maven-publish")
 }
 
-group = "com.example"
-version = "1.0.0"
-
 java {
     sourceCompatibility = JavaVersion.VERSION_21
 }
