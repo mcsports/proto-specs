@@ -1,0 +1,74 @@
+syntax = "proto3";
+
+package mcsports.friend.v1;
+
+option java_package = "club.mcsports.generated.buf.friend.v1";
+option java_multiple_files = true;
+
+import "mcsports/friend/v1/types.proto";
+
+message ApproveFriendRequest {
+  string player_id = 1;
+}
+
+message ApproveFriendResponse {
+
+}
+message RemoveFriendRequest {
+  string friend_id = 1;
+}
+
+message RemoveFriendResponse {
+
+}
+
+message InviteFriendRequest {
+  string player_id = 1;
+}
+
+message InviteFriendResponse {
+
+}
+
+message RejectFriendRequest {
+  string friend_id = 1;
+}
+
+message RejectFriendResponse {
+
+}
+
+message JumpRequest {
+  string friend_id = 1;
+}
+
+message JumpResponse {
+  string server_id = 1;
+}
+
+message SendMessageRequest {
+  string friend_id = 1;
+  AdventureComponent component = 2;
+}
+
+message SendMessageResponse {
+
+}
+
+message ReplyRequest {
+  AdventureComponent component = 1;
+}
+
+message ReplyResponse {
+
+}
+
+service FriendInteraction {
+  rpc InviteFriend(InviteFriendRequest) returns (InviteFriendResponse);
+  rpc ApproveFriend(ApproveFriendRequest) returns (ApproveFriendResponse);
+  rpc RejectFriend(RejectFriendRequest) returns (RejectFriendResponse);
+  rpc RemoveFriend(RemoveFriendRequest) returns (RemoveFriendResponse);
+  rpc SendMessage(SendMessageRequest) returns (SendMessageResponse);
+  rpc Reply(ReplyRequest) returns (ReplyResponse);
+  rpc Jump(JumpRequest) returns (JumpResponse);
+}

@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package mcsports.queue.v1;
+
+option java_package = "club.mcsports.generated.buf.queue.v1";
+option java_multiple_files = true;
+
+message Queue {
+  string unique_id = 1;
+  QueueStatus status = 2;
+  repeated string player_ids = 3;
+}
+
+enum QueueStatus {
+  NOT_ENOUGH_PLAYERS = 0;
+  SEARCHING_SERVER = 1;
+  COUNTDOWN = 2;
+  COUNTDOWN_FAST = 3;
+}

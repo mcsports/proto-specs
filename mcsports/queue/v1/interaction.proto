@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package mcsports.queue.v1;
+
+option java_package = "club.mcsports.generated.buf.queue.v1";
+option java_multiple_files = true;
+
+message EnqueueRequest {
+  repeated string player_ids = 1;
+}
+
+message EnqueueResponse {
+  string queue_id = 1;
+}
+
+message DequeueRequest {
+  repeated string player_ids = 1;
+  optional bool forced = 2;
+}
+
+message DequeueResponse {
+
+}
+
+service QueueInteraction {
+  rpc Enqueue(EnqueueRequest) returns (EnqueueResponse);
+  rpc Dequeue(DequeueRequest) returns (DequeueResponse);
+}

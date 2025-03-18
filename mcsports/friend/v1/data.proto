@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package mcsports.friend.v1;
+
+option java_package = "club.mcsports.generated.buf.friend.v1";
+option java_multiple_files = true;
+
+message ListFriendsRequest {
+  string player_id = 1;
+  optional bool paginated = 2;
+  optional uint32 page = 3;
+  optional uint32 amount = 4;
+}
+
+message ListFriendsResponse {
+  uint32 pages = 1;
+  repeated string friend_id = 2;
+}
+
+message ListFriendInvitesRequest {
+  string player_id = 1;
+  optional bool paginated = 2;
+  optional uint32 page = 3;
+  optional uint32 amount = 4;
+}
+
+message ListFriendInvitesResponse {
+  uint32 pages = 1;
+  repeated string friend_id = 2;
+}
+
+service FriendData {
+  rpc ListInvites(ListFriendInvitesRequest) returns (ListFriendInvitesResponse);
+  rpc ListFriends(ListFriendsRequest) returns (ListFriendsResponse);
+}
