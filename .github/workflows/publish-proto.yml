@@ -8,7 +8,7 @@ on:
       - 'v*'  # Run on versioned tags
 
 jobs:
-  build:
+  publish:
     runs-on: ubuntu-latest
 
     steps:
@@ -19,6 +19,12 @@ jobs:
         uses: actions/setup-go@v4
         with:
           go-version: '1.24'
+
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '21'
 
       - name: Install buf
         run: |
@@ -35,14 +41,6 @@ jobs:
           git add .
           git diff --staged --quiet || (git commit -m "Update generated protobuf bindings" && git push origin main)
 
-  publish-go:
-    needs: build
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
       - name: Publish Go module
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -54,17 +52,6 @@ jobs:
             git tag "$NEW_TAG"
             git push origin "$NEW_TAG"
           fi
-
-  publish-java:
-    needs: build
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Set up JDK
-        uses: actions/setup-java@v3
-        with:
-          distribution: 'temurin'
-          java-version: '21'
 
       - name: Publish to Reposilite using Gradle
         run: |
