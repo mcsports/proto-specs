@@ -68,6 +68,7 @@ jobs:
 
       - name: Publish to Reposilite using Gradle
         run: |
+          chmod +x gradlew
           ./gradlew publishAllPublicationsToReposiliteRepository \
             -PreposiliteUrl=${{ secrets.REPOSILITE_URL }} \
             -PreposiliteUsername=${{ secrets.REPOSILITE_USERNAME }} \
