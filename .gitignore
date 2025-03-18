@@ -2,7 +2,8 @@
 **/build/
 !src/**/build/
 .idea
-
+java/src
+kotlin/src
 # Ignore Gradle GUI config
 gradle-app.setting
 
