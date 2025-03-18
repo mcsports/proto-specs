@@ -3,10 +3,6 @@
 !src/**/build/
 .idea
 
-go
-java/src
-kotlin/src
-
 # Ignore Gradle GUI config
 gradle-app.setting
 

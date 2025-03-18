@@ -60,17 +60,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
       - name: Set up JDK
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
           java-version: '21'
-
-      - name: Generate Java Protobuf bindings
-        run: buf generate --template buf.gen.yaml
 
       - name: Publish to Reposilite using Gradle
         run: |
