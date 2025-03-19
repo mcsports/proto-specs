@@ -7,8 +7,10 @@ option java_multiple_files = true;
 
 message Queue {
   string unique_id = 1;
-  QueueStatus status = 2;
-  repeated string player_ids = 3;
+  string type = 2;
+  QueueStatus status = 3;
+  optional int64 countdown_millis = 4;
+  repeated string player_ids = 5;
 }
 
 enum QueueStatus {
