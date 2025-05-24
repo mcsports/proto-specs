@@ -6,8 +6,11 @@ package partyv1connect
 
 import (
 	connect "connectrpc.com/connect"
-	_ "github.com/bufbuild/buf-tour/gen/mcsports/party/v1"
+	context "context"
+	errors "errors"
+	v1 "github.com/bufbuild/buf-tour/gen/mcsports/party/v1"
 	http "net/http"
+	strings "strings"
 )
 
 // This is a compile-time assertion to ensure that this generated file and the connect package are
@@ -22,8 +25,34 @@ const (
 	PartyInteractionName = "mcsports.party.v1.PartyInteraction"
 )
 
+// These constants are the fully-qualified names of the RPCs defined in this package. They're
+// exposed at runtime as Spec.Procedure and as the final two segments of the HTTP route.
+//
+// Note that these are different from the fully-qualified method names used by
+// google.golang.org/protobuf/reflect/protoreflect. To convert from these constants to
+// reflection-formatted method names, remove the leading slash and convert the remaining slash to a
+// period.
+const (
+	// PartyInteractionCreatePartyProcedure is the fully-qualified name of the PartyInteraction's
+	// CreateParty RPC.
+	PartyInteractionCreatePartyProcedure = "/mcsports.party.v1.PartyInteraction/CreateParty"
+	// PartyInteractionDeletePartyProcedure is the fully-qualified name of the PartyInteraction's
+	// DeleteParty RPC.
+	PartyInteractionDeletePartyProcedure = "/mcsports.party.v1.PartyInteraction/DeleteParty"
+	// PartyInteractionInvitePlayerProcedure is the fully-qualified name of the PartyInteraction's
+	// InvitePlayer RPC.
+	PartyInteractionInvitePlayerProcedure = "/mcsports.party.v1.PartyInteraction/InvitePlayer"
+	// PartyInteractionHandleInviteProcedure is the fully-qualified name of the PartyInteraction's
+	// HandleInvite RPC.
+	PartyInteractionHandleInviteProcedure = "/mcsports.party.v1.PartyInteraction/HandleInvite"
+)
+
 // PartyInteractionClient is a client for the mcsports.party.v1.PartyInteraction service.
 type PartyInteractionClient interface {
+	CreateParty(context.Context, *connect.Request[v1.CreatePartyRequest]) (*connect.Response[v1.CreatePartyResponse], error)
+	DeleteParty(context.Context, *connect.Request[v1.DeletePartyRequest]) (*connect.Response[v1.DeletePartyResponse], error)
+	InvitePlayer(context.Context, *connect.Request[v1.InvitePlayerRequest]) (*connect.Response[v1.InvitePlayerResponse], error)
+	HandleInvite(context.Context, *connect.Request[v1.HandleInviteRequest]) (*connect.Response[v1.HandleInviteResponse], error)
 }
 
 // NewPartyInteractionClient constructs a client for the mcsports.party.v1.PartyInteraction service.
@@ -34,15 +63,70 @@ type PartyInteractionClient interface {
 // The URL supplied here should be the base URL for the Connect or gRPC server (for example,
 // http://api.acme.com or https://acme.com/grpc).
 func NewPartyInteractionClient(httpClient connect.HTTPClient, baseURL string, opts ...connect.ClientOption) PartyInteractionClient {
-	return &partyInteractionClient{}
+	baseURL = strings.TrimRight(baseURL, "/")
+	partyInteractionMethods := v1.File_mcsports_party_v1_interaction_proto.Services().ByName("PartyInteraction").Methods()
+	return &partyInteractionClient{
+		createParty: connect.NewClient[v1.CreatePartyRequest, v1.CreatePartyResponse](
+			httpClient,
+			baseURL+PartyInteractionCreatePartyProcedure,
+			connect.WithSchema(partyInteractionMethods.ByName("CreateParty")),
+			connect.WithClientOptions(opts...),
+		),
+		deleteParty: connect.NewClient[v1.DeletePartyRequest, v1.DeletePartyResponse](
+			httpClient,
+			baseURL+PartyInteractionDeletePartyProcedure,
+			connect.WithSchema(partyInteractionMethods.ByName("DeleteParty")),
+			connect.WithClientOptions(opts...),
+		),
+		invitePlayer: connect.NewClient[v1.InvitePlayerRequest, v1.InvitePlayerResponse](
+			httpClient,
+			baseURL+PartyInteractionInvitePlayerProcedure,
+			connect.WithSchema(partyInteractionMethods.ByName("InvitePlayer")),
+			connect.WithClientOptions(opts...),
+		),
+		handleInvite: connect.NewClient[v1.HandleInviteRequest, v1.HandleInviteResponse](
+			httpClient,
+			baseURL+PartyInteractionHandleInviteProcedure,
+			connect.WithSchema(partyInteractionMethods.ByName("HandleInvite")),
+			connect.WithClientOptions(opts...),
+		),
+	}
 }
 
 // partyInteractionClient implements PartyInteractionClient.
 type partyInteractionClient struct {
+	createParty  *connect.Client[v1.CreatePartyRequest, v1.CreatePartyResponse]
+	deleteParty  *connect.Client[v1.DeletePartyRequest, v1.DeletePartyResponse]
+	invitePlayer *connect.Client[v1.InvitePlayerRequest, v1.InvitePlayerResponse]
+	handleInvite *connect.Client[v1.HandleInviteRequest, v1.HandleInviteResponse]
+}
+
+// CreateParty calls mcsports.party.v1.PartyInteraction.CreateParty.
+func (c *partyInteractionClient) CreateParty(ctx context.Context, req *connect.Request[v1.CreatePartyRequest]) (*connect.Response[v1.CreatePartyResponse], error) {
+	return c.createParty.CallUnary(ctx, req)
+}
+
+// DeleteParty calls mcsports.party.v1.PartyInteraction.DeleteParty.
+func (c *partyInteractionClient) DeleteParty(ctx context.Context, req *connect.Request[v1.DeletePartyRequest]) (*connect.Response[v1.DeletePartyResponse], error) {
+	return c.deleteParty.CallUnary(ctx, req)
+}
+
+// InvitePlayer calls mcsports.party.v1.PartyInteraction.InvitePlayer.
+func (c *partyInteractionClient) InvitePlayer(ctx context.Context, req *connect.Request[v1.InvitePlayerRequest]) (*connect.Response[v1.InvitePlayerResponse], error) {
+	return c.invitePlayer.CallUnary(ctx, req)
+}
+
+// HandleInvite calls mcsports.party.v1.PartyInteraction.HandleInvite.
+func (c *partyInteractionClient) HandleInvite(ctx context.Context, req *connect.Request[v1.HandleInviteRequest]) (*connect.Response[v1.HandleInviteResponse], error) {
+	return c.handleInvite.CallUnary(ctx, req)
 }
 
 // PartyInteractionHandler is an implementation of the mcsports.party.v1.PartyInteraction service.
 type PartyInteractionHandler interface {
+	CreateParty(context.Context, *connect.Request[v1.CreatePartyRequest]) (*connect.Response[v1.CreatePartyResponse], error)
+	DeleteParty(context.Context, *connect.Request[v1.DeletePartyRequest]) (*connect.Response[v1.DeletePartyResponse], error)
+	InvitePlayer(context.Context, *connect.Request[v1.InvitePlayerRequest]) (*connect.Response[v1.InvitePlayerResponse], error)
+	HandleInvite(context.Context, *connect.Request[v1.HandleInviteRequest]) (*connect.Response[v1.HandleInviteResponse], error)
 }
 
 // NewPartyInteractionHandler builds an HTTP handler from the service implementation. It returns the
@@ -51,8 +135,41 @@ type PartyInteractionHandler interface {
 // By default, handlers support the Connect, gRPC, and gRPC-Web protocols with the binary Protobuf
 // and JSON codecs. They also support gzip compression.
 func NewPartyInteractionHandler(svc PartyInteractionHandler, opts ...connect.HandlerOption) (string, http.Handler) {
+	partyInteractionMethods := v1.File_mcsports_party_v1_interaction_proto.Services().ByName("PartyInteraction").Methods()
+	partyInteractionCreatePartyHandler := connect.NewUnaryHandler(
+		PartyInteractionCreatePartyProcedure,
+		svc.CreateParty,
+		connect.WithSchema(partyInteractionMethods.ByName("CreateParty")),
+		connect.WithHandlerOptions(opts...),
+	)
+	partyInteractionDeletePartyHandler := connect.NewUnaryHandler(
+		PartyInteractionDeletePartyProcedure,
+		svc.DeleteParty,
+		connect.WithSchema(partyInteractionMethods.ByName("DeleteParty")),
+		connect.WithHandlerOptions(opts...),
+	)
+	partyInteractionInvitePlayerHandler := connect.NewUnaryHandler(
+		PartyInteractionInvitePlayerProcedure,
+		svc.InvitePlayer,
+		connect.WithSchema(partyInteractionMethods.ByName("InvitePlayer")),
+		connect.WithHandlerOptions(opts...),
+	)
+	partyInteractionHandleInviteHandler := connect.NewUnaryHandler(
+		PartyInteractionHandleInviteProcedure,
+		svc.HandleInvite,
+		connect.WithSchema(partyInteractionMethods.ByName("HandleInvite")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/mcsports.party.v1.PartyInteraction/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
+		case PartyInteractionCreatePartyProcedure:
+			partyInteractionCreatePartyHandler.ServeHTTP(w, r)
+		case PartyInteractionDeletePartyProcedure:
+			partyInteractionDeletePartyHandler.ServeHTTP(w, r)
+		case PartyInteractionInvitePlayerProcedure:
+			partyInteractionInvitePlayerHandler.ServeHTTP(w, r)
+		case PartyInteractionHandleInviteProcedure:
+			partyInteractionHandleInviteHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -61,3 +178,19 @@ func NewPartyInteractionHandler(svc PartyInteractionHandler, opts ...connect.Han
 
 // UnimplementedPartyInteractionHandler returns CodeUnimplemented from all methods.
 type UnimplementedPartyInteractionHandler struct{}
+
+func (UnimplementedPartyInteractionHandler) CreateParty(context.Context, *connect.Request[v1.CreatePartyRequest]) (*connect.Response[v1.CreatePartyResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("mcsports.party.v1.PartyInteraction.CreateParty is not implemented"))
+}
+
+func (UnimplementedPartyInteractionHandler) DeleteParty(context.Context, *connect.Request[v1.DeletePartyRequest]) (*connect.Response[v1.DeletePartyResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("mcsports.party.v1.PartyInteraction.DeleteParty is not implemented"))
+}
+
+func (UnimplementedPartyInteractionHandler) InvitePlayer(context.Context, *connect.Request[v1.InvitePlayerRequest]) (*connect.Response[v1.InvitePlayerResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("mcsports.party.v1.PartyInteraction.InvitePlayer is not implemented"))
+}
+
+func (UnimplementedPartyInteractionHandler) HandleInvite(context.Context, *connect.Request[v1.HandleInviteRequest]) (*connect.Response[v1.HandleInviteResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("mcsports.party.v1.PartyInteraction.HandleInvite is not implemented"))
+}
