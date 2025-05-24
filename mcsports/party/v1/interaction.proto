@@ -5,6 +5,62 @@ package mcsports.party.v1;
 option java_package = "club.mcsports.generated.buf.party.v1";
 option java_multiple_files = true;
 
+import "mcsports/party/v1/types.proto";
+
+/**
+ Create Party, done
+ Delete Party, done
+ Invite Player, done
+ Accept/Reject Invite, Done
+ Leave Party,
+ Promote/Demote Player,
+ Party-Chat,
+ (Jump-To-Owner),
+ (Call-Players)
+ */
+
+message CreatePartyRequest {
+  string creator_id = 1;
+  PartySettings settings = 2;
+  repeated string invited_ids = 3;
+}
+
+message CreatePartyResponse {
+  Party created_party = 1;
+  repeated string offline_ids = 2;
+}
+
+message DeletePartyRequest {
+  string executor_id = 1;
+}
+
+message DeletePartyResponse {
+
+}
+
+message InvitePlayerRequest {
+  string executor_id = 1;
+  string member_id = 2;
+}
+
+message InvitePlayerResponse {
+
+}
+
+message HandleInviteRequest {
+  string party_id = 1;
+  string member_id = 2;
+  bool accepted = 3;
+}
+
+message HandleInviteResponse {
+
+}
+
 service PartyInteraction {
+  rpc CreateParty(CreatePartyRequest) returns (CreatePartyResponse);
+  rpc DeleteParty(DeletePartyRequest) returns (DeletePartyResponse);
+  rpc InvitePlayer(InvitePlayerRequest) returns (InvitePlayerResponse);
+  rpc HandleInvite(HandleInviteRequest) returns (HandleInviteResponse);
 
 }
