@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package mcsports.party.v1;
+
+option java_package = "club.mcsports.generated.buf.party.v1";
+option java_multiple_files = true;
+
+import "google/protobuf/timestamp.proto";
+
+message Party {
+  string id = 1;
+  string owner_id = 2;
+  PartySettings settings = 3;
+  repeated PartyMember members = 4;
+  repeated PartyInvite invites = 5;
+}
+
+message PartyMember {
+  string id = 1;
+  PartyRole role = 2;
+  google.protobuf.Timestamp time_joined = 3;
+}
+
+message PartyInvite {
+  string id = 1;
+  string invitor_id = 2;
+  google.protobuf.Timestamp time_created = 3;
+}
+
+message PartySettings {
+  bool allowInvites = 1;
+  bool isPrivate = 2;
+}
+
+enum PartyRole {
+  MEMBER = 0;
+  MOD = 1;
+  OWNER = 2;
+}
