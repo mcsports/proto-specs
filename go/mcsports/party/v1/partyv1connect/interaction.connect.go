@@ -45,6 +45,17 @@ const (
 	// PartyInteractionHandleInviteProcedure is the fully-qualified name of the PartyInteraction's
 	// HandleInvite RPC.
 	PartyInteractionHandleInviteProcedure = "/mcsports.party.v1.PartyInteraction/HandleInvite"
+	// PartyInteractionLeavePartyProcedure is the fully-qualified name of the PartyInteraction's
+	// LeaveParty RPC.
+	PartyInteractionLeavePartyProcedure = "/mcsports.party.v1.PartyInteraction/LeaveParty"
+	// PartyInteractionPromoteMemberProcedure is the fully-qualified name of the PartyInteraction's
+	// PromoteMember RPC.
+	PartyInteractionPromoteMemberProcedure = "/mcsports.party.v1.PartyInteraction/PromoteMember"
+	// PartyInteractionDemoteMemberProcedure is the fully-qualified name of the PartyInteraction's
+	// DemoteMember RPC.
+	PartyInteractionDemoteMemberProcedure = "/mcsports.party.v1.PartyInteraction/DemoteMember"
+	// PartyInteractionChatProcedure is the fully-qualified name of the PartyInteraction's Chat RPC.
+	PartyInteractionChatProcedure = "/mcsports.party.v1.PartyInteraction/Chat"
 )
 
 // PartyInteractionClient is a client for the mcsports.party.v1.PartyInteraction service.
@@ -53,6 +64,10 @@ type PartyInteractionClient interface {
 	DeleteParty(context.Context, *connect.Request[v1.DeletePartyRequest]) (*connect.Response[v1.DeletePartyResponse], error)
 	InvitePlayer(context.Context, *connect.Request[v1.InvitePlayerRequest]) (*connect.Response[v1.InvitePlayerResponse], error)
 	HandleInvite(context.Context, *connect.Request[v1.HandleInviteRequest]) (*connect.Response[v1.HandleInviteResponse], error)
+	LeaveParty(context.Context, *connect.Request[v1.LeavePartyRequest]) (*connect.Response[v1.LeavePartyResponse], error)
+	PromoteMember(context.Context, *connect.Request[v1.PromoteMemberRequest]) (*connect.Response[v1.PromoteMemberResponse], error)
+	DemoteMember(context.Context, *connect.Request[v1.DemoteMemberRequest]) (*connect.Response[v1.DemoteMemberResponse], error)
+	Chat(context.Context, *connect.Request[v1.ChatRequest]) (*connect.Response[v1.ChatResponse], error)
 }
 
 // NewPartyInteractionClient constructs a client for the mcsports.party.v1.PartyInteraction service.
@@ -90,15 +105,43 @@ func NewPartyInteractionClient(httpClient connect.HTTPClient, baseURL string, op
 			connect.WithSchema(partyInteractionMethods.ByName("HandleInvite")),
 			connect.WithClientOptions(opts...),
 		),
+		leaveParty: connect.NewClient[v1.LeavePartyRequest, v1.LeavePartyResponse](
+			httpClient,
+			baseURL+PartyInteractionLeavePartyProcedure,
+			connect.WithSchema(partyInteractionMethods.ByName("LeaveParty")),
+			connect.WithClientOptions(opts...),
+		),
+		promoteMember: connect.NewClient[v1.PromoteMemberRequest, v1.PromoteMemberResponse](
+			httpClient,
+			baseURL+PartyInteractionPromoteMemberProcedure,
+			connect.WithSchema(partyInteractionMethods.ByName("PromoteMember")),
+			connect.WithClientOptions(opts...),
+		),
+		demoteMember: connect.NewClient[v1.DemoteMemberRequest, v1.DemoteMemberResponse](
+			httpClient,
+			baseURL+PartyInteractionDemoteMemberProcedure,
+			connect.WithSchema(partyInteractionMethods.ByName("DemoteMember")),
+			connect.WithClientOptions(opts...),
+		),
+		chat: connect.NewClient[v1.ChatRequest, v1.ChatResponse](
+			httpClient,
+			baseURL+PartyInteractionChatProcedure,
+			connect.WithSchema(partyInteractionMethods.ByName("Chat")),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
 // partyInteractionClient implements PartyInteractionClient.
 type partyInteractionClient struct {
-	createParty  *connect.Client[v1.CreatePartyRequest, v1.CreatePartyResponse]
-	deleteParty  *connect.Client[v1.DeletePartyRequest, v1.DeletePartyResponse]
-	invitePlayer *connect.Client[v1.InvitePlayerRequest, v1.InvitePlayerResponse]
-	handleInvite *connect.Client[v1.HandleInviteRequest, v1.HandleInviteResponse]
+	createParty   *connect.Client[v1.CreatePartyRequest, v1.CreatePartyResponse]
+	deleteParty   *connect.Client[v1.DeletePartyRequest, v1.DeletePartyResponse]
+	invitePlayer  *connect.Client[v1.InvitePlayerRequest, v1.InvitePlayerResponse]
+	handleInvite  *connect.Client[v1.HandleInviteRequest, v1.HandleInviteResponse]
+	leaveParty    *connect.Client[v1.LeavePartyRequest, v1.LeavePartyResponse]
+	promoteMember *connect.Client[v1.PromoteMemberRequest, v1.PromoteMemberResponse]
+	demoteMember  *connect.Client[v1.DemoteMemberRequest, v1.DemoteMemberResponse]
+	chat          *connect.Client[v1.ChatRequest, v1.ChatResponse]
 }
 
 // CreateParty calls mcsports.party.v1.PartyInteraction.CreateParty.
@@ -121,12 +164,36 @@ func (c *partyInteractionClient) HandleInvite(ctx context.Context, req *connect.
 	return c.handleInvite.CallUnary(ctx, req)
 }
 
+// LeaveParty calls mcsports.party.v1.PartyInteraction.LeaveParty.
+func (c *partyInteractionClient) LeaveParty(ctx context.Context, req *connect.Request[v1.LeavePartyRequest]) (*connect.Response[v1.LeavePartyResponse], error) {
+	return c.leaveParty.CallUnary(ctx, req)
+}
+
+// PromoteMember calls mcsports.party.v1.PartyInteraction.PromoteMember.
+func (c *partyInteractionClient) PromoteMember(ctx context.Context, req *connect.Request[v1.PromoteMemberRequest]) (*connect.Response[v1.PromoteMemberResponse], error) {
+	return c.promoteMember.CallUnary(ctx, req)
+}
+
+// DemoteMember calls mcsports.party.v1.PartyInteraction.DemoteMember.
+func (c *partyInteractionClient) DemoteMember(ctx context.Context, req *connect.Request[v1.DemoteMemberRequest]) (*connect.Response[v1.DemoteMemberResponse], error) {
+	return c.demoteMember.CallUnary(ctx, req)
+}
+
+// Chat calls mcsports.party.v1.PartyInteraction.Chat.
+func (c *partyInteractionClient) Chat(ctx context.Context, req *connect.Request[v1.ChatRequest]) (*connect.Response[v1.ChatResponse], error) {
+	return c.chat.CallUnary(ctx, req)
+}
+
 // PartyInteractionHandler is an implementation of the mcsports.party.v1.PartyInteraction service.
 type PartyInteractionHandler interface {
 	CreateParty(context.Context, *connect.Request[v1.CreatePartyRequest]) (*connect.Response[v1.CreatePartyResponse], error)
 	DeleteParty(context.Context, *connect.Request[v1.DeletePartyRequest]) (*connect.Response[v1.DeletePartyResponse], error)
 	InvitePlayer(context.Context, *connect.Request[v1.InvitePlayerRequest]) (*connect.Response[v1.InvitePlayerResponse], error)
 	HandleInvite(context.Context, *connect.Request[v1.HandleInviteRequest]) (*connect.Response[v1.HandleInviteResponse], error)
+	LeaveParty(context.Context, *connect.Request[v1.LeavePartyRequest]) (*connect.Response[v1.LeavePartyResponse], error)
+	PromoteMember(context.Context, *connect.Request[v1.PromoteMemberRequest]) (*connect.Response[v1.PromoteMemberResponse], error)
+	DemoteMember(context.Context, *connect.Request[v1.DemoteMemberRequest]) (*connect.Response[v1.DemoteMemberResponse], error)
+	Chat(context.Context, *connect.Request[v1.ChatRequest]) (*connect.Response[v1.ChatResponse], error)
 }
 
 // NewPartyInteractionHandler builds an HTTP handler from the service implementation. It returns the
@@ -160,6 +227,30 @@ func NewPartyInteractionHandler(svc PartyInteractionHandler, opts ...connect.Han
 		connect.WithSchema(partyInteractionMethods.ByName("HandleInvite")),
 		connect.WithHandlerOptions(opts...),
 	)
+	partyInteractionLeavePartyHandler := connect.NewUnaryHandler(
+		PartyInteractionLeavePartyProcedure,
+		svc.LeaveParty,
+		connect.WithSchema(partyInteractionMethods.ByName("LeaveParty")),
+		connect.WithHandlerOptions(opts...),
+	)
+	partyInteractionPromoteMemberHandler := connect.NewUnaryHandler(
+		PartyInteractionPromoteMemberProcedure,
+		svc.PromoteMember,
+		connect.WithSchema(partyInteractionMethods.ByName("PromoteMember")),
+		connect.WithHandlerOptions(opts...),
+	)
+	partyInteractionDemoteMemberHandler := connect.NewUnaryHandler(
+		PartyInteractionDemoteMemberProcedure,
+		svc.DemoteMember,
+		connect.WithSchema(partyInteractionMethods.ByName("DemoteMember")),
+		connect.WithHandlerOptions(opts...),
+	)
+	partyInteractionChatHandler := connect.NewUnaryHandler(
+		PartyInteractionChatProcedure,
+		svc.Chat,
+		connect.WithSchema(partyInteractionMethods.ByName("Chat")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/mcsports.party.v1.PartyInteraction/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case PartyInteractionCreatePartyProcedure:
@@ -170,6 +261,14 @@ func NewPartyInteractionHandler(svc PartyInteractionHandler, opts ...connect.Han
 			partyInteractionInvitePlayerHandler.ServeHTTP(w, r)
 		case PartyInteractionHandleInviteProcedure:
 			partyInteractionHandleInviteHandler.ServeHTTP(w, r)
+		case PartyInteractionLeavePartyProcedure:
+			partyInteractionLeavePartyHandler.ServeHTTP(w, r)
+		case PartyInteractionPromoteMemberProcedure:
+			partyInteractionPromoteMemberHandler.ServeHTTP(w, r)
+		case PartyInteractionDemoteMemberProcedure:
+			partyInteractionDemoteMemberHandler.ServeHTTP(w, r)
+		case PartyInteractionChatProcedure:
+			partyInteractionChatHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -193,4 +292,20 @@ func (UnimplementedPartyInteractionHandler) InvitePlayer(context.Context, *conne
 
 func (UnimplementedPartyInteractionHandler) HandleInvite(context.Context, *connect.Request[v1.HandleInviteRequest]) (*connect.Response[v1.HandleInviteResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("mcsports.party.v1.PartyInteraction.HandleInvite is not implemented"))
+}
+
+func (UnimplementedPartyInteractionHandler) LeaveParty(context.Context, *connect.Request[v1.LeavePartyRequest]) (*connect.Response[v1.LeavePartyResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("mcsports.party.v1.PartyInteraction.LeaveParty is not implemented"))
+}
+
+func (UnimplementedPartyInteractionHandler) PromoteMember(context.Context, *connect.Request[v1.PromoteMemberRequest]) (*connect.Response[v1.PromoteMemberResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("mcsports.party.v1.PartyInteraction.PromoteMember is not implemented"))
+}
+
+func (UnimplementedPartyInteractionHandler) DemoteMember(context.Context, *connect.Request[v1.DemoteMemberRequest]) (*connect.Response[v1.DemoteMemberResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("mcsports.party.v1.PartyInteraction.DemoteMember is not implemented"))
+}
+
+func (UnimplementedPartyInteractionHandler) Chat(context.Context, *connect.Request[v1.ChatRequest]) (*connect.Response[v1.ChatResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("mcsports.party.v1.PartyInteraction.Chat is not implemented"))
 }

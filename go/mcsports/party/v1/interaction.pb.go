@@ -7,6 +7,7 @@
 package partyv1
 
 import (
+	v1 "github.com/bufbuild/buf-tour/gen/mcsports/friend/v1"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -397,11 +398,355 @@ func (*HandleInviteResponse) Descriptor() ([]byte, []int) {
 	return file_mcsports_party_v1_interaction_proto_rawDescGZIP(), []int{7}
 }
 
+type LeavePartyRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	MemberId      string                 `protobuf:"bytes,1,opt,name=member_id,json=memberId,proto3" json:"member_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *LeavePartyRequest) Reset() {
+	*x = LeavePartyRequest{}
+	mi := &file_mcsports_party_v1_interaction_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *LeavePartyRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*LeavePartyRequest) ProtoMessage() {}
+
+func (x *LeavePartyRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_mcsports_party_v1_interaction_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use LeavePartyRequest.ProtoReflect.Descriptor instead.
+func (*LeavePartyRequest) Descriptor() ([]byte, []int) {
+	return file_mcsports_party_v1_interaction_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *LeavePartyRequest) GetMemberId() string {
+	if x != nil {
+		return x.MemberId
+	}
+	return ""
+}
+
+type LeavePartyResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *LeavePartyResponse) Reset() {
+	*x = LeavePartyResponse{}
+	mi := &file_mcsports_party_v1_interaction_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *LeavePartyResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*LeavePartyResponse) ProtoMessage() {}
+
+func (x *LeavePartyResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_mcsports_party_v1_interaction_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use LeavePartyResponse.ProtoReflect.Descriptor instead.
+func (*LeavePartyResponse) Descriptor() ([]byte, []int) {
+	return file_mcsports_party_v1_interaction_proto_rawDescGZIP(), []int{9}
+}
+
+type PromoteMemberRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	MemberId      string                 `protobuf:"bytes,1,opt,name=member_id,json=memberId,proto3" json:"member_id,omitempty"`
+	ExecutorId    string                 `protobuf:"bytes,2,opt,name=executor_id,json=executorId,proto3" json:"executor_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *PromoteMemberRequest) Reset() {
+	*x = PromoteMemberRequest{}
+	mi := &file_mcsports_party_v1_interaction_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *PromoteMemberRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PromoteMemberRequest) ProtoMessage() {}
+
+func (x *PromoteMemberRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_mcsports_party_v1_interaction_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PromoteMemberRequest.ProtoReflect.Descriptor instead.
+func (*PromoteMemberRequest) Descriptor() ([]byte, []int) {
+	return file_mcsports_party_v1_interaction_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *PromoteMemberRequest) GetMemberId() string {
+	if x != nil {
+		return x.MemberId
+	}
+	return ""
+}
+
+func (x *PromoteMemberRequest) GetExecutorId() string {
+	if x != nil {
+		return x.ExecutorId
+	}
+	return ""
+}
+
+type PromoteMemberResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *PromoteMemberResponse) Reset() {
+	*x = PromoteMemberResponse{}
+	mi := &file_mcsports_party_v1_interaction_proto_msgTypes[11]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *PromoteMemberResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PromoteMemberResponse) ProtoMessage() {}
+
+func (x *PromoteMemberResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_mcsports_party_v1_interaction_proto_msgTypes[11]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PromoteMemberResponse.ProtoReflect.Descriptor instead.
+func (*PromoteMemberResponse) Descriptor() ([]byte, []int) {
+	return file_mcsports_party_v1_interaction_proto_rawDescGZIP(), []int{11}
+}
+
+type DemoteMemberRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	MemberId      string                 `protobuf:"bytes,1,opt,name=member_id,json=memberId,proto3" json:"member_id,omitempty"`
+	ExecutorId    string                 `protobuf:"bytes,2,opt,name=executor_id,json=executorId,proto3" json:"executor_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DemoteMemberRequest) Reset() {
+	*x = DemoteMemberRequest{}
+	mi := &file_mcsports_party_v1_interaction_proto_msgTypes[12]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DemoteMemberRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DemoteMemberRequest) ProtoMessage() {}
+
+func (x *DemoteMemberRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_mcsports_party_v1_interaction_proto_msgTypes[12]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DemoteMemberRequest.ProtoReflect.Descriptor instead.
+func (*DemoteMemberRequest) Descriptor() ([]byte, []int) {
+	return file_mcsports_party_v1_interaction_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *DemoteMemberRequest) GetMemberId() string {
+	if x != nil {
+		return x.MemberId
+	}
+	return ""
+}
+
+func (x *DemoteMemberRequest) GetExecutorId() string {
+	if x != nil {
+		return x.ExecutorId
+	}
+	return ""
+}
+
+type DemoteMemberResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DemoteMemberResponse) Reset() {
+	*x = DemoteMemberResponse{}
+	mi := &file_mcsports_party_v1_interaction_proto_msgTypes[13]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DemoteMemberResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DemoteMemberResponse) ProtoMessage() {}
+
+func (x *DemoteMemberResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_mcsports_party_v1_interaction_proto_msgTypes[13]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DemoteMemberResponse.ProtoReflect.Descriptor instead.
+func (*DemoteMemberResponse) Descriptor() ([]byte, []int) {
+	return file_mcsports_party_v1_interaction_proto_rawDescGZIP(), []int{13}
+}
+
+type ChatRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	MemberId      string                 `protobuf:"bytes,1,opt,name=member_id,json=memberId,proto3" json:"member_id,omitempty"`
+	Message       *v1.AdventureComponent `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ChatRequest) Reset() {
+	*x = ChatRequest{}
+	mi := &file_mcsports_party_v1_interaction_proto_msgTypes[14]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ChatRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ChatRequest) ProtoMessage() {}
+
+func (x *ChatRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_mcsports_party_v1_interaction_proto_msgTypes[14]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ChatRequest.ProtoReflect.Descriptor instead.
+func (*ChatRequest) Descriptor() ([]byte, []int) {
+	return file_mcsports_party_v1_interaction_proto_rawDescGZIP(), []int{14}
+}
+
+func (x *ChatRequest) GetMemberId() string {
+	if x != nil {
+		return x.MemberId
+	}
+	return ""
+}
+
+func (x *ChatRequest) GetMessage() *v1.AdventureComponent {
+	if x != nil {
+		return x.Message
+	}
+	return nil
+}
+
+type ChatResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ChatResponse) Reset() {
+	*x = ChatResponse{}
+	mi := &file_mcsports_party_v1_interaction_proto_msgTypes[15]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ChatResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ChatResponse) ProtoMessage() {}
+
+func (x *ChatResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_mcsports_party_v1_interaction_proto_msgTypes[15]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ChatResponse.ProtoReflect.Descriptor instead.
+func (*ChatResponse) Descriptor() ([]byte, []int) {
+	return file_mcsports_party_v1_interaction_proto_rawDescGZIP(), []int{15}
+}
+
 var File_mcsports_party_v1_interaction_proto protoreflect.FileDescriptor
 
 const file_mcsports_party_v1_interaction_proto_rawDesc = "" +
 	"\n" +
-	"#mcsports/party/v1/interaction.proto\x12\x11mcsports.party.v1\x1a\x1dmcsports/party/v1/types.proto\"\x92\x01\n" +
+	"#mcsports/party/v1/interaction.proto\x12\x11mcsports.party.v1\x1a\x1dmcsports/party/v1/types.proto\x1a\x1emcsports/friend/v1/types.proto\"\x92\x01\n" +
 	"\x12CreatePartyRequest\x12\x1d\n" +
 	"\n" +
 	"creator_id\x18\x01 \x01(\tR\tcreatorId\x12<\n" +
@@ -425,12 +770,34 @@ const file_mcsports_party_v1_interaction_proto_rawDesc = "" +
 	"\bparty_id\x18\x01 \x01(\tR\apartyId\x12\x1b\n" +
 	"\tmember_id\x18\x02 \x01(\tR\bmemberId\x12\x1a\n" +
 	"\baccepted\x18\x03 \x01(\bR\baccepted\"\x16\n" +
-	"\x14HandleInviteResponse2\x90\x03\n" +
+	"\x14HandleInviteResponse\"0\n" +
+	"\x11LeavePartyRequest\x12\x1b\n" +
+	"\tmember_id\x18\x01 \x01(\tR\bmemberId\"\x14\n" +
+	"\x12LeavePartyResponse\"T\n" +
+	"\x14PromoteMemberRequest\x12\x1b\n" +
+	"\tmember_id\x18\x01 \x01(\tR\bmemberId\x12\x1f\n" +
+	"\vexecutor_id\x18\x02 \x01(\tR\n" +
+	"executorId\"\x17\n" +
+	"\x15PromoteMemberResponse\"S\n" +
+	"\x13DemoteMemberRequest\x12\x1b\n" +
+	"\tmember_id\x18\x01 \x01(\tR\bmemberId\x12\x1f\n" +
+	"\vexecutor_id\x18\x02 \x01(\tR\n" +
+	"executorId\"\x16\n" +
+	"\x14DemoteMemberResponse\"l\n" +
+	"\vChatRequest\x12\x1b\n" +
+	"\tmember_id\x18\x01 \x01(\tR\bmemberId\x12@\n" +
+	"\amessage\x18\x02 \x01(\v2&.mcsports.friend.v1.AdventureComponentR\amessage\"\x0e\n" +
+	"\fChatResponse2\xf9\x05\n" +
 	"\x10PartyInteraction\x12\\\n" +
 	"\vCreateParty\x12%.mcsports.party.v1.CreatePartyRequest\x1a&.mcsports.party.v1.CreatePartyResponse\x12\\\n" +
 	"\vDeleteParty\x12%.mcsports.party.v1.DeletePartyRequest\x1a&.mcsports.party.v1.DeletePartyResponse\x12_\n" +
 	"\fInvitePlayer\x12&.mcsports.party.v1.InvitePlayerRequest\x1a'.mcsports.party.v1.InvitePlayerResponse\x12_\n" +
-	"\fHandleInvite\x12&.mcsports.party.v1.HandleInviteRequest\x1a'.mcsports.party.v1.HandleInviteResponseB\xcb\x01\n" +
+	"\fHandleInvite\x12&.mcsports.party.v1.HandleInviteRequest\x1a'.mcsports.party.v1.HandleInviteResponse\x12Y\n" +
+	"\n" +
+	"LeaveParty\x12$.mcsports.party.v1.LeavePartyRequest\x1a%.mcsports.party.v1.LeavePartyResponse\x12b\n" +
+	"\rPromoteMember\x12'.mcsports.party.v1.PromoteMemberRequest\x1a(.mcsports.party.v1.PromoteMemberResponse\x12_\n" +
+	"\fDemoteMember\x12&.mcsports.party.v1.DemoteMemberRequest\x1a'.mcsports.party.v1.DemoteMemberResponse\x12G\n" +
+	"\x04Chat\x12\x1e.mcsports.party.v1.ChatRequest\x1a\x1f.mcsports.party.v1.ChatResponseB\xcb\x01\n" +
 	"\x15com.mcsports.party.v1B\x10InteractionProtoP\x01Z:github.com/bufbuild/buf-tour/gen/mcsports/party/v1;partyv1\xa2\x02\x03MPX\xaa\x02\x11Mcsports.Party.V1\xca\x02\x11Mcsports\\Party\\V1\xe2\x02\x1dMcsports\\Party\\V1\\GPBMetadata\xea\x02\x13Mcsports::Party::V1b\x06proto3"
 
 var (
@@ -445,35 +812,53 @@ func file_mcsports_party_v1_interaction_proto_rawDescGZIP() []byte {
 	return file_mcsports_party_v1_interaction_proto_rawDescData
 }
 
-var file_mcsports_party_v1_interaction_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
+var file_mcsports_party_v1_interaction_proto_msgTypes = make([]protoimpl.MessageInfo, 16)
 var file_mcsports_party_v1_interaction_proto_goTypes = []any{
-	(*CreatePartyRequest)(nil),   // 0: mcsports.party.v1.CreatePartyRequest
-	(*CreatePartyResponse)(nil),  // 1: mcsports.party.v1.CreatePartyResponse
-	(*DeletePartyRequest)(nil),   // 2: mcsports.party.v1.DeletePartyRequest
-	(*DeletePartyResponse)(nil),  // 3: mcsports.party.v1.DeletePartyResponse
-	(*InvitePlayerRequest)(nil),  // 4: mcsports.party.v1.InvitePlayerRequest
-	(*InvitePlayerResponse)(nil), // 5: mcsports.party.v1.InvitePlayerResponse
-	(*HandleInviteRequest)(nil),  // 6: mcsports.party.v1.HandleInviteRequest
-	(*HandleInviteResponse)(nil), // 7: mcsports.party.v1.HandleInviteResponse
-	(*PartySettings)(nil),        // 8: mcsports.party.v1.PartySettings
-	(*Party)(nil),                // 9: mcsports.party.v1.Party
+	(*CreatePartyRequest)(nil),    // 0: mcsports.party.v1.CreatePartyRequest
+	(*CreatePartyResponse)(nil),   // 1: mcsports.party.v1.CreatePartyResponse
+	(*DeletePartyRequest)(nil),    // 2: mcsports.party.v1.DeletePartyRequest
+	(*DeletePartyResponse)(nil),   // 3: mcsports.party.v1.DeletePartyResponse
+	(*InvitePlayerRequest)(nil),   // 4: mcsports.party.v1.InvitePlayerRequest
+	(*InvitePlayerResponse)(nil),  // 5: mcsports.party.v1.InvitePlayerResponse
+	(*HandleInviteRequest)(nil),   // 6: mcsports.party.v1.HandleInviteRequest
+	(*HandleInviteResponse)(nil),  // 7: mcsports.party.v1.HandleInviteResponse
+	(*LeavePartyRequest)(nil),     // 8: mcsports.party.v1.LeavePartyRequest
+	(*LeavePartyResponse)(nil),    // 9: mcsports.party.v1.LeavePartyResponse
+	(*PromoteMemberRequest)(nil),  // 10: mcsports.party.v1.PromoteMemberRequest
+	(*PromoteMemberResponse)(nil), // 11: mcsports.party.v1.PromoteMemberResponse
+	(*DemoteMemberRequest)(nil),   // 12: mcsports.party.v1.DemoteMemberRequest
+	(*DemoteMemberResponse)(nil),  // 13: mcsports.party.v1.DemoteMemberResponse
+	(*ChatRequest)(nil),           // 14: mcsports.party.v1.ChatRequest
+	(*ChatResponse)(nil),          // 15: mcsports.party.v1.ChatResponse
+	(*PartySettings)(nil),         // 16: mcsports.party.v1.PartySettings
+	(*Party)(nil),                 // 17: mcsports.party.v1.Party
+	(*v1.AdventureComponent)(nil), // 18: mcsports.friend.v1.AdventureComponent
 }
 var file_mcsports_party_v1_interaction_proto_depIdxs = []int32{
-	8, // 0: mcsports.party.v1.CreatePartyRequest.settings:type_name -> mcsports.party.v1.PartySettings
-	9, // 1: mcsports.party.v1.CreatePartyResponse.created_party:type_name -> mcsports.party.v1.Party
-	0, // 2: mcsports.party.v1.PartyInteraction.CreateParty:input_type -> mcsports.party.v1.CreatePartyRequest
-	2, // 3: mcsports.party.v1.PartyInteraction.DeleteParty:input_type -> mcsports.party.v1.DeletePartyRequest
-	4, // 4: mcsports.party.v1.PartyInteraction.InvitePlayer:input_type -> mcsports.party.v1.InvitePlayerRequest
-	6, // 5: mcsports.party.v1.PartyInteraction.HandleInvite:input_type -> mcsports.party.v1.HandleInviteRequest
-	1, // 6: mcsports.party.v1.PartyInteraction.CreateParty:output_type -> mcsports.party.v1.CreatePartyResponse
-	3, // 7: mcsports.party.v1.PartyInteraction.DeleteParty:output_type -> mcsports.party.v1.DeletePartyResponse
-	5, // 8: mcsports.party.v1.PartyInteraction.InvitePlayer:output_type -> mcsports.party.v1.InvitePlayerResponse
-	7, // 9: mcsports.party.v1.PartyInteraction.HandleInvite:output_type -> mcsports.party.v1.HandleInviteResponse
-	6, // [6:10] is the sub-list for method output_type
-	2, // [2:6] is the sub-list for method input_type
-	2, // [2:2] is the sub-list for extension type_name
-	2, // [2:2] is the sub-list for extension extendee
-	0, // [0:2] is the sub-list for field type_name
+	16, // 0: mcsports.party.v1.CreatePartyRequest.settings:type_name -> mcsports.party.v1.PartySettings
+	17, // 1: mcsports.party.v1.CreatePartyResponse.created_party:type_name -> mcsports.party.v1.Party
+	18, // 2: mcsports.party.v1.ChatRequest.message:type_name -> mcsports.friend.v1.AdventureComponent
+	0,  // 3: mcsports.party.v1.PartyInteraction.CreateParty:input_type -> mcsports.party.v1.CreatePartyRequest
+	2,  // 4: mcsports.party.v1.PartyInteraction.DeleteParty:input_type -> mcsports.party.v1.DeletePartyRequest
+	4,  // 5: mcsports.party.v1.PartyInteraction.InvitePlayer:input_type -> mcsports.party.v1.InvitePlayerRequest
+	6,  // 6: mcsports.party.v1.PartyInteraction.HandleInvite:input_type -> mcsports.party.v1.HandleInviteRequest
+	8,  // 7: mcsports.party.v1.PartyInteraction.LeaveParty:input_type -> mcsports.party.v1.LeavePartyRequest
+	10, // 8: mcsports.party.v1.PartyInteraction.PromoteMember:input_type -> mcsports.party.v1.PromoteMemberRequest
+	12, // 9: mcsports.party.v1.PartyInteraction.DemoteMember:input_type -> mcsports.party.v1.DemoteMemberRequest
+	14, // 10: mcsports.party.v1.PartyInteraction.Chat:input_type -> mcsports.party.v1.ChatRequest
+	1,  // 11: mcsports.party.v1.PartyInteraction.CreateParty:output_type -> mcsports.party.v1.CreatePartyResponse
+	3,  // 12: mcsports.party.v1.PartyInteraction.DeleteParty:output_type -> mcsports.party.v1.DeletePartyResponse
+	5,  // 13: mcsports.party.v1.PartyInteraction.InvitePlayer:output_type -> mcsports.party.v1.InvitePlayerResponse
+	7,  // 14: mcsports.party.v1.PartyInteraction.HandleInvite:output_type -> mcsports.party.v1.HandleInviteResponse
+	9,  // 15: mcsports.party.v1.PartyInteraction.LeaveParty:output_type -> mcsports.party.v1.LeavePartyResponse
+	11, // 16: mcsports.party.v1.PartyInteraction.PromoteMember:output_type -> mcsports.party.v1.PromoteMemberResponse
+	13, // 17: mcsports.party.v1.PartyInteraction.DemoteMember:output_type -> mcsports.party.v1.DemoteMemberResponse
+	15, // 18: mcsports.party.v1.PartyInteraction.Chat:output_type -> mcsports.party.v1.ChatResponse
+	11, // [11:19] is the sub-list for method output_type
+	3,  // [3:11] is the sub-list for method input_type
+	3,  // [3:3] is the sub-list for extension type_name
+	3,  // [3:3] is the sub-list for extension extendee
+	0,  // [0:3] is the sub-list for field type_name
 }
 
 func init() { file_mcsports_party_v1_interaction_proto_init() }
@@ -488,7 +873,7 @@ func file_mcsports_party_v1_interaction_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_mcsports_party_v1_interaction_proto_rawDesc), len(file_mcsports_party_v1_interaction_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   8,
+			NumMessages:   16,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
