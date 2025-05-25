@@ -271,6 +271,7 @@ type PartySettings struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	AllowInvites  bool                   `protobuf:"varint,1,opt,name=allowInvites,proto3" json:"allowInvites,omitempty"`
 	IsPrivate     bool                   `protobuf:"varint,2,opt,name=isPrivate,proto3" json:"isPrivate,omitempty"`
+	AllowChatting bool                   `protobuf:"varint,3,opt,name=allowChatting,proto3" json:"allowChatting,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -319,6 +320,13 @@ func (x *PartySettings) GetIsPrivate() bool {
 	return false
 }
 
+func (x *PartySettings) GetAllowChatting() bool {
+	if x != nil {
+		return x.AllowChatting
+	}
+	return false
+}
+
 var File_mcsports_party_v1_types_proto protoreflect.FileDescriptor
 
 const file_mcsports_party_v1_types_proto_rawDesc = "" +
@@ -339,10 +347,11 @@ const file_mcsports_party_v1_types_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1d\n" +
 	"\n" +
 	"invitor_id\x18\x02 \x01(\tR\tinvitorId\x12=\n" +
-	"\ftime_created\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\vtimeCreated\"Q\n" +
+	"\ftime_created\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\vtimeCreated\"w\n" +
 	"\rPartySettings\x12\"\n" +
 	"\fallowInvites\x18\x01 \x01(\bR\fallowInvites\x12\x1c\n" +
-	"\tisPrivate\x18\x02 \x01(\bR\tisPrivate*+\n" +
+	"\tisPrivate\x18\x02 \x01(\bR\tisPrivate\x12$\n" +
+	"\rallowChatting\x18\x03 \x01(\bR\rallowChatting*+\n" +
 	"\tPartyRole\x12\n" +
 	"\n" +
 	"\x06MEMBER\x10\x00\x12\a\n" +
