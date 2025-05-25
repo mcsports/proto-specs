@@ -6,7 +6,7 @@ plugins {
 
 dependencies {
     api(project(":proto-java"))
-    implementation("com.google.protobuf:protobuf-kotlin:4.30.1")
+    implementation("com.google.protobuf:protobuf-kotlin:4.31.0")
     implementation("io.grpc:grpc-protobuf:1.71.0")
     implementation("io.grpc:grpc-stub:1.71.0")
     implementation("io.grpc:grpc-kotlin-stub:1.4.1")

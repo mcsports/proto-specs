@@ -9,7 +9,7 @@ java {
 }
 
 dependencies {
-    implementation("com.google.protobuf:protobuf-java:4.30.1")
+    implementation("com.google.protobuf:protobuf-java:4.31.0")
     implementation("io.grpc:grpc-protobuf:1.71.0")
     implementation("io.grpc:grpc-stub:1.71.0")
     implementation("javax.annotation:javax.annotation-api:1.3.2")
