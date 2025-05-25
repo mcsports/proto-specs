@@ -30,6 +30,7 @@ message PartyInvite {
 message PartySettings {
   bool allowInvites = 1;
   bool isPrivate = 2;
+  bool allowChatting = 3;
 }
 
 enum PartyRole {
