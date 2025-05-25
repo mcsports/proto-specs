@@ -1,6 +1,6 @@
 plugins {
     id("java")
-    id("com.google.protobuf")
+    id("com.google.protobuf") version "0.9.4"
     id("maven-publish")
 }
 
