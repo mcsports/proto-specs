@@ -6,17 +6,12 @@ option java_package = "club.mcsports.generated.buf.party.v1";
 option java_multiple_files = true;
 
 import "mcsports/party/v1/types.proto";
+import "mcsports/friend/v1/types.proto";
 
 /**
- Create Party, done
- Delete Party, done
- Invite Player, done
- Accept/Reject Invite, Done
- Leave Party,
- Promote/Demote Player,
- Party-Chat,
- (Jump-To-Owner),
- (Call-Players)
+ TODO:
+ Jump-To-Owner,
+ Call-Players
  */
 
 message CreatePartyRequest {
@@ -57,10 +52,48 @@ message HandleInviteResponse {
 
 }
 
+message LeavePartyRequest {
+  string member_id = 1;
+}
+
+message LeavePartyResponse {
+
+}
+
+message PromoteMemberRequest {
+  string member_id = 1;
+  string executor_id = 2;
+}
+
+message PromoteMemberResponse {
+
+}
+
+message DemoteMemberRequest {
+  string member_id = 1;
+  string executor_id = 2;
+}
+
+message DemoteMemberResponse {
+
+}
+
+message ChatRequest {
+  string member_id = 1;
+  mcsports.friend.v1.AdventureComponent message = 2;
+}
+
+message ChatResponse {
+
+}
+
 service PartyInteraction {
   rpc CreateParty(CreatePartyRequest) returns (CreatePartyResponse);
   rpc DeleteParty(DeletePartyRequest) returns (DeletePartyResponse);
   rpc InvitePlayer(InvitePlayerRequest) returns (InvitePlayerResponse);
   rpc HandleInvite(HandleInviteRequest) returns (HandleInviteResponse);
-
+  rpc LeaveParty(LeavePartyRequest) returns (LeavePartyResponse);
+  rpc PromoteMember(PromoteMemberRequest) returns (PromoteMemberResponse);
+  rpc DemoteMember(DemoteMemberRequest) returns (DemoteMemberResponse);
+  rpc Chat(ChatRequest) returns (ChatResponse);
 }

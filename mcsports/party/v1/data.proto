@@ -5,3 +5,16 @@ package mcsports.party.v1;
 option java_package = "club.mcsports.generated.buf.party.v1";
 option java_multiple_files = true;
 
+import "mcsports/party/v1/types.proto";
+
+message PartyRequest {
+  string member_id = 1;
+}
+
+message PartyResponse {
+  Party party = 1;
+}
+
+service PartyData {
+  rpc GetParty(PartyRequest) returns (PartyResponse);
+}
