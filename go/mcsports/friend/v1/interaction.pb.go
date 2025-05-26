@@ -24,6 +24,7 @@ const (
 type ApproveFriendRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	PlayerId      string                 `protobuf:"bytes,1,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	FriendId      string                 `protobuf:"bytes,2,opt,name=friend_id,json=friendId,proto3" json:"friend_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -61,6 +62,13 @@ func (*ApproveFriendRequest) Descriptor() ([]byte, []int) {
 func (x *ApproveFriendRequest) GetPlayerId() string {
 	if x != nil {
 		return x.PlayerId
+	}
+	return ""
+}
+
+func (x *ApproveFriendRequest) GetFriendId() string {
+	if x != nil {
+		return x.FriendId
 	}
 	return ""
 }
@@ -103,7 +111,8 @@ func (*ApproveFriendResponse) Descriptor() ([]byte, []int) {
 
 type RemoveFriendRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	FriendId      string                 `protobuf:"bytes,1,opt,name=friend_id,json=friendId,proto3" json:"friend_id,omitempty"`
+	PlayerId      string                 `protobuf:"bytes,1,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	FriendId      string                 `protobuf:"bytes,2,opt,name=friend_id,json=friendId,proto3" json:"friend_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -136,6 +145,13 @@ func (x *RemoveFriendRequest) ProtoReflect() protoreflect.Message {
 // Deprecated: Use RemoveFriendRequest.ProtoReflect.Descriptor instead.
 func (*RemoveFriendRequest) Descriptor() ([]byte, []int) {
 	return file_mcsports_friend_v1_interaction_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *RemoveFriendRequest) GetPlayerId() string {
+	if x != nil {
+		return x.PlayerId
+	}
+	return ""
 }
 
 func (x *RemoveFriendRequest) GetFriendId() string {
@@ -184,6 +200,7 @@ func (*RemoveFriendResponse) Descriptor() ([]byte, []int) {
 type InviteFriendRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	PlayerId      string                 `protobuf:"bytes,1,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	FriendId      string                 `protobuf:"bytes,2,opt,name=friend_id,json=friendId,proto3" json:"friend_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -221,6 +238,13 @@ func (*InviteFriendRequest) Descriptor() ([]byte, []int) {
 func (x *InviteFriendRequest) GetPlayerId() string {
 	if x != nil {
 		return x.PlayerId
+	}
+	return ""
+}
+
+func (x *InviteFriendRequest) GetFriendId() string {
+	if x != nil {
+		return x.FriendId
 	}
 	return ""
 }
@@ -263,7 +287,8 @@ func (*InviteFriendResponse) Descriptor() ([]byte, []int) {
 
 type RejectFriendRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	FriendId      string                 `protobuf:"bytes,1,opt,name=friend_id,json=friendId,proto3" json:"friend_id,omitempty"`
+	PlayerId      string                 `protobuf:"bytes,1,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	FriendId      string                 `protobuf:"bytes,2,opt,name=friend_id,json=friendId,proto3" json:"friend_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -296,6 +321,13 @@ func (x *RejectFriendRequest) ProtoReflect() protoreflect.Message {
 // Deprecated: Use RejectFriendRequest.ProtoReflect.Descriptor instead.
 func (*RejectFriendRequest) Descriptor() ([]byte, []int) {
 	return file_mcsports_friend_v1_interaction_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *RejectFriendRequest) GetPlayerId() string {
+	if x != nil {
+		return x.PlayerId
+	}
+	return ""
 }
 
 func (x *RejectFriendRequest) GetFriendId() string {
@@ -343,7 +375,8 @@ func (*RejectFriendResponse) Descriptor() ([]byte, []int) {
 
 type JumpRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	FriendId      string                 `protobuf:"bytes,1,opt,name=friend_id,json=friendId,proto3" json:"friend_id,omitempty"`
+	PlayerId      string                 `protobuf:"bytes,1,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	FriendId      string                 `protobuf:"bytes,2,opt,name=friend_id,json=friendId,proto3" json:"friend_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -378,6 +411,13 @@ func (*JumpRequest) Descriptor() ([]byte, []int) {
 	return file_mcsports_friend_v1_interaction_proto_rawDescGZIP(), []int{8}
 }
 
+func (x *JumpRequest) GetPlayerId() string {
+	if x != nil {
+		return x.PlayerId
+	}
+	return ""
+}
+
 func (x *JumpRequest) GetFriendId() string {
 	if x != nil {
 		return x.FriendId
@@ -387,7 +427,6 @@ func (x *JumpRequest) GetFriendId() string {
 
 type JumpResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	ServerId      string                 `protobuf:"bytes,1,opt,name=server_id,json=serverId,proto3" json:"server_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -422,17 +461,11 @@ func (*JumpResponse) Descriptor() ([]byte, []int) {
 	return file_mcsports_friend_v1_interaction_proto_rawDescGZIP(), []int{9}
 }
 
-func (x *JumpResponse) GetServerId() string {
-	if x != nil {
-		return x.ServerId
-	}
-	return ""
-}
-
 type SendMessageRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	FriendId      string                 `protobuf:"bytes,1,opt,name=friend_id,json=friendId,proto3" json:"friend_id,omitempty"`
-	Component     *AdventureComponent    `protobuf:"bytes,2,opt,name=component,proto3" json:"component,omitempty"`
+	PlayerId      string                 `protobuf:"bytes,1,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	FriendId      string                 `protobuf:"bytes,2,opt,name=friend_id,json=friendId,proto3" json:"friend_id,omitempty"`
+	Component     *AdventureComponent    `protobuf:"bytes,3,opt,name=component,proto3" json:"component,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -465,6 +498,13 @@ func (x *SendMessageRequest) ProtoReflect() protoreflect.Message {
 // Deprecated: Use SendMessageRequest.ProtoReflect.Descriptor instead.
 func (*SendMessageRequest) Descriptor() ([]byte, []int) {
 	return file_mcsports_friend_v1_interaction_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *SendMessageRequest) GetPlayerId() string {
+	if x != nil {
+		return x.PlayerId
+	}
+	return ""
 }
 
 func (x *SendMessageRequest) GetFriendId() string {
@@ -519,7 +559,8 @@ func (*SendMessageResponse) Descriptor() ([]byte, []int) {
 
 type ReplyRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Component     *AdventureComponent    `protobuf:"bytes,1,opt,name=component,proto3" json:"component,omitempty"`
+	PlayerId      string                 `protobuf:"bytes,1,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	Component     *AdventureComponent    `protobuf:"bytes,2,opt,name=component,proto3" json:"component,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -552,6 +593,13 @@ func (x *ReplyRequest) ProtoReflect() protoreflect.Message {
 // Deprecated: Use ReplyRequest.ProtoReflect.Descriptor instead.
 func (*ReplyRequest) Descriptor() ([]byte, []int) {
 	return file_mcsports_friend_v1_interaction_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *ReplyRequest) GetPlayerId() string {
+	if x != nil {
+		return x.PlayerId
+	}
+	return ""
 }
 
 func (x *ReplyRequest) GetComponent() *AdventureComponent {
@@ -601,29 +649,35 @@ var File_mcsports_friend_v1_interaction_proto protoreflect.FileDescriptor
 
 const file_mcsports_friend_v1_interaction_proto_rawDesc = "" +
 	"\n" +
-	"$mcsports/friend/v1/interaction.proto\x12\x12mcsports.friend.v1\x1a\x1emcsports/friend/v1/types.proto\"3\n" +
+	"$mcsports/friend/v1/interaction.proto\x12\x12mcsports.friend.v1\x1a\x1emcsports/friend/v1/types.proto\"P\n" +
 	"\x14ApproveFriendRequest\x12\x1b\n" +
-	"\tplayer_id\x18\x01 \x01(\tR\bplayerId\"\x17\n" +
-	"\x15ApproveFriendResponse\"2\n" +
+	"\tplayer_id\x18\x01 \x01(\tR\bplayerId\x12\x1b\n" +
+	"\tfriend_id\x18\x02 \x01(\tR\bfriendId\"\x17\n" +
+	"\x15ApproveFriendResponse\"O\n" +
 	"\x13RemoveFriendRequest\x12\x1b\n" +
-	"\tfriend_id\x18\x01 \x01(\tR\bfriendId\"\x16\n" +
-	"\x14RemoveFriendResponse\"2\n" +
+	"\tplayer_id\x18\x01 \x01(\tR\bplayerId\x12\x1b\n" +
+	"\tfriend_id\x18\x02 \x01(\tR\bfriendId\"\x16\n" +
+	"\x14RemoveFriendResponse\"O\n" +
 	"\x13InviteFriendRequest\x12\x1b\n" +
-	"\tplayer_id\x18\x01 \x01(\tR\bplayerId\"\x16\n" +
-	"\x14InviteFriendResponse\"2\n" +
+	"\tplayer_id\x18\x01 \x01(\tR\bplayerId\x12\x1b\n" +
+	"\tfriend_id\x18\x02 \x01(\tR\bfriendId\"\x16\n" +
+	"\x14InviteFriendResponse\"O\n" +
 	"\x13RejectFriendRequest\x12\x1b\n" +
-	"\tfriend_id\x18\x01 \x01(\tR\bfriendId\"\x16\n" +
-	"\x14RejectFriendResponse\"*\n" +
+	"\tplayer_id\x18\x01 \x01(\tR\bplayerId\x12\x1b\n" +
+	"\tfriend_id\x18\x02 \x01(\tR\bfriendId\"\x16\n" +
+	"\x14RejectFriendResponse\"G\n" +
 	"\vJumpRequest\x12\x1b\n" +
-	"\tfriend_id\x18\x01 \x01(\tR\bfriendId\"+\n" +
-	"\fJumpResponse\x12\x1b\n" +
-	"\tserver_id\x18\x01 \x01(\tR\bserverId\"w\n" +
+	"\tplayer_id\x18\x01 \x01(\tR\bplayerId\x12\x1b\n" +
+	"\tfriend_id\x18\x02 \x01(\tR\bfriendId\"\x0e\n" +
+	"\fJumpResponse\"\x94\x01\n" +
 	"\x12SendMessageRequest\x12\x1b\n" +
-	"\tfriend_id\x18\x01 \x01(\tR\bfriendId\x12D\n" +
-	"\tcomponent\x18\x02 \x01(\v2&.mcsports.friend.v1.AdventureComponentR\tcomponent\"\x15\n" +
-	"\x13SendMessageResponse\"T\n" +
-	"\fReplyRequest\x12D\n" +
-	"\tcomponent\x18\x01 \x01(\v2&.mcsports.friend.v1.AdventureComponentR\tcomponent\"\x0f\n" +
+	"\tplayer_id\x18\x01 \x01(\tR\bplayerId\x12\x1b\n" +
+	"\tfriend_id\x18\x02 \x01(\tR\bfriendId\x12D\n" +
+	"\tcomponent\x18\x03 \x01(\v2&.mcsports.friend.v1.AdventureComponentR\tcomponent\"\x15\n" +
+	"\x13SendMessageResponse\"q\n" +
+	"\fReplyRequest\x12\x1b\n" +
+	"\tplayer_id\x18\x01 \x01(\tR\bplayerId\x12D\n" +
+	"\tcomponent\x18\x02 \x01(\v2&.mcsports.friend.v1.AdventureComponentR\tcomponent\"\x0f\n" +
 	"\rReplyResponse2\x9b\x05\n" +
 	"\x11FriendInteraction\x12a\n" +
 	"\fInviteFriend\x12'.mcsports.friend.v1.InviteFriendRequest\x1a(.mcsports.friend.v1.InviteFriendResponse\x12d\n" +
