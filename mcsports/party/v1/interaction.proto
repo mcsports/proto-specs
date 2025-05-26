@@ -22,7 +22,7 @@ message CreatePartyRequest {
 
 message CreatePartyResponse {
   Party created_party = 1;
-  repeated string offline_ids = 2;
+  repeated string offline_names = 2;
 }
 
 message DeletePartyRequest {
