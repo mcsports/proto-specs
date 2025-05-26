@@ -85,7 +85,7 @@ func (x *CreatePartyRequest) GetInvitedIds() []string {
 type CreatePartyResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	CreatedParty  *Party                 `protobuf:"bytes,1,opt,name=created_party,json=createdParty,proto3" json:"created_party,omitempty"`
-	OfflineIds    []string               `protobuf:"bytes,2,rep,name=offline_ids,json=offlineIds,proto3" json:"offline_ids,omitempty"`
+	OfflineNames  []string               `protobuf:"bytes,2,rep,name=offline_names,json=offlineNames,proto3" json:"offline_names,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -127,9 +127,9 @@ func (x *CreatePartyResponse) GetCreatedParty() *Party {
 	return nil
 }
 
-func (x *CreatePartyResponse) GetOfflineIds() []string {
+func (x *CreatePartyResponse) GetOfflineNames() []string {
 	if x != nil {
-		return x.OfflineIds
+		return x.OfflineNames
 	}
 	return nil
 }
@@ -840,11 +840,10 @@ const file_mcsports_party_v1_interaction_proto_rawDesc = "" +
 	"creator_id\x18\x01 \x01(\tR\tcreatorId\x12<\n" +
 	"\bsettings\x18\x02 \x01(\v2 .mcsports.party.v1.PartySettingsR\bsettings\x12\x1f\n" +
 	"\vinvited_ids\x18\x03 \x03(\tR\n" +
-	"invitedIds\"u\n" +
+	"invitedIds\"y\n" +
 	"\x13CreatePartyResponse\x12=\n" +
-	"\rcreated_party\x18\x01 \x01(\v2\x18.mcsports.party.v1.PartyR\fcreatedParty\x12\x1f\n" +
-	"\voffline_ids\x18\x02 \x03(\tR\n" +
-	"offlineIds\"5\n" +
+	"\rcreated_party\x18\x01 \x01(\v2\x18.mcsports.party.v1.PartyR\fcreatedParty\x12#\n" +
+	"\roffline_names\x18\x02 \x03(\tR\fofflineNames\"5\n" +
 	"\x12DeletePartyRequest\x12\x1f\n" +
 	"\vexecutor_id\x18\x01 \x01(\tR\n" +
 	"executorId\"\x15\n" +
