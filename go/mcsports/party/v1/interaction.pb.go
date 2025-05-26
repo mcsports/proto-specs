@@ -742,6 +742,94 @@ func (*ChatResponse) Descriptor() ([]byte, []int) {
 	return file_mcsports_party_v1_interaction_proto_rawDescGZIP(), []int{15}
 }
 
+type KickMemberRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	MemberId      string                 `protobuf:"bytes,1,opt,name=member_id,json=memberId,proto3" json:"member_id,omitempty"`
+	ExecutorId    string                 `protobuf:"bytes,2,opt,name=executor_id,json=executorId,proto3" json:"executor_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *KickMemberRequest) Reset() {
+	*x = KickMemberRequest{}
+	mi := &file_mcsports_party_v1_interaction_proto_msgTypes[16]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *KickMemberRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*KickMemberRequest) ProtoMessage() {}
+
+func (x *KickMemberRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_mcsports_party_v1_interaction_proto_msgTypes[16]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use KickMemberRequest.ProtoReflect.Descriptor instead.
+func (*KickMemberRequest) Descriptor() ([]byte, []int) {
+	return file_mcsports_party_v1_interaction_proto_rawDescGZIP(), []int{16}
+}
+
+func (x *KickMemberRequest) GetMemberId() string {
+	if x != nil {
+		return x.MemberId
+	}
+	return ""
+}
+
+func (x *KickMemberRequest) GetExecutorId() string {
+	if x != nil {
+		return x.ExecutorId
+	}
+	return ""
+}
+
+type KickMemberResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *KickMemberResponse) Reset() {
+	*x = KickMemberResponse{}
+	mi := &file_mcsports_party_v1_interaction_proto_msgTypes[17]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *KickMemberResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*KickMemberResponse) ProtoMessage() {}
+
+func (x *KickMemberResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_mcsports_party_v1_interaction_proto_msgTypes[17]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use KickMemberResponse.ProtoReflect.Descriptor instead.
+func (*KickMemberResponse) Descriptor() ([]byte, []int) {
+	return file_mcsports_party_v1_interaction_proto_rawDescGZIP(), []int{17}
+}
+
 var File_mcsports_party_v1_interaction_proto protoreflect.FileDescriptor
 
 const file_mcsports_party_v1_interaction_proto_rawDesc = "" +
@@ -787,7 +875,12 @@ const file_mcsports_party_v1_interaction_proto_rawDesc = "" +
 	"\vChatRequest\x12\x1b\n" +
 	"\tmember_id\x18\x01 \x01(\tR\bmemberId\x12@\n" +
 	"\amessage\x18\x02 \x01(\v2&.mcsports.friend.v1.AdventureComponentR\amessage\"\x0e\n" +
-	"\fChatResponse2\xf9\x05\n" +
+	"\fChatResponse\"Q\n" +
+	"\x11KickMemberRequest\x12\x1b\n" +
+	"\tmember_id\x18\x01 \x01(\tR\bmemberId\x12\x1f\n" +
+	"\vexecutor_id\x18\x02 \x01(\tR\n" +
+	"executorId\"\x14\n" +
+	"\x12KickMemberResponse2\xd4\x06\n" +
 	"\x10PartyInteraction\x12\\\n" +
 	"\vCreateParty\x12%.mcsports.party.v1.CreatePartyRequest\x1a&.mcsports.party.v1.CreatePartyResponse\x12\\\n" +
 	"\vDeleteParty\x12%.mcsports.party.v1.DeletePartyRequest\x1a&.mcsports.party.v1.DeletePartyResponse\x12_\n" +
@@ -797,7 +890,9 @@ const file_mcsports_party_v1_interaction_proto_rawDesc = "" +
 	"LeaveParty\x12$.mcsports.party.v1.LeavePartyRequest\x1a%.mcsports.party.v1.LeavePartyResponse\x12b\n" +
 	"\rPromoteMember\x12'.mcsports.party.v1.PromoteMemberRequest\x1a(.mcsports.party.v1.PromoteMemberResponse\x12_\n" +
 	"\fDemoteMember\x12&.mcsports.party.v1.DemoteMemberRequest\x1a'.mcsports.party.v1.DemoteMemberResponse\x12G\n" +
-	"\x04Chat\x12\x1e.mcsports.party.v1.ChatRequest\x1a\x1f.mcsports.party.v1.ChatResponseB\xcb\x01\n" +
+	"\x04Chat\x12\x1e.mcsports.party.v1.ChatRequest\x1a\x1f.mcsports.party.v1.ChatResponse\x12Y\n" +
+	"\n" +
+	"KickMember\x12$.mcsports.party.v1.KickMemberRequest\x1a%.mcsports.party.v1.KickMemberResponseB\xcb\x01\n" +
 	"\x15com.mcsports.party.v1B\x10InteractionProtoP\x01Z:github.com/bufbuild/buf-tour/gen/mcsports/party/v1;partyv1\xa2\x02\x03MPX\xaa\x02\x11Mcsports.Party.V1\xca\x02\x11Mcsports\\Party\\V1\xe2\x02\x1dMcsports\\Party\\V1\\GPBMetadata\xea\x02\x13Mcsports::Party::V1b\x06proto3"
 
 var (
@@ -812,7 +907,7 @@ func file_mcsports_party_v1_interaction_proto_rawDescGZIP() []byte {
 	return file_mcsports_party_v1_interaction_proto_rawDescData
 }
 
-var file_mcsports_party_v1_interaction_proto_msgTypes = make([]protoimpl.MessageInfo, 16)
+var file_mcsports_party_v1_interaction_proto_msgTypes = make([]protoimpl.MessageInfo, 18)
 var file_mcsports_party_v1_interaction_proto_goTypes = []any{
 	(*CreatePartyRequest)(nil),    // 0: mcsports.party.v1.CreatePartyRequest
 	(*CreatePartyResponse)(nil),   // 1: mcsports.party.v1.CreatePartyResponse
@@ -830,14 +925,16 @@ var file_mcsports_party_v1_interaction_proto_goTypes = []any{
 	(*DemoteMemberResponse)(nil),  // 13: mcsports.party.v1.DemoteMemberResponse
 	(*ChatRequest)(nil),           // 14: mcsports.party.v1.ChatRequest
 	(*ChatResponse)(nil),          // 15: mcsports.party.v1.ChatResponse
-	(*PartySettings)(nil),         // 16: mcsports.party.v1.PartySettings
-	(*Party)(nil),                 // 17: mcsports.party.v1.Party
-	(*v1.AdventureComponent)(nil), // 18: mcsports.friend.v1.AdventureComponent
+	(*KickMemberRequest)(nil),     // 16: mcsports.party.v1.KickMemberRequest
+	(*KickMemberResponse)(nil),    // 17: mcsports.party.v1.KickMemberResponse
+	(*PartySettings)(nil),         // 18: mcsports.party.v1.PartySettings
+	(*Party)(nil),                 // 19: mcsports.party.v1.Party
+	(*v1.AdventureComponent)(nil), // 20: mcsports.friend.v1.AdventureComponent
 }
 var file_mcsports_party_v1_interaction_proto_depIdxs = []int32{
-	16, // 0: mcsports.party.v1.CreatePartyRequest.settings:type_name -> mcsports.party.v1.PartySettings
-	17, // 1: mcsports.party.v1.CreatePartyResponse.created_party:type_name -> mcsports.party.v1.Party
-	18, // 2: mcsports.party.v1.ChatRequest.message:type_name -> mcsports.friend.v1.AdventureComponent
+	18, // 0: mcsports.party.v1.CreatePartyRequest.settings:type_name -> mcsports.party.v1.PartySettings
+	19, // 1: mcsports.party.v1.CreatePartyResponse.created_party:type_name -> mcsports.party.v1.Party
+	20, // 2: mcsports.party.v1.ChatRequest.message:type_name -> mcsports.friend.v1.AdventureComponent
 	0,  // 3: mcsports.party.v1.PartyInteraction.CreateParty:input_type -> mcsports.party.v1.CreatePartyRequest
 	2,  // 4: mcsports.party.v1.PartyInteraction.DeleteParty:input_type -> mcsports.party.v1.DeletePartyRequest
 	4,  // 5: mcsports.party.v1.PartyInteraction.InvitePlayer:input_type -> mcsports.party.v1.InvitePlayerRequest
@@ -846,16 +943,18 @@ var file_mcsports_party_v1_interaction_proto_depIdxs = []int32{
 	10, // 8: mcsports.party.v1.PartyInteraction.PromoteMember:input_type -> mcsports.party.v1.PromoteMemberRequest
 	12, // 9: mcsports.party.v1.PartyInteraction.DemoteMember:input_type -> mcsports.party.v1.DemoteMemberRequest
 	14, // 10: mcsports.party.v1.PartyInteraction.Chat:input_type -> mcsports.party.v1.ChatRequest
-	1,  // 11: mcsports.party.v1.PartyInteraction.CreateParty:output_type -> mcsports.party.v1.CreatePartyResponse
-	3,  // 12: mcsports.party.v1.PartyInteraction.DeleteParty:output_type -> mcsports.party.v1.DeletePartyResponse
-	5,  // 13: mcsports.party.v1.PartyInteraction.InvitePlayer:output_type -> mcsports.party.v1.InvitePlayerResponse
-	7,  // 14: mcsports.party.v1.PartyInteraction.HandleInvite:output_type -> mcsports.party.v1.HandleInviteResponse
-	9,  // 15: mcsports.party.v1.PartyInteraction.LeaveParty:output_type -> mcsports.party.v1.LeavePartyResponse
-	11, // 16: mcsports.party.v1.PartyInteraction.PromoteMember:output_type -> mcsports.party.v1.PromoteMemberResponse
-	13, // 17: mcsports.party.v1.PartyInteraction.DemoteMember:output_type -> mcsports.party.v1.DemoteMemberResponse
-	15, // 18: mcsports.party.v1.PartyInteraction.Chat:output_type -> mcsports.party.v1.ChatResponse
-	11, // [11:19] is the sub-list for method output_type
-	3,  // [3:11] is the sub-list for method input_type
+	16, // 11: mcsports.party.v1.PartyInteraction.KickMember:input_type -> mcsports.party.v1.KickMemberRequest
+	1,  // 12: mcsports.party.v1.PartyInteraction.CreateParty:output_type -> mcsports.party.v1.CreatePartyResponse
+	3,  // 13: mcsports.party.v1.PartyInteraction.DeleteParty:output_type -> mcsports.party.v1.DeletePartyResponse
+	5,  // 14: mcsports.party.v1.PartyInteraction.InvitePlayer:output_type -> mcsports.party.v1.InvitePlayerResponse
+	7,  // 15: mcsports.party.v1.PartyInteraction.HandleInvite:output_type -> mcsports.party.v1.HandleInviteResponse
+	9,  // 16: mcsports.party.v1.PartyInteraction.LeaveParty:output_type -> mcsports.party.v1.LeavePartyResponse
+	11, // 17: mcsports.party.v1.PartyInteraction.PromoteMember:output_type -> mcsports.party.v1.PromoteMemberResponse
+	13, // 18: mcsports.party.v1.PartyInteraction.DemoteMember:output_type -> mcsports.party.v1.DemoteMemberResponse
+	15, // 19: mcsports.party.v1.PartyInteraction.Chat:output_type -> mcsports.party.v1.ChatResponse
+	17, // 20: mcsports.party.v1.PartyInteraction.KickMember:output_type -> mcsports.party.v1.KickMemberResponse
+	12, // [12:21] is the sub-list for method output_type
+	3,  // [3:12] is the sub-list for method input_type
 	3,  // [3:3] is the sub-list for extension type_name
 	3,  // [3:3] is the sub-list for extension extendee
 	0,  // [0:3] is the sub-list for field type_name
@@ -873,7 +972,7 @@ func file_mcsports_party_v1_interaction_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_mcsports_party_v1_interaction_proto_rawDesc), len(file_mcsports_party_v1_interaction_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   16,
+			NumMessages:   18,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

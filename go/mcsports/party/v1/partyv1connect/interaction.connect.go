@@ -56,6 +56,9 @@ const (
 	PartyInteractionDemoteMemberProcedure = "/mcsports.party.v1.PartyInteraction/DemoteMember"
 	// PartyInteractionChatProcedure is the fully-qualified name of the PartyInteraction's Chat RPC.
 	PartyInteractionChatProcedure = "/mcsports.party.v1.PartyInteraction/Chat"
+	// PartyInteractionKickMemberProcedure is the fully-qualified name of the PartyInteraction's
+	// KickMember RPC.
+	PartyInteractionKickMemberProcedure = "/mcsports.party.v1.PartyInteraction/KickMember"
 )
 
 // PartyInteractionClient is a client for the mcsports.party.v1.PartyInteraction service.
@@ -68,6 +71,7 @@ type PartyInteractionClient interface {
 	PromoteMember(context.Context, *connect.Request[v1.PromoteMemberRequest]) (*connect.Response[v1.PromoteMemberResponse], error)
 	DemoteMember(context.Context, *connect.Request[v1.DemoteMemberRequest]) (*connect.Response[v1.DemoteMemberResponse], error)
 	Chat(context.Context, *connect.Request[v1.ChatRequest]) (*connect.Response[v1.ChatResponse], error)
+	KickMember(context.Context, *connect.Request[v1.KickMemberRequest]) (*connect.Response[v1.KickMemberResponse], error)
 }
 
 // NewPartyInteractionClient constructs a client for the mcsports.party.v1.PartyInteraction service.
@@ -129,6 +133,12 @@ func NewPartyInteractionClient(httpClient connect.HTTPClient, baseURL string, op
 			connect.WithSchema(partyInteractionMethods.ByName("Chat")),
 			connect.WithClientOptions(opts...),
 		),
+		kickMember: connect.NewClient[v1.KickMemberRequest, v1.KickMemberResponse](
+			httpClient,
+			baseURL+PartyInteractionKickMemberProcedure,
+			connect.WithSchema(partyInteractionMethods.ByName("KickMember")),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
@@ -142,6 +152,7 @@ type partyInteractionClient struct {
 	promoteMember *connect.Client[v1.PromoteMemberRequest, v1.PromoteMemberResponse]
 	demoteMember  *connect.Client[v1.DemoteMemberRequest, v1.DemoteMemberResponse]
 	chat          *connect.Client[v1.ChatRequest, v1.ChatResponse]
+	kickMember    *connect.Client[v1.KickMemberRequest, v1.KickMemberResponse]
 }
 
 // CreateParty calls mcsports.party.v1.PartyInteraction.CreateParty.
@@ -184,6 +195,11 @@ func (c *partyInteractionClient) Chat(ctx context.Context, req *connect.Request[
 	return c.chat.CallUnary(ctx, req)
 }
 
+// KickMember calls mcsports.party.v1.PartyInteraction.KickMember.
+func (c *partyInteractionClient) KickMember(ctx context.Context, req *connect.Request[v1.KickMemberRequest]) (*connect.Response[v1.KickMemberResponse], error) {
+	return c.kickMember.CallUnary(ctx, req)
+}
+
 // PartyInteractionHandler is an implementation of the mcsports.party.v1.PartyInteraction service.
 type PartyInteractionHandler interface {
 	CreateParty(context.Context, *connect.Request[v1.CreatePartyRequest]) (*connect.Response[v1.CreatePartyResponse], error)
@@ -194,6 +210,7 @@ type PartyInteractionHandler interface {
 	PromoteMember(context.Context, *connect.Request[v1.PromoteMemberRequest]) (*connect.Response[v1.PromoteMemberResponse], error)
 	DemoteMember(context.Context, *connect.Request[v1.DemoteMemberRequest]) (*connect.Response[v1.DemoteMemberResponse], error)
 	Chat(context.Context, *connect.Request[v1.ChatRequest]) (*connect.Response[v1.ChatResponse], error)
+	KickMember(context.Context, *connect.Request[v1.KickMemberRequest]) (*connect.Response[v1.KickMemberResponse], error)
 }
 
 // NewPartyInteractionHandler builds an HTTP handler from the service implementation. It returns the
@@ -251,6 +268,12 @@ func NewPartyInteractionHandler(svc PartyInteractionHandler, opts ...connect.Han
 		connect.WithSchema(partyInteractionMethods.ByName("Chat")),
 		connect.WithHandlerOptions(opts...),
 	)
+	partyInteractionKickMemberHandler := connect.NewUnaryHandler(
+		PartyInteractionKickMemberProcedure,
+		svc.KickMember,
+		connect.WithSchema(partyInteractionMethods.ByName("KickMember")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/mcsports.party.v1.PartyInteraction/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case PartyInteractionCreatePartyProcedure:
@@ -269,6 +292,8 @@ func NewPartyInteractionHandler(svc PartyInteractionHandler, opts ...connect.Han
 			partyInteractionDemoteMemberHandler.ServeHTTP(w, r)
 		case PartyInteractionChatProcedure:
 			partyInteractionChatHandler.ServeHTTP(w, r)
+		case PartyInteractionKickMemberProcedure:
+			partyInteractionKickMemberHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -308,4 +333,8 @@ func (UnimplementedPartyInteractionHandler) DemoteMember(context.Context, *conne
 
 func (UnimplementedPartyInteractionHandler) Chat(context.Context, *connect.Request[v1.ChatRequest]) (*connect.Response[v1.ChatResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("mcsports.party.v1.PartyInteraction.Chat is not implemented"))
+}
+
+func (UnimplementedPartyInteractionHandler) KickMember(context.Context, *connect.Request[v1.KickMemberRequest]) (*connect.Response[v1.KickMemberResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("mcsports.party.v1.PartyInteraction.KickMember is not implemented"))
 }
