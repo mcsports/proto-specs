@@ -17,7 +17,7 @@ import "mcsports/friend/v1/types.proto";
 message CreatePartyRequest {
   string creator_id = 1;
   PartySettings settings = 2;
-  repeated string invited_ids = 3;
+  repeated string invited_names = 3;
 }
 
 message CreatePartyResponse {
@@ -35,7 +35,7 @@ message DeletePartyResponse {
 
 message InvitePlayerRequest {
   string executor_id = 1;
-  string member_id = 2;
+  string member_name = 2;
 }
 
 message InvitePlayerResponse {
@@ -44,7 +44,7 @@ message InvitePlayerResponse {
 
 message HandleInviteRequest {
   string party_id = 1;
-  string member_id = 2;
+  string member_name = 2;
   bool accepted = 3;
 }
 
@@ -53,7 +53,7 @@ message HandleInviteResponse {
 }
 
 message LeavePartyRequest {
-  string member_id = 1;
+  string executor_id = 1;
 }
 
 message LeavePartyResponse {
@@ -61,8 +61,8 @@ message LeavePartyResponse {
 }
 
 message PromoteMemberRequest {
-  string member_id = 1;
-  string executor_id = 2;
+  string executor_id = 1;
+  string member_name = 2;
 }
 
 message PromoteMemberResponse {
@@ -70,8 +70,8 @@ message PromoteMemberResponse {
 }
 
 message DemoteMemberRequest {
-  string member_id = 1;
-  string executor_id = 2;
+  string executor_id = 1;
+  string member_name = 2;
 }
 
 message DemoteMemberResponse {
@@ -79,7 +79,7 @@ message DemoteMemberResponse {
 }
 
 message ChatRequest {
-  string member_id = 1;
+  string executor_id = 1;
   mcsports.friend.v1.AdventureComponent message = 2;
 }
 
@@ -88,8 +88,8 @@ message ChatResponse {
 }
 
 message KickMemberRequest {
-  string member_id = 1;
-  string executor_id = 2;
+  string executor_id = 1;
+  string member_name = 2;
 }
 
 message KickMemberResponse {

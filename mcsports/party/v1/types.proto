@@ -16,14 +16,14 @@ message Party {
 }
 
 message PartyMember {
-  string id = 1;
+  string name = 1;
   PartyRole role = 2;
   google.protobuf.Timestamp time_joined = 3;
 }
 
 message PartyInvite {
-  string id = 1;
-  string invitor_id = 2;
+  string invited_name = 1;
+  string invitor_name = 2;
   google.protobuf.Timestamp time_created = 3;
 }
 
