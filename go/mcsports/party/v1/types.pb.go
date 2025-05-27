@@ -149,7 +149,7 @@ func (x *Party) GetInvites() []*PartyInvite {
 
 type PartyMember struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Name          string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	Role          PartyRole              `protobuf:"varint,2,opt,name=role,proto3,enum=mcsports.party.v1.PartyRole" json:"role,omitempty"`
 	TimeJoined    *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=time_joined,json=timeJoined,proto3" json:"time_joined,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -186,9 +186,9 @@ func (*PartyMember) Descriptor() ([]byte, []int) {
 	return file_mcsports_party_v1_types_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *PartyMember) GetId() string {
+func (x *PartyMember) GetName() string {
 	if x != nil {
-		return x.Id
+		return x.Name
 	}
 	return ""
 }
@@ -209,8 +209,8 @@ func (x *PartyMember) GetTimeJoined() *timestamppb.Timestamp {
 
 type PartyInvite struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	InvitorId     string                 `protobuf:"bytes,2,opt,name=invitor_id,json=invitorId,proto3" json:"invitor_id,omitempty"`
+	InvitedName   string                 `protobuf:"bytes,1,opt,name=invited_name,json=invitedName,proto3" json:"invited_name,omitempty"`
+	InvitorName   string                 `protobuf:"bytes,2,opt,name=invitor_name,json=invitorName,proto3" json:"invitor_name,omitempty"`
 	TimeCreated   *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=time_created,json=timeCreated,proto3" json:"time_created,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -246,16 +246,16 @@ func (*PartyInvite) Descriptor() ([]byte, []int) {
 	return file_mcsports_party_v1_types_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *PartyInvite) GetId() string {
+func (x *PartyInvite) GetInvitedName() string {
 	if x != nil {
-		return x.Id
+		return x.InvitedName
 	}
 	return ""
 }
 
-func (x *PartyInvite) GetInvitorId() string {
+func (x *PartyInvite) GetInvitorName() string {
 	if x != nil {
-		return x.InvitorId
+		return x.InvitorName
 	}
 	return ""
 }
@@ -337,16 +337,15 @@ const file_mcsports_party_v1_types_proto_rawDesc = "" +
 	"\bowner_id\x18\x02 \x01(\tR\aownerId\x12<\n" +
 	"\bsettings\x18\x03 \x01(\v2 .mcsports.party.v1.PartySettingsR\bsettings\x128\n" +
 	"\amembers\x18\x04 \x03(\v2\x1e.mcsports.party.v1.PartyMemberR\amembers\x128\n" +
-	"\ainvites\x18\x05 \x03(\v2\x1e.mcsports.party.v1.PartyInviteR\ainvites\"\x8c\x01\n" +
-	"\vPartyMember\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x120\n" +
+	"\ainvites\x18\x05 \x03(\v2\x1e.mcsports.party.v1.PartyInviteR\ainvites\"\x90\x01\n" +
+	"\vPartyMember\x12\x12\n" +
+	"\x04name\x18\x01 \x01(\tR\x04name\x120\n" +
 	"\x04role\x18\x02 \x01(\x0e2\x1c.mcsports.party.v1.PartyRoleR\x04role\x12;\n" +
 	"\vtime_joined\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\n" +
-	"timeJoined\"{\n" +
-	"\vPartyInvite\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1d\n" +
-	"\n" +
-	"invitor_id\x18\x02 \x01(\tR\tinvitorId\x12=\n" +
+	"timeJoined\"\x92\x01\n" +
+	"\vPartyInvite\x12!\n" +
+	"\finvited_name\x18\x01 \x01(\tR\vinvitedName\x12!\n" +
+	"\finvitor_name\x18\x02 \x01(\tR\vinvitorName\x12=\n" +
 	"\ftime_created\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\vtimeCreated\"w\n" +
 	"\rPartySettings\x12\"\n" +
 	"\fallowInvites\x18\x01 \x01(\bR\fallowInvites\x12\x1c\n" +

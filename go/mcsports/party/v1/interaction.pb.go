@@ -26,7 +26,7 @@ type CreatePartyRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	CreatorId     string                 `protobuf:"bytes,1,opt,name=creator_id,json=creatorId,proto3" json:"creator_id,omitempty"`
 	Settings      *PartySettings         `protobuf:"bytes,2,opt,name=settings,proto3" json:"settings,omitempty"`
-	InvitedIds    []string               `protobuf:"bytes,3,rep,name=invited_ids,json=invitedIds,proto3" json:"invited_ids,omitempty"`
+	InvitedNames  []string               `protobuf:"bytes,3,rep,name=invited_names,json=invitedNames,proto3" json:"invited_names,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -75,9 +75,9 @@ func (x *CreatePartyRequest) GetSettings() *PartySettings {
 	return nil
 }
 
-func (x *CreatePartyRequest) GetInvitedIds() []string {
+func (x *CreatePartyRequest) GetInvitedNames() []string {
 	if x != nil {
-		return x.InvitedIds
+		return x.InvitedNames
 	}
 	return nil
 }
@@ -217,7 +217,7 @@ func (*DeletePartyResponse) Descriptor() ([]byte, []int) {
 type InvitePlayerRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ExecutorId    string                 `protobuf:"bytes,1,opt,name=executor_id,json=executorId,proto3" json:"executor_id,omitempty"`
-	MemberId      string                 `protobuf:"bytes,2,opt,name=member_id,json=memberId,proto3" json:"member_id,omitempty"`
+	MemberName    string                 `protobuf:"bytes,2,opt,name=member_name,json=memberName,proto3" json:"member_name,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -259,9 +259,9 @@ func (x *InvitePlayerRequest) GetExecutorId() string {
 	return ""
 }
 
-func (x *InvitePlayerRequest) GetMemberId() string {
+func (x *InvitePlayerRequest) GetMemberName() string {
 	if x != nil {
-		return x.MemberId
+		return x.MemberName
 	}
 	return ""
 }
@@ -305,7 +305,7 @@ func (*InvitePlayerResponse) Descriptor() ([]byte, []int) {
 type HandleInviteRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	PartyId       string                 `protobuf:"bytes,1,opt,name=party_id,json=partyId,proto3" json:"party_id,omitempty"`
-	MemberId      string                 `protobuf:"bytes,2,opt,name=member_id,json=memberId,proto3" json:"member_id,omitempty"`
+	MemberName    string                 `protobuf:"bytes,2,opt,name=member_name,json=memberName,proto3" json:"member_name,omitempty"`
 	Accepted      bool                   `protobuf:"varint,3,opt,name=accepted,proto3" json:"accepted,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -348,9 +348,9 @@ func (x *HandleInviteRequest) GetPartyId() string {
 	return ""
 }
 
-func (x *HandleInviteRequest) GetMemberId() string {
+func (x *HandleInviteRequest) GetMemberName() string {
 	if x != nil {
-		return x.MemberId
+		return x.MemberName
 	}
 	return ""
 }
@@ -400,7 +400,7 @@ func (*HandleInviteResponse) Descriptor() ([]byte, []int) {
 
 type LeavePartyRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	MemberId      string                 `protobuf:"bytes,1,opt,name=member_id,json=memberId,proto3" json:"member_id,omitempty"`
+	ExecutorId    string                 `protobuf:"bytes,1,opt,name=executor_id,json=executorId,proto3" json:"executor_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -435,9 +435,9 @@ func (*LeavePartyRequest) Descriptor() ([]byte, []int) {
 	return file_mcsports_party_v1_interaction_proto_rawDescGZIP(), []int{8}
 }
 
-func (x *LeavePartyRequest) GetMemberId() string {
+func (x *LeavePartyRequest) GetExecutorId() string {
 	if x != nil {
-		return x.MemberId
+		return x.ExecutorId
 	}
 	return ""
 }
@@ -480,8 +480,8 @@ func (*LeavePartyResponse) Descriptor() ([]byte, []int) {
 
 type PromoteMemberRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	MemberId      string                 `protobuf:"bytes,1,opt,name=member_id,json=memberId,proto3" json:"member_id,omitempty"`
-	ExecutorId    string                 `protobuf:"bytes,2,opt,name=executor_id,json=executorId,proto3" json:"executor_id,omitempty"`
+	ExecutorId    string                 `protobuf:"bytes,1,opt,name=executor_id,json=executorId,proto3" json:"executor_id,omitempty"`
+	MemberName    string                 `protobuf:"bytes,2,opt,name=member_name,json=memberName,proto3" json:"member_name,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -516,16 +516,16 @@ func (*PromoteMemberRequest) Descriptor() ([]byte, []int) {
 	return file_mcsports_party_v1_interaction_proto_rawDescGZIP(), []int{10}
 }
 
-func (x *PromoteMemberRequest) GetMemberId() string {
+func (x *PromoteMemberRequest) GetExecutorId() string {
 	if x != nil {
-		return x.MemberId
+		return x.ExecutorId
 	}
 	return ""
 }
 
-func (x *PromoteMemberRequest) GetExecutorId() string {
+func (x *PromoteMemberRequest) GetMemberName() string {
 	if x != nil {
-		return x.ExecutorId
+		return x.MemberName
 	}
 	return ""
 }
@@ -568,8 +568,8 @@ func (*PromoteMemberResponse) Descriptor() ([]byte, []int) {
 
 type DemoteMemberRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	MemberId      string                 `protobuf:"bytes,1,opt,name=member_id,json=memberId,proto3" json:"member_id,omitempty"`
-	ExecutorId    string                 `protobuf:"bytes,2,opt,name=executor_id,json=executorId,proto3" json:"executor_id,omitempty"`
+	ExecutorId    string                 `protobuf:"bytes,1,opt,name=executor_id,json=executorId,proto3" json:"executor_id,omitempty"`
+	MemberName    string                 `protobuf:"bytes,2,opt,name=member_name,json=memberName,proto3" json:"member_name,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -604,16 +604,16 @@ func (*DemoteMemberRequest) Descriptor() ([]byte, []int) {
 	return file_mcsports_party_v1_interaction_proto_rawDescGZIP(), []int{12}
 }
 
-func (x *DemoteMemberRequest) GetMemberId() string {
+func (x *DemoteMemberRequest) GetExecutorId() string {
 	if x != nil {
-		return x.MemberId
+		return x.ExecutorId
 	}
 	return ""
 }
 
-func (x *DemoteMemberRequest) GetExecutorId() string {
+func (x *DemoteMemberRequest) GetMemberName() string {
 	if x != nil {
-		return x.ExecutorId
+		return x.MemberName
 	}
 	return ""
 }
@@ -656,7 +656,7 @@ func (*DemoteMemberResponse) Descriptor() ([]byte, []int) {
 
 type ChatRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	MemberId      string                 `protobuf:"bytes,1,opt,name=member_id,json=memberId,proto3" json:"member_id,omitempty"`
+	ExecutorId    string                 `protobuf:"bytes,1,opt,name=executor_id,json=executorId,proto3" json:"executor_id,omitempty"`
 	Message       *v1.AdventureComponent `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -692,9 +692,9 @@ func (*ChatRequest) Descriptor() ([]byte, []int) {
 	return file_mcsports_party_v1_interaction_proto_rawDescGZIP(), []int{14}
 }
 
-func (x *ChatRequest) GetMemberId() string {
+func (x *ChatRequest) GetExecutorId() string {
 	if x != nil {
-		return x.MemberId
+		return x.ExecutorId
 	}
 	return ""
 }
@@ -744,8 +744,8 @@ func (*ChatResponse) Descriptor() ([]byte, []int) {
 
 type KickMemberRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	MemberId      string                 `protobuf:"bytes,1,opt,name=member_id,json=memberId,proto3" json:"member_id,omitempty"`
-	ExecutorId    string                 `protobuf:"bytes,2,opt,name=executor_id,json=executorId,proto3" json:"executor_id,omitempty"`
+	ExecutorId    string                 `protobuf:"bytes,1,opt,name=executor_id,json=executorId,proto3" json:"executor_id,omitempty"`
+	MemberName    string                 `protobuf:"bytes,2,opt,name=member_name,json=memberName,proto3" json:"member_name,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -780,16 +780,16 @@ func (*KickMemberRequest) Descriptor() ([]byte, []int) {
 	return file_mcsports_party_v1_interaction_proto_rawDescGZIP(), []int{16}
 }
 
-func (x *KickMemberRequest) GetMemberId() string {
+func (x *KickMemberRequest) GetExecutorId() string {
 	if x != nil {
-		return x.MemberId
+		return x.ExecutorId
 	}
 	return ""
 }
 
-func (x *KickMemberRequest) GetExecutorId() string {
+func (x *KickMemberRequest) GetMemberName() string {
 	if x != nil {
-		return x.ExecutorId
+		return x.MemberName
 	}
 	return ""
 }
@@ -834,51 +834,57 @@ var File_mcsports_party_v1_interaction_proto protoreflect.FileDescriptor
 
 const file_mcsports_party_v1_interaction_proto_rawDesc = "" +
 	"\n" +
-	"#mcsports/party/v1/interaction.proto\x12\x11mcsports.party.v1\x1a\x1dmcsports/party/v1/types.proto\x1a\x1emcsports/friend/v1/types.proto\"\x92\x01\n" +
+	"#mcsports/party/v1/interaction.proto\x12\x11mcsports.party.v1\x1a\x1dmcsports/party/v1/types.proto\x1a\x1emcsports/friend/v1/types.proto\"\x96\x01\n" +
 	"\x12CreatePartyRequest\x12\x1d\n" +
 	"\n" +
 	"creator_id\x18\x01 \x01(\tR\tcreatorId\x12<\n" +
-	"\bsettings\x18\x02 \x01(\v2 .mcsports.party.v1.PartySettingsR\bsettings\x12\x1f\n" +
-	"\vinvited_ids\x18\x03 \x03(\tR\n" +
-	"invitedIds\"y\n" +
+	"\bsettings\x18\x02 \x01(\v2 .mcsports.party.v1.PartySettingsR\bsettings\x12#\n" +
+	"\rinvited_names\x18\x03 \x03(\tR\finvitedNames\"y\n" +
 	"\x13CreatePartyResponse\x12=\n" +
 	"\rcreated_party\x18\x01 \x01(\v2\x18.mcsports.party.v1.PartyR\fcreatedParty\x12#\n" +
 	"\roffline_names\x18\x02 \x03(\tR\fofflineNames\"5\n" +
 	"\x12DeletePartyRequest\x12\x1f\n" +
 	"\vexecutor_id\x18\x01 \x01(\tR\n" +
 	"executorId\"\x15\n" +
-	"\x13DeletePartyResponse\"S\n" +
+	"\x13DeletePartyResponse\"W\n" +
 	"\x13InvitePlayerRequest\x12\x1f\n" +
 	"\vexecutor_id\x18\x01 \x01(\tR\n" +
-	"executorId\x12\x1b\n" +
-	"\tmember_id\x18\x02 \x01(\tR\bmemberId\"\x16\n" +
-	"\x14InvitePlayerResponse\"i\n" +
+	"executorId\x12\x1f\n" +
+	"\vmember_name\x18\x02 \x01(\tR\n" +
+	"memberName\"\x16\n" +
+	"\x14InvitePlayerResponse\"m\n" +
 	"\x13HandleInviteRequest\x12\x19\n" +
-	"\bparty_id\x18\x01 \x01(\tR\apartyId\x12\x1b\n" +
-	"\tmember_id\x18\x02 \x01(\tR\bmemberId\x12\x1a\n" +
+	"\bparty_id\x18\x01 \x01(\tR\apartyId\x12\x1f\n" +
+	"\vmember_name\x18\x02 \x01(\tR\n" +
+	"memberName\x12\x1a\n" +
 	"\baccepted\x18\x03 \x01(\bR\baccepted\"\x16\n" +
-	"\x14HandleInviteResponse\"0\n" +
-	"\x11LeavePartyRequest\x12\x1b\n" +
-	"\tmember_id\x18\x01 \x01(\tR\bmemberId\"\x14\n" +
-	"\x12LeavePartyResponse\"T\n" +
-	"\x14PromoteMemberRequest\x12\x1b\n" +
-	"\tmember_id\x18\x01 \x01(\tR\bmemberId\x12\x1f\n" +
-	"\vexecutor_id\x18\x02 \x01(\tR\n" +
-	"executorId\"\x17\n" +
-	"\x15PromoteMemberResponse\"S\n" +
-	"\x13DemoteMemberRequest\x12\x1b\n" +
-	"\tmember_id\x18\x01 \x01(\tR\bmemberId\x12\x1f\n" +
-	"\vexecutor_id\x18\x02 \x01(\tR\n" +
-	"executorId\"\x16\n" +
-	"\x14DemoteMemberResponse\"l\n" +
-	"\vChatRequest\x12\x1b\n" +
-	"\tmember_id\x18\x01 \x01(\tR\bmemberId\x12@\n" +
-	"\amessage\x18\x02 \x01(\v2&.mcsports.friend.v1.AdventureComponentR\amessage\"\x0e\n" +
-	"\fChatResponse\"Q\n" +
-	"\x11KickMemberRequest\x12\x1b\n" +
-	"\tmember_id\x18\x01 \x01(\tR\bmemberId\x12\x1f\n" +
-	"\vexecutor_id\x18\x02 \x01(\tR\n" +
+	"\x14HandleInviteResponse\"4\n" +
+	"\x11LeavePartyRequest\x12\x1f\n" +
+	"\vexecutor_id\x18\x01 \x01(\tR\n" +
 	"executorId\"\x14\n" +
+	"\x12LeavePartyResponse\"X\n" +
+	"\x14PromoteMemberRequest\x12\x1f\n" +
+	"\vexecutor_id\x18\x01 \x01(\tR\n" +
+	"executorId\x12\x1f\n" +
+	"\vmember_name\x18\x02 \x01(\tR\n" +
+	"memberName\"\x17\n" +
+	"\x15PromoteMemberResponse\"W\n" +
+	"\x13DemoteMemberRequest\x12\x1f\n" +
+	"\vexecutor_id\x18\x01 \x01(\tR\n" +
+	"executorId\x12\x1f\n" +
+	"\vmember_name\x18\x02 \x01(\tR\n" +
+	"memberName\"\x16\n" +
+	"\x14DemoteMemberResponse\"p\n" +
+	"\vChatRequest\x12\x1f\n" +
+	"\vexecutor_id\x18\x01 \x01(\tR\n" +
+	"executorId\x12@\n" +
+	"\amessage\x18\x02 \x01(\v2&.mcsports.friend.v1.AdventureComponentR\amessage\"\x0e\n" +
+	"\fChatResponse\"U\n" +
+	"\x11KickMemberRequest\x12\x1f\n" +
+	"\vexecutor_id\x18\x01 \x01(\tR\n" +
+	"executorId\x12\x1f\n" +
+	"\vmember_name\x18\x02 \x01(\tR\n" +
+	"memberName\"\x14\n" +
 	"\x12KickMemberResponse2\xd4\x06\n" +
 	"\x10PartyInteraction\x12\\\n" +
 	"\vCreateParty\x12%.mcsports.party.v1.CreatePartyRequest\x1a&.mcsports.party.v1.CreatePartyResponse\x12\\\n" +
