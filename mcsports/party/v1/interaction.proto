@@ -43,8 +43,8 @@ message InvitePlayerResponse {
 }
 
 message HandleInviteRequest {
-  string party_id = 1;
-  string member_name = 2;
+  string executor_id = 1;
+  string invitor_name = 2;
   bool accepted = 3;
 }
 
