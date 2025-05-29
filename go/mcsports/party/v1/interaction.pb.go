@@ -304,8 +304,8 @@ func (*InvitePlayerResponse) Descriptor() ([]byte, []int) {
 
 type HandleInviteRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	PartyId       string                 `protobuf:"bytes,1,opt,name=party_id,json=partyId,proto3" json:"party_id,omitempty"`
-	MemberName    string                 `protobuf:"bytes,2,opt,name=member_name,json=memberName,proto3" json:"member_name,omitempty"`
+	ExecutorId    string                 `protobuf:"bytes,1,opt,name=executor_id,json=executorId,proto3" json:"executor_id,omitempty"`
+	InvitorName   string                 `protobuf:"bytes,2,opt,name=invitor_name,json=invitorName,proto3" json:"invitor_name,omitempty"`
 	Accepted      bool                   `protobuf:"varint,3,opt,name=accepted,proto3" json:"accepted,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -341,16 +341,16 @@ func (*HandleInviteRequest) Descriptor() ([]byte, []int) {
 	return file_mcsports_party_v1_interaction_proto_rawDescGZIP(), []int{6}
 }
 
-func (x *HandleInviteRequest) GetPartyId() string {
+func (x *HandleInviteRequest) GetExecutorId() string {
 	if x != nil {
-		return x.PartyId
+		return x.ExecutorId
 	}
 	return ""
 }
 
-func (x *HandleInviteRequest) GetMemberName() string {
+func (x *HandleInviteRequest) GetInvitorName() string {
 	if x != nil {
-		return x.MemberName
+		return x.InvitorName
 	}
 	return ""
 }
@@ -852,11 +852,11 @@ const file_mcsports_party_v1_interaction_proto_rawDesc = "" +
 	"executorId\x12\x1f\n" +
 	"\vmember_name\x18\x02 \x01(\tR\n" +
 	"memberName\"\x16\n" +
-	"\x14InvitePlayerResponse\"m\n" +
-	"\x13HandleInviteRequest\x12\x19\n" +
-	"\bparty_id\x18\x01 \x01(\tR\apartyId\x12\x1f\n" +
-	"\vmember_name\x18\x02 \x01(\tR\n" +
-	"memberName\x12\x1a\n" +
+	"\x14InvitePlayerResponse\"u\n" +
+	"\x13HandleInviteRequest\x12\x1f\n" +
+	"\vexecutor_id\x18\x01 \x01(\tR\n" +
+	"executorId\x12!\n" +
+	"\finvitor_name\x18\x02 \x01(\tR\vinvitorName\x12\x1a\n" +
 	"\baccepted\x18\x03 \x01(\bR\baccepted\"\x16\n" +
 	"\x14HandleInviteResponse\"4\n" +
 	"\x11LeavePartyRequest\x12\x1f\n" +
