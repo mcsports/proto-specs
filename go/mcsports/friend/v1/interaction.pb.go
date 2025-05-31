@@ -24,7 +24,7 @@ const (
 type ApproveFriendRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	PlayerId      string                 `protobuf:"bytes,1,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
-	FriendId      string                 `protobuf:"bytes,2,opt,name=friend_id,json=friendId,proto3" json:"friend_id,omitempty"`
+	FriendName    string                 `protobuf:"bytes,2,opt,name=friend_name,json=friendName,proto3" json:"friend_name,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -66,9 +66,9 @@ func (x *ApproveFriendRequest) GetPlayerId() string {
 	return ""
 }
 
-func (x *ApproveFriendRequest) GetFriendId() string {
+func (x *ApproveFriendRequest) GetFriendName() string {
 	if x != nil {
-		return x.FriendId
+		return x.FriendName
 	}
 	return ""
 }
@@ -112,7 +112,7 @@ func (*ApproveFriendResponse) Descriptor() ([]byte, []int) {
 type RemoveFriendRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	PlayerId      string                 `protobuf:"bytes,1,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
-	FriendId      string                 `protobuf:"bytes,2,opt,name=friend_id,json=friendId,proto3" json:"friend_id,omitempty"`
+	FriendName    string                 `protobuf:"bytes,2,opt,name=friend_name,json=friendName,proto3" json:"friend_name,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -154,9 +154,9 @@ func (x *RemoveFriendRequest) GetPlayerId() string {
 	return ""
 }
 
-func (x *RemoveFriendRequest) GetFriendId() string {
+func (x *RemoveFriendRequest) GetFriendName() string {
 	if x != nil {
-		return x.FriendId
+		return x.FriendName
 	}
 	return ""
 }
@@ -200,7 +200,7 @@ func (*RemoveFriendResponse) Descriptor() ([]byte, []int) {
 type InviteFriendRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	PlayerId      string                 `protobuf:"bytes,1,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
-	FriendId      string                 `protobuf:"bytes,2,opt,name=friend_id,json=friendId,proto3" json:"friend_id,omitempty"`
+	FriendName    string                 `protobuf:"bytes,2,opt,name=friend_name,json=friendName,proto3" json:"friend_name,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -242,9 +242,9 @@ func (x *InviteFriendRequest) GetPlayerId() string {
 	return ""
 }
 
-func (x *InviteFriendRequest) GetFriendId() string {
+func (x *InviteFriendRequest) GetFriendName() string {
 	if x != nil {
-		return x.FriendId
+		return x.FriendName
 	}
 	return ""
 }
@@ -288,7 +288,7 @@ func (*InviteFriendResponse) Descriptor() ([]byte, []int) {
 type RejectFriendRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	PlayerId      string                 `protobuf:"bytes,1,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
-	FriendId      string                 `protobuf:"bytes,2,opt,name=friend_id,json=friendId,proto3" json:"friend_id,omitempty"`
+	FriendName    string                 `protobuf:"bytes,2,opt,name=friend_name,json=friendName,proto3" json:"friend_name,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -330,9 +330,9 @@ func (x *RejectFriendRequest) GetPlayerId() string {
 	return ""
 }
 
-func (x *RejectFriendRequest) GetFriendId() string {
+func (x *RejectFriendRequest) GetFriendName() string {
 	if x != nil {
-		return x.FriendId
+		return x.FriendName
 	}
 	return ""
 }
@@ -376,7 +376,7 @@ func (*RejectFriendResponse) Descriptor() ([]byte, []int) {
 type JumpRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	PlayerId      string                 `protobuf:"bytes,1,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
-	FriendId      string                 `protobuf:"bytes,2,opt,name=friend_id,json=friendId,proto3" json:"friend_id,omitempty"`
+	FriendName    string                 `protobuf:"bytes,2,opt,name=friend_name,json=friendName,proto3" json:"friend_name,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -418,9 +418,9 @@ func (x *JumpRequest) GetPlayerId() string {
 	return ""
 }
 
-func (x *JumpRequest) GetFriendId() string {
+func (x *JumpRequest) GetFriendName() string {
 	if x != nil {
-		return x.FriendId
+		return x.FriendName
 	}
 	return ""
 }
@@ -464,7 +464,7 @@ func (*JumpResponse) Descriptor() ([]byte, []int) {
 type SendMessageRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	PlayerId      string                 `protobuf:"bytes,1,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
-	FriendId      string                 `protobuf:"bytes,2,opt,name=friend_id,json=friendId,proto3" json:"friend_id,omitempty"`
+	FriendName    string                 `protobuf:"bytes,2,opt,name=friend_name,json=friendName,proto3" json:"friend_name,omitempty"`
 	Component     *AdventureComponent    `protobuf:"bytes,3,opt,name=component,proto3" json:"component,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -507,9 +507,9 @@ func (x *SendMessageRequest) GetPlayerId() string {
 	return ""
 }
 
-func (x *SendMessageRequest) GetFriendId() string {
+func (x *SendMessageRequest) GetFriendName() string {
 	if x != nil {
-		return x.FriendId
+		return x.FriendName
 	}
 	return ""
 }
@@ -649,30 +649,36 @@ var File_mcsports_friend_v1_interaction_proto protoreflect.FileDescriptor
 
 const file_mcsports_friend_v1_interaction_proto_rawDesc = "" +
 	"\n" +
-	"$mcsports/friend/v1/interaction.proto\x12\x12mcsports.friend.v1\x1a\x1emcsports/friend/v1/types.proto\"P\n" +
+	"$mcsports/friend/v1/interaction.proto\x12\x12mcsports.friend.v1\x1a\x1emcsports/friend/v1/types.proto\"T\n" +
 	"\x14ApproveFriendRequest\x12\x1b\n" +
-	"\tplayer_id\x18\x01 \x01(\tR\bplayerId\x12\x1b\n" +
-	"\tfriend_id\x18\x02 \x01(\tR\bfriendId\"\x17\n" +
-	"\x15ApproveFriendResponse\"O\n" +
+	"\tplayer_id\x18\x01 \x01(\tR\bplayerId\x12\x1f\n" +
+	"\vfriend_name\x18\x02 \x01(\tR\n" +
+	"friendName\"\x17\n" +
+	"\x15ApproveFriendResponse\"S\n" +
 	"\x13RemoveFriendRequest\x12\x1b\n" +
-	"\tplayer_id\x18\x01 \x01(\tR\bplayerId\x12\x1b\n" +
-	"\tfriend_id\x18\x02 \x01(\tR\bfriendId\"\x16\n" +
-	"\x14RemoveFriendResponse\"O\n" +
+	"\tplayer_id\x18\x01 \x01(\tR\bplayerId\x12\x1f\n" +
+	"\vfriend_name\x18\x02 \x01(\tR\n" +
+	"friendName\"\x16\n" +
+	"\x14RemoveFriendResponse\"S\n" +
 	"\x13InviteFriendRequest\x12\x1b\n" +
-	"\tplayer_id\x18\x01 \x01(\tR\bplayerId\x12\x1b\n" +
-	"\tfriend_id\x18\x02 \x01(\tR\bfriendId\"\x16\n" +
-	"\x14InviteFriendResponse\"O\n" +
+	"\tplayer_id\x18\x01 \x01(\tR\bplayerId\x12\x1f\n" +
+	"\vfriend_name\x18\x02 \x01(\tR\n" +
+	"friendName\"\x16\n" +
+	"\x14InviteFriendResponse\"S\n" +
 	"\x13RejectFriendRequest\x12\x1b\n" +
-	"\tplayer_id\x18\x01 \x01(\tR\bplayerId\x12\x1b\n" +
-	"\tfriend_id\x18\x02 \x01(\tR\bfriendId\"\x16\n" +
-	"\x14RejectFriendResponse\"G\n" +
+	"\tplayer_id\x18\x01 \x01(\tR\bplayerId\x12\x1f\n" +
+	"\vfriend_name\x18\x02 \x01(\tR\n" +
+	"friendName\"\x16\n" +
+	"\x14RejectFriendResponse\"K\n" +
 	"\vJumpRequest\x12\x1b\n" +
-	"\tplayer_id\x18\x01 \x01(\tR\bplayerId\x12\x1b\n" +
-	"\tfriend_id\x18\x02 \x01(\tR\bfriendId\"\x0e\n" +
-	"\fJumpResponse\"\x94\x01\n" +
+	"\tplayer_id\x18\x01 \x01(\tR\bplayerId\x12\x1f\n" +
+	"\vfriend_name\x18\x02 \x01(\tR\n" +
+	"friendName\"\x0e\n" +
+	"\fJumpResponse\"\x98\x01\n" +
 	"\x12SendMessageRequest\x12\x1b\n" +
-	"\tplayer_id\x18\x01 \x01(\tR\bplayerId\x12\x1b\n" +
-	"\tfriend_id\x18\x02 \x01(\tR\bfriendId\x12D\n" +
+	"\tplayer_id\x18\x01 \x01(\tR\bplayerId\x12\x1f\n" +
+	"\vfriend_name\x18\x02 \x01(\tR\n" +
+	"friendName\x12D\n" +
 	"\tcomponent\x18\x03 \x01(\v2&.mcsports.friend.v1.AdventureComponentR\tcomponent\"\x15\n" +
 	"\x13SendMessageResponse\"q\n" +
 	"\fReplyRequest\x12\x1b\n" +

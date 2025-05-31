@@ -65,13 +65,69 @@ func (x *AdventureComponent) GetJson() string {
 	return ""
 }
 
+type PlayerData struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *PlayerData) Reset() {
+	*x = PlayerData{}
+	mi := &file_mcsports_friend_v1_types_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *PlayerData) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PlayerData) ProtoMessage() {}
+
+func (x *PlayerData) ProtoReflect() protoreflect.Message {
+	mi := &file_mcsports_friend_v1_types_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PlayerData.ProtoReflect.Descriptor instead.
+func (*PlayerData) Descriptor() ([]byte, []int) {
+	return file_mcsports_friend_v1_types_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *PlayerData) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *PlayerData) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
 var File_mcsports_friend_v1_types_proto protoreflect.FileDescriptor
 
 const file_mcsports_friend_v1_types_proto_rawDesc = "" +
 	"\n" +
 	"\x1emcsports/friend/v1/types.proto\x12\x12mcsports.friend.v1\"(\n" +
 	"\x12AdventureComponent\x12\x12\n" +
-	"\x04json\x18\x01 \x01(\tR\x04jsonB\xcc\x01\n" +
+	"\x04json\x18\x01 \x01(\tR\x04json\"0\n" +
+	"\n" +
+	"PlayerData\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04nameB\xcc\x01\n" +
 	"\x16com.mcsports.friend.v1B\n" +
 	"TypesProtoP\x01Z<github.com/bufbuild/buf-tour/gen/mcsports/friend/v1;friendv1\xa2\x02\x03MFX\xaa\x02\x12Mcsports.Friend.V1\xca\x02\x12Mcsports\\Friend\\V1\xe2\x02\x1eMcsports\\Friend\\V1\\GPBMetadata\xea\x02\x14Mcsports::Friend::V1b\x06proto3"
 
@@ -87,9 +143,10 @@ func file_mcsports_friend_v1_types_proto_rawDescGZIP() []byte {
 	return file_mcsports_friend_v1_types_proto_rawDescData
 }
 
-var file_mcsports_friend_v1_types_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
+var file_mcsports_friend_v1_types_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_mcsports_friend_v1_types_proto_goTypes = []any{
 	(*AdventureComponent)(nil), // 0: mcsports.friend.v1.AdventureComponent
+	(*PlayerData)(nil),         // 1: mcsports.friend.v1.PlayerData
 }
 var file_mcsports_friend_v1_types_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for method output_type
@@ -110,7 +167,7 @@ func file_mcsports_friend_v1_types_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_mcsports_friend_v1_types_proto_rawDesc), len(file_mcsports_friend_v1_types_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   1,
+			NumMessages:   2,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

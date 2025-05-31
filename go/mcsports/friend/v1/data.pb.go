@@ -92,7 +92,7 @@ func (x *ListFriendsRequest) GetAmount() uint32 {
 type ListFriendsResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Pages         uint32                 `protobuf:"varint,1,opt,name=pages,proto3" json:"pages,omitempty"`
-	FriendId      []string               `protobuf:"bytes,2,rep,name=friend_id,json=friendId,proto3" json:"friend_id,omitempty"`
+	Friend        []*PlayerData          `protobuf:"bytes,2,rep,name=friend,proto3" json:"friend,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -134,9 +134,9 @@ func (x *ListFriendsResponse) GetPages() uint32 {
 	return 0
 }
 
-func (x *ListFriendsResponse) GetFriendId() []string {
+func (x *ListFriendsResponse) GetFriend() []*PlayerData {
 	if x != nil {
-		return x.FriendId
+		return x.Friend
 	}
 	return nil
 }
@@ -212,7 +212,7 @@ func (x *ListFriendInvitesRequest) GetAmount() uint32 {
 type ListFriendInvitesResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Pages         uint32                 `protobuf:"varint,1,opt,name=pages,proto3" json:"pages,omitempty"`
-	FriendId      []string               `protobuf:"bytes,2,rep,name=friend_id,json=friendId,proto3" json:"friend_id,omitempty"`
+	Friend        []*PlayerData          `protobuf:"bytes,2,rep,name=friend,proto3" json:"friend,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -254,9 +254,9 @@ func (x *ListFriendInvitesResponse) GetPages() uint32 {
 	return 0
 }
 
-func (x *ListFriendInvitesResponse) GetFriendId() []string {
+func (x *ListFriendInvitesResponse) GetFriend() []*PlayerData {
 	if x != nil {
-		return x.FriendId
+		return x.Friend
 	}
 	return nil
 }
@@ -265,7 +265,7 @@ var File_mcsports_friend_v1_data_proto protoreflect.FileDescriptor
 
 const file_mcsports_friend_v1_data_proto_rawDesc = "" +
 	"\n" +
-	"\x1dmcsports/friend/v1/data.proto\x12\x12mcsports.friend.v1\"\xac\x01\n" +
+	"\x1dmcsports/friend/v1/data.proto\x12\x12mcsports.friend.v1\x1a\x1emcsports/friend/v1/types.proto\"\xac\x01\n" +
 	"\x12ListFriendsRequest\x12\x1b\n" +
 	"\tplayer_id\x18\x01 \x01(\tR\bplayerId\x12!\n" +
 	"\tpaginated\x18\x02 \x01(\bH\x00R\tpaginated\x88\x01\x01\x12\x17\n" +
@@ -274,10 +274,10 @@ const file_mcsports_friend_v1_data_proto_rawDesc = "" +
 	"\n" +
 	"_paginatedB\a\n" +
 	"\x05_pageB\t\n" +
-	"\a_amount\"H\n" +
+	"\a_amount\"c\n" +
 	"\x13ListFriendsResponse\x12\x14\n" +
-	"\x05pages\x18\x01 \x01(\rR\x05pages\x12\x1b\n" +
-	"\tfriend_id\x18\x02 \x03(\tR\bfriendId\"\xb2\x01\n" +
+	"\x05pages\x18\x01 \x01(\rR\x05pages\x126\n" +
+	"\x06friend\x18\x02 \x03(\v2\x1e.mcsports.friend.v1.PlayerDataR\x06friend\"\xb2\x01\n" +
 	"\x18ListFriendInvitesRequest\x12\x1b\n" +
 	"\tplayer_id\x18\x01 \x01(\tR\bplayerId\x12!\n" +
 	"\tpaginated\x18\x02 \x01(\bH\x00R\tpaginated\x88\x01\x01\x12\x17\n" +
@@ -286,10 +286,10 @@ const file_mcsports_friend_v1_data_proto_rawDesc = "" +
 	"\n" +
 	"_paginatedB\a\n" +
 	"\x05_pageB\t\n" +
-	"\a_amount\"N\n" +
+	"\a_amount\"i\n" +
 	"\x19ListFriendInvitesResponse\x12\x14\n" +
-	"\x05pages\x18\x01 \x01(\rR\x05pages\x12\x1b\n" +
-	"\tfriend_id\x18\x02 \x03(\tR\bfriendId2\xd8\x01\n" +
+	"\x05pages\x18\x01 \x01(\rR\x05pages\x126\n" +
+	"\x06friend\x18\x02 \x03(\v2\x1e.mcsports.friend.v1.PlayerDataR\x06friend2\xd8\x01\n" +
 	"\n" +
 	"FriendData\x12j\n" +
 	"\vListInvites\x12,.mcsports.friend.v1.ListFriendInvitesRequest\x1a-.mcsports.friend.v1.ListFriendInvitesResponse\x12^\n" +
@@ -314,17 +314,20 @@ var file_mcsports_friend_v1_data_proto_goTypes = []any{
 	(*ListFriendsResponse)(nil),       // 1: mcsports.friend.v1.ListFriendsResponse
 	(*ListFriendInvitesRequest)(nil),  // 2: mcsports.friend.v1.ListFriendInvitesRequest
 	(*ListFriendInvitesResponse)(nil), // 3: mcsports.friend.v1.ListFriendInvitesResponse
+	(*PlayerData)(nil),                // 4: mcsports.friend.v1.PlayerData
 }
 var file_mcsports_friend_v1_data_proto_depIdxs = []int32{
-	2, // 0: mcsports.friend.v1.FriendData.ListInvites:input_type -> mcsports.friend.v1.ListFriendInvitesRequest
-	0, // 1: mcsports.friend.v1.FriendData.ListFriends:input_type -> mcsports.friend.v1.ListFriendsRequest
-	3, // 2: mcsports.friend.v1.FriendData.ListInvites:output_type -> mcsports.friend.v1.ListFriendInvitesResponse
-	1, // 3: mcsports.friend.v1.FriendData.ListFriends:output_type -> mcsports.friend.v1.ListFriendsResponse
-	2, // [2:4] is the sub-list for method output_type
-	0, // [0:2] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	4, // 0: mcsports.friend.v1.ListFriendsResponse.friend:type_name -> mcsports.friend.v1.PlayerData
+	4, // 1: mcsports.friend.v1.ListFriendInvitesResponse.friend:type_name -> mcsports.friend.v1.PlayerData
+	2, // 2: mcsports.friend.v1.FriendData.ListInvites:input_type -> mcsports.friend.v1.ListFriendInvitesRequest
+	0, // 3: mcsports.friend.v1.FriendData.ListFriends:input_type -> mcsports.friend.v1.ListFriendsRequest
+	3, // 4: mcsports.friend.v1.FriendData.ListInvites:output_type -> mcsports.friend.v1.ListFriendInvitesResponse
+	1, // 5: mcsports.friend.v1.FriendData.ListFriends:output_type -> mcsports.friend.v1.ListFriendsResponse
+	4, // [4:6] is the sub-list for method output_type
+	2, // [2:4] is the sub-list for method input_type
+	2, // [2:2] is the sub-list for extension type_name
+	2, // [2:2] is the sub-list for extension extendee
+	0, // [0:2] is the sub-list for field type_name
 }
 
 func init() { file_mcsports_friend_v1_data_proto_init() }
@@ -332,6 +335,7 @@ func file_mcsports_friend_v1_data_proto_init() {
 	if File_mcsports_friend_v1_data_proto != nil {
 		return
 	}
+	file_mcsports_friend_v1_types_proto_init()
 	file_mcsports_friend_v1_data_proto_msgTypes[0].OneofWrappers = []any{}
 	file_mcsports_friend_v1_data_proto_msgTypes[2].OneofWrappers = []any{}
 	type x struct{}
