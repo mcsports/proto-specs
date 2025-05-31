@@ -9,7 +9,7 @@ import "mcsports/friend/v1/types.proto";
 
 message ApproveFriendRequest {
   string player_id = 1;
-  string friend_id = 2;
+  string friend_name = 2;
 }
 
 message ApproveFriendResponse {
@@ -17,7 +17,7 @@ message ApproveFriendResponse {
 }
 message RemoveFriendRequest {
   string player_id = 1;
-  string friend_id = 2;
+  string friend_name = 2;
 }
 
 message RemoveFriendResponse {
@@ -26,7 +26,7 @@ message RemoveFriendResponse {
 
 message InviteFriendRequest {
   string player_id = 1;
-  string friend_id = 2;
+  string friend_name = 2;
 }
 
 message InviteFriendResponse {
@@ -35,7 +35,7 @@ message InviteFriendResponse {
 
 message RejectFriendRequest {
   string player_id = 1;
-  string friend_id = 2;
+  string friend_name = 2;
 }
 
 message RejectFriendResponse {
@@ -44,7 +44,7 @@ message RejectFriendResponse {
 
 message JumpRequest {
   string player_id = 1;
-  string friend_id = 2;
+  string friend_name = 2;
 }
 
 message JumpResponse {
@@ -52,7 +52,7 @@ message JumpResponse {
 
 message SendMessageRequest {
   string player_id = 1;
-  string friend_id = 2;
+  string friend_name = 2;
   AdventureComponent component = 3;
 }
 

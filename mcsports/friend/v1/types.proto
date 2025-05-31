@@ -8,3 +8,8 @@ option java_multiple_files = true;
 message AdventureComponent {
   string json = 1;
 }
+
+message PlayerData {
+  string id = 1;
+  string name = 2;
+}

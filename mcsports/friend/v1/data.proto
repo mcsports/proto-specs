@@ -5,6 +5,8 @@ package mcsports.friend.v1;
 option java_package = "club.mcsports.generated.buf.friend.v1";
 option java_multiple_files = true;
 
+import "mcsports/friend/v1/types.proto";
+
 message ListFriendsRequest {
   string player_id = 1;
   optional bool paginated = 2;
@@ -14,7 +16,7 @@ message ListFriendsRequest {
 
 message ListFriendsResponse {
   uint32 pages = 1;
-  repeated string friend_id = 2;
+  repeated PlayerData friend = 2;
 }
 
 message ListFriendInvitesRequest {
@@ -26,7 +28,7 @@ message ListFriendInvitesRequest {
 
 message ListFriendInvitesResponse {
   uint32 pages = 1;
-  repeated string friend_id = 2;
+  repeated PlayerData friend = 2;
 }
 
 service FriendData {
