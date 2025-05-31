@@ -11,11 +11,11 @@ plugins:
   - remote: buf.build/connectrpc/go
     out: go
     opt: paths=source_relative
-  - remote: buf.build/protocolbuffers/java
+  - remote: buf.build/protocolbuffers/java:v31.0
     out: java/src/main/java
   - remote: buf.build/grpc/java
     out: java/src/main/java
-  - remote: buf.build/protocolbuffers/kotlin
+  - remote: buf.build/protocolbuffers/kotlin:v31.0
     out: kotlin/src/main/kotlin
   - remote: buf.build/grpc/kotlin
     out: kotlin/src/main/kotlin
