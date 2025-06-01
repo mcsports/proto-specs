@@ -37,12 +37,15 @@ const (
 	FriendDataListInvitesProcedure = "/mcsports.friend.v1.FriendData/ListInvites"
 	// FriendDataListFriendsProcedure is the fully-qualified name of the FriendData's ListFriends RPC.
 	FriendDataListFriendsProcedure = "/mcsports.friend.v1.FriendData/ListFriends"
+	// FriendDataCheckFriendsProcedure is the fully-qualified name of the FriendData's CheckFriends RPC.
+	FriendDataCheckFriendsProcedure = "/mcsports.friend.v1.FriendData/CheckFriends"
 )
 
 // FriendDataClient is a client for the mcsports.friend.v1.FriendData service.
 type FriendDataClient interface {
 	ListInvites(context.Context, *connect.Request[v1.ListFriendInvitesRequest]) (*connect.Response[v1.ListFriendInvitesResponse], error)
 	ListFriends(context.Context, *connect.Request[v1.ListFriendsRequest]) (*connect.Response[v1.ListFriendsResponse], error)
+	CheckFriends(context.Context, *connect.Request[v1.CheckFriendsRequest]) (*connect.Response[v1.CheckFriendsResponse], error)
 }
 
 // NewFriendDataClient constructs a client for the mcsports.friend.v1.FriendData service. By
@@ -68,13 +71,20 @@ func NewFriendDataClient(httpClient connect.HTTPClient, baseURL string, opts ...
 			connect.WithSchema(friendDataMethods.ByName("ListFriends")),
 			connect.WithClientOptions(opts...),
 		),
+		checkFriends: connect.NewClient[v1.CheckFriendsRequest, v1.CheckFriendsResponse](
+			httpClient,
+			baseURL+FriendDataCheckFriendsProcedure,
+			connect.WithSchema(friendDataMethods.ByName("CheckFriends")),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
 // friendDataClient implements FriendDataClient.
 type friendDataClient struct {
-	listInvites *connect.Client[v1.ListFriendInvitesRequest, v1.ListFriendInvitesResponse]
-	listFriends *connect.Client[v1.ListFriendsRequest, v1.ListFriendsResponse]
+	listInvites  *connect.Client[v1.ListFriendInvitesRequest, v1.ListFriendInvitesResponse]
+	listFriends  *connect.Client[v1.ListFriendsRequest, v1.ListFriendsResponse]
+	checkFriends *connect.Client[v1.CheckFriendsRequest, v1.CheckFriendsResponse]
 }
 
 // ListInvites calls mcsports.friend.v1.FriendData.ListInvites.
@@ -87,10 +97,16 @@ func (c *friendDataClient) ListFriends(ctx context.Context, req *connect.Request
 	return c.listFriends.CallUnary(ctx, req)
 }
 
+// CheckFriends calls mcsports.friend.v1.FriendData.CheckFriends.
+func (c *friendDataClient) CheckFriends(ctx context.Context, req *connect.Request[v1.CheckFriendsRequest]) (*connect.Response[v1.CheckFriendsResponse], error) {
+	return c.checkFriends.CallUnary(ctx, req)
+}
+
 // FriendDataHandler is an implementation of the mcsports.friend.v1.FriendData service.
 type FriendDataHandler interface {
 	ListInvites(context.Context, *connect.Request[v1.ListFriendInvitesRequest]) (*connect.Response[v1.ListFriendInvitesResponse], error)
 	ListFriends(context.Context, *connect.Request[v1.ListFriendsRequest]) (*connect.Response[v1.ListFriendsResponse], error)
+	CheckFriends(context.Context, *connect.Request[v1.CheckFriendsRequest]) (*connect.Response[v1.CheckFriendsResponse], error)
 }
 
 // NewFriendDataHandler builds an HTTP handler from the service implementation. It returns the path
@@ -112,12 +128,20 @@ func NewFriendDataHandler(svc FriendDataHandler, opts ...connect.HandlerOption) 
 		connect.WithSchema(friendDataMethods.ByName("ListFriends")),
 		connect.WithHandlerOptions(opts...),
 	)
+	friendDataCheckFriendsHandler := connect.NewUnaryHandler(
+		FriendDataCheckFriendsProcedure,
+		svc.CheckFriends,
+		connect.WithSchema(friendDataMethods.ByName("CheckFriends")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/mcsports.friend.v1.FriendData/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case FriendDataListInvitesProcedure:
 			friendDataListInvitesHandler.ServeHTTP(w, r)
 		case FriendDataListFriendsProcedure:
 			friendDataListFriendsHandler.ServeHTTP(w, r)
+		case FriendDataCheckFriendsProcedure:
+			friendDataCheckFriendsHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -133,4 +157,8 @@ func (UnimplementedFriendDataHandler) ListInvites(context.Context, *connect.Requ
 
 func (UnimplementedFriendDataHandler) ListFriends(context.Context, *connect.Request[v1.ListFriendsRequest]) (*connect.Response[v1.ListFriendsResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("mcsports.friend.v1.FriendData.ListFriends is not implemented"))
+}
+
+func (UnimplementedFriendDataHandler) CheckFriends(context.Context, *connect.Request[v1.CheckFriendsRequest]) (*connect.Response[v1.CheckFriendsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("mcsports.friend.v1.FriendData.CheckFriends is not implemented"))
 }

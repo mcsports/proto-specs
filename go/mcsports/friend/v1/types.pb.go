@@ -69,6 +69,8 @@ type PlayerData struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	Online        bool                   `protobuf:"varint,3,opt,name=online,proto3" json:"online,omitempty"`
+	Server        string                 `protobuf:"bytes,4,opt,name=server,proto3" json:"server,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -117,17 +119,33 @@ func (x *PlayerData) GetName() string {
 	return ""
 }
 
+func (x *PlayerData) GetOnline() bool {
+	if x != nil {
+		return x.Online
+	}
+	return false
+}
+
+func (x *PlayerData) GetServer() string {
+	if x != nil {
+		return x.Server
+	}
+	return ""
+}
+
 var File_mcsports_friend_v1_types_proto protoreflect.FileDescriptor
 
 const file_mcsports_friend_v1_types_proto_rawDesc = "" +
 	"\n" +
 	"\x1emcsports/friend/v1/types.proto\x12\x12mcsports.friend.v1\"(\n" +
 	"\x12AdventureComponent\x12\x12\n" +
-	"\x04json\x18\x01 \x01(\tR\x04json\"0\n" +
+	"\x04json\x18\x01 \x01(\tR\x04json\"`\n" +
 	"\n" +
 	"PlayerData\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
-	"\x04name\x18\x02 \x01(\tR\x04nameB\xcc\x01\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12\x16\n" +
+	"\x06online\x18\x03 \x01(\bR\x06online\x12\x16\n" +
+	"\x06server\x18\x04 \x01(\tR\x06serverB\xcc\x01\n" +
 	"\x16com.mcsports.friend.v1B\n" +
 	"TypesProtoP\x01Z<github.com/bufbuild/buf-tour/gen/mcsports/friend/v1;friendv1\xa2\x02\x03MFX\xaa\x02\x12Mcsports.Friend.V1\xca\x02\x12Mcsports\\Friend\\V1\xe2\x02\x1eMcsports\\Friend\\V1\\GPBMetadata\xea\x02\x14Mcsports::Friend::V1b\x06proto3"
 

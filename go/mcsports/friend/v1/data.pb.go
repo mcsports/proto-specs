@@ -261,6 +261,154 @@ func (x *ListFriendInvitesResponse) GetFriend() []*PlayerData {
 	return nil
 }
 
+type CheckFriendsRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	PlayerId      string                 `protobuf:"bytes,1,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	FriendIds     []string               `protobuf:"bytes,2,rep,name=friend_ids,json=friendIds,proto3" json:"friend_ids,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CheckFriendsRequest) Reset() {
+	*x = CheckFriendsRequest{}
+	mi := &file_mcsports_friend_v1_data_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CheckFriendsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CheckFriendsRequest) ProtoMessage() {}
+
+func (x *CheckFriendsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_mcsports_friend_v1_data_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CheckFriendsRequest.ProtoReflect.Descriptor instead.
+func (*CheckFriendsRequest) Descriptor() ([]byte, []int) {
+	return file_mcsports_friend_v1_data_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *CheckFriendsRequest) GetPlayerId() string {
+	if x != nil {
+		return x.PlayerId
+	}
+	return ""
+}
+
+func (x *CheckFriendsRequest) GetFriendIds() []string {
+	if x != nil {
+		return x.FriendIds
+	}
+	return nil
+}
+
+type CheckFriendsResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Statuses      []*FriendStatus        `protobuf:"bytes,1,rep,name=statuses,proto3" json:"statuses,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CheckFriendsResponse) Reset() {
+	*x = CheckFriendsResponse{}
+	mi := &file_mcsports_friend_v1_data_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CheckFriendsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CheckFriendsResponse) ProtoMessage() {}
+
+func (x *CheckFriendsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_mcsports_friend_v1_data_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CheckFriendsResponse.ProtoReflect.Descriptor instead.
+func (*CheckFriendsResponse) Descriptor() ([]byte, []int) {
+	return file_mcsports_friend_v1_data_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *CheckFriendsResponse) GetStatuses() []*FriendStatus {
+	if x != nil {
+		return x.Statuses
+	}
+	return nil
+}
+
+type FriendStatus struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	PlayerId      string                 `protobuf:"bytes,1,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	AreFriends    bool                   `protobuf:"varint,2,opt,name=are_friends,json=areFriends,proto3" json:"are_friends,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *FriendStatus) Reset() {
+	*x = FriendStatus{}
+	mi := &file_mcsports_friend_v1_data_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *FriendStatus) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*FriendStatus) ProtoMessage() {}
+
+func (x *FriendStatus) ProtoReflect() protoreflect.Message {
+	mi := &file_mcsports_friend_v1_data_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use FriendStatus.ProtoReflect.Descriptor instead.
+func (*FriendStatus) Descriptor() ([]byte, []int) {
+	return file_mcsports_friend_v1_data_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *FriendStatus) GetPlayerId() string {
+	if x != nil {
+		return x.PlayerId
+	}
+	return ""
+}
+
+func (x *FriendStatus) GetAreFriends() bool {
+	if x != nil {
+		return x.AreFriends
+	}
+	return false
+}
+
 var File_mcsports_friend_v1_data_proto protoreflect.FileDescriptor
 
 const file_mcsports_friend_v1_data_proto_rawDesc = "" +
@@ -289,11 +437,22 @@ const file_mcsports_friend_v1_data_proto_rawDesc = "" +
 	"\a_amount\"i\n" +
 	"\x19ListFriendInvitesResponse\x12\x14\n" +
 	"\x05pages\x18\x01 \x01(\rR\x05pages\x126\n" +
-	"\x06friend\x18\x02 \x03(\v2\x1e.mcsports.friend.v1.PlayerDataR\x06friend2\xd8\x01\n" +
+	"\x06friend\x18\x02 \x03(\v2\x1e.mcsports.friend.v1.PlayerDataR\x06friend\"Q\n" +
+	"\x13CheckFriendsRequest\x12\x1b\n" +
+	"\tplayer_id\x18\x01 \x01(\tR\bplayerId\x12\x1d\n" +
+	"\n" +
+	"friend_ids\x18\x02 \x03(\tR\tfriendIds\"T\n" +
+	"\x14CheckFriendsResponse\x12<\n" +
+	"\bstatuses\x18\x01 \x03(\v2 .mcsports.friend.v1.FriendStatusR\bstatuses\"L\n" +
+	"\fFriendStatus\x12\x1b\n" +
+	"\tplayer_id\x18\x01 \x01(\tR\bplayerId\x12\x1f\n" +
+	"\vare_friends\x18\x02 \x01(\bR\n" +
+	"areFriends2\xbb\x02\n" +
 	"\n" +
 	"FriendData\x12j\n" +
 	"\vListInvites\x12,.mcsports.friend.v1.ListFriendInvitesRequest\x1a-.mcsports.friend.v1.ListFriendInvitesResponse\x12^\n" +
-	"\vListFriends\x12&.mcsports.friend.v1.ListFriendsRequest\x1a'.mcsports.friend.v1.ListFriendsResponseB\xcb\x01\n" +
+	"\vListFriends\x12&.mcsports.friend.v1.ListFriendsRequest\x1a'.mcsports.friend.v1.ListFriendsResponse\x12a\n" +
+	"\fCheckFriends\x12'.mcsports.friend.v1.CheckFriendsRequest\x1a(.mcsports.friend.v1.CheckFriendsResponseB\xcb\x01\n" +
 	"\x16com.mcsports.friend.v1B\tDataProtoP\x01Z<github.com/bufbuild/buf-tour/gen/mcsports/friend/v1;friendv1\xa2\x02\x03MFX\xaa\x02\x12Mcsports.Friend.V1\xca\x02\x12Mcsports\\Friend\\V1\xe2\x02\x1eMcsports\\Friend\\V1\\GPBMetadata\xea\x02\x14Mcsports::Friend::V1b\x06proto3"
 
 var (
@@ -308,26 +467,32 @@ func file_mcsports_friend_v1_data_proto_rawDescGZIP() []byte {
 	return file_mcsports_friend_v1_data_proto_rawDescData
 }
 
-var file_mcsports_friend_v1_data_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_mcsports_friend_v1_data_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
 var file_mcsports_friend_v1_data_proto_goTypes = []any{
 	(*ListFriendsRequest)(nil),        // 0: mcsports.friend.v1.ListFriendsRequest
 	(*ListFriendsResponse)(nil),       // 1: mcsports.friend.v1.ListFriendsResponse
 	(*ListFriendInvitesRequest)(nil),  // 2: mcsports.friend.v1.ListFriendInvitesRequest
 	(*ListFriendInvitesResponse)(nil), // 3: mcsports.friend.v1.ListFriendInvitesResponse
-	(*PlayerData)(nil),                // 4: mcsports.friend.v1.PlayerData
+	(*CheckFriendsRequest)(nil),       // 4: mcsports.friend.v1.CheckFriendsRequest
+	(*CheckFriendsResponse)(nil),      // 5: mcsports.friend.v1.CheckFriendsResponse
+	(*FriendStatus)(nil),              // 6: mcsports.friend.v1.FriendStatus
+	(*PlayerData)(nil),                // 7: mcsports.friend.v1.PlayerData
 }
 var file_mcsports_friend_v1_data_proto_depIdxs = []int32{
-	4, // 0: mcsports.friend.v1.ListFriendsResponse.friend:type_name -> mcsports.friend.v1.PlayerData
-	4, // 1: mcsports.friend.v1.ListFriendInvitesResponse.friend:type_name -> mcsports.friend.v1.PlayerData
-	2, // 2: mcsports.friend.v1.FriendData.ListInvites:input_type -> mcsports.friend.v1.ListFriendInvitesRequest
-	0, // 3: mcsports.friend.v1.FriendData.ListFriends:input_type -> mcsports.friend.v1.ListFriendsRequest
-	3, // 4: mcsports.friend.v1.FriendData.ListInvites:output_type -> mcsports.friend.v1.ListFriendInvitesResponse
-	1, // 5: mcsports.friend.v1.FriendData.ListFriends:output_type -> mcsports.friend.v1.ListFriendsResponse
-	4, // [4:6] is the sub-list for method output_type
-	2, // [2:4] is the sub-list for method input_type
-	2, // [2:2] is the sub-list for extension type_name
-	2, // [2:2] is the sub-list for extension extendee
-	0, // [0:2] is the sub-list for field type_name
+	7, // 0: mcsports.friend.v1.ListFriendsResponse.friend:type_name -> mcsports.friend.v1.PlayerData
+	7, // 1: mcsports.friend.v1.ListFriendInvitesResponse.friend:type_name -> mcsports.friend.v1.PlayerData
+	6, // 2: mcsports.friend.v1.CheckFriendsResponse.statuses:type_name -> mcsports.friend.v1.FriendStatus
+	2, // 3: mcsports.friend.v1.FriendData.ListInvites:input_type -> mcsports.friend.v1.ListFriendInvitesRequest
+	0, // 4: mcsports.friend.v1.FriendData.ListFriends:input_type -> mcsports.friend.v1.ListFriendsRequest
+	4, // 5: mcsports.friend.v1.FriendData.CheckFriends:input_type -> mcsports.friend.v1.CheckFriendsRequest
+	3, // 6: mcsports.friend.v1.FriendData.ListInvites:output_type -> mcsports.friend.v1.ListFriendInvitesResponse
+	1, // 7: mcsports.friend.v1.FriendData.ListFriends:output_type -> mcsports.friend.v1.ListFriendsResponse
+	5, // 8: mcsports.friend.v1.FriendData.CheckFriends:output_type -> mcsports.friend.v1.CheckFriendsResponse
+	6, // [6:9] is the sub-list for method output_type
+	3, // [3:6] is the sub-list for method input_type
+	3, // [3:3] is the sub-list for extension type_name
+	3, // [3:3] is the sub-list for extension extendee
+	0, // [0:3] is the sub-list for field type_name
 }
 
 func init() { file_mcsports_friend_v1_data_proto_init() }
@@ -344,7 +509,7 @@ func file_mcsports_friend_v1_data_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_mcsports_friend_v1_data_proto_rawDesc), len(file_mcsports_friend_v1_data_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   4,
+			NumMessages:   7,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
