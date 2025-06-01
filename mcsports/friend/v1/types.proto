@@ -12,4 +12,6 @@ message AdventureComponent {
 message PlayerData {
   string id = 1;
   string name = 2;
+  bool online = 3;
+  string server = 4;
 }

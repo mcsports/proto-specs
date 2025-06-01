@@ -31,7 +31,22 @@ message ListFriendInvitesResponse {
   repeated PlayerData friend = 2;
 }
 
+message CheckFriendsRequest {
+  string player_id = 1;
+  repeated string friend_ids = 2;
+}
+
+message CheckFriendsResponse {
+  repeated FriendStatus statuses = 1;
+}
+
+message FriendStatus {
+  string player_id = 1;
+  bool are_friends = 2;
+}
+
 service FriendData {
   rpc ListInvites(ListFriendInvitesRequest) returns (ListFriendInvitesResponse);
   rpc ListFriends(ListFriendsRequest) returns (ListFriendsResponse);
+  rpc CheckFriends(CheckFriendsRequest) returns (CheckFriendsResponse);
 }
