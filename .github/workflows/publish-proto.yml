@@ -61,5 +61,5 @@ jobs:
           ./gradlew publishAllPublicationsToReposiliteRepository \
             -PreposiliteUrl=${{ secrets.REPOSILITE_URL }} \
             -PreposiliteUsername=${{ secrets.REPOSILITE_USERNAME }} \
-            -PreposilitePassword=${{ secrets.REPOSILITE_PASSWORD }} \
+            -PreposilitePassword=${{ secrets.REPO_TOKEN }} \
             -Pversion=${{ env.LATEST_TAG }}
