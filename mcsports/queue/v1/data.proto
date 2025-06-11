@@ -40,9 +40,39 @@ message UpdateQueueResponse {
   Queue result = 1;
 }
 
+message GetQueueByPlayerRequest {
+  string player_id = 1;
+}
+
+message GetQueueByPlayerResponse {
+  Queue result = 1;
+}
+
+message GetAllQueueTypesRequest {
+
+}
+
+message GetAllQueueTypesResponse {
+  repeated QueueType types = 1;
+}
+
+message GetQueueTypePlayerInformationRequest {
+  string type = 1;
+}
+
+message GetQueueTypePlayerInformationResponse {
+  int32 playing = 1;
+  int32 queueing = 2;
+  int32 playing_privately = 3;
+  int32 total_popularity = 4;
+}
+
 service QueueData {
   rpc GetQueue(GetQueueRequest) returns (GetQueueResponse);
   rpc GetAllQueues(GetAllQueuesRequest) returns (GetAllQueuesResponse);
+  rpc GetQueueByPlayer(GetQueueByPlayerRequest) returns(GetQueueByPlayerResponse);
   rpc DeleteQueue(DeleteQueueRequest) returns (DeleteQueueResponse);
   rpc UpdateQueue(UpdateQueueRequest) returns (UpdateQueueResponse);
+  rpc GetAllQueueTypes(GetAllQueueTypesRequest) returns (GetAllQueueTypesResponse);
+  rpc GetQueueTypePlayerInformation(GetQueueTypePlayerInformationRequest) returns(GetQueueTypePlayerInformationResponse);
 }

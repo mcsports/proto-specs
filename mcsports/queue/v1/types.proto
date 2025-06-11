@@ -13,6 +13,13 @@ message Queue {
   repeated string player_ids = 5;
 }
 
+message QueueType {
+  string name = 1;
+  string group = 2;
+  uint32 min_capacity = 3;
+  uint32 max_capacity = 4;
+}
+
 enum QueueStatus {
   NOT_ENOUGH_PLAYERS = 0;
   SEARCHING_SERVER = 1;
