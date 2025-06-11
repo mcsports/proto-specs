@@ -365,6 +365,286 @@ func (x *UpdateQueueResponse) GetResult() *Queue {
 	return nil
 }
 
+type GetQueueByPlayerRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	PlayerId      string                 `protobuf:"bytes,1,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetQueueByPlayerRequest) Reset() {
+	*x = GetQueueByPlayerRequest{}
+	mi := &file_mcsports_queue_v1_data_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetQueueByPlayerRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetQueueByPlayerRequest) ProtoMessage() {}
+
+func (x *GetQueueByPlayerRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_mcsports_queue_v1_data_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetQueueByPlayerRequest.ProtoReflect.Descriptor instead.
+func (*GetQueueByPlayerRequest) Descriptor() ([]byte, []int) {
+	return file_mcsports_queue_v1_data_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *GetQueueByPlayerRequest) GetPlayerId() string {
+	if x != nil {
+		return x.PlayerId
+	}
+	return ""
+}
+
+type GetQueueByPlayerResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Result        *Queue                 `protobuf:"bytes,1,opt,name=result,proto3" json:"result,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetQueueByPlayerResponse) Reset() {
+	*x = GetQueueByPlayerResponse{}
+	mi := &file_mcsports_queue_v1_data_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetQueueByPlayerResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetQueueByPlayerResponse) ProtoMessage() {}
+
+func (x *GetQueueByPlayerResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_mcsports_queue_v1_data_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetQueueByPlayerResponse.ProtoReflect.Descriptor instead.
+func (*GetQueueByPlayerResponse) Descriptor() ([]byte, []int) {
+	return file_mcsports_queue_v1_data_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *GetQueueByPlayerResponse) GetResult() *Queue {
+	if x != nil {
+		return x.Result
+	}
+	return nil
+}
+
+type GetAllQueueTypesRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetAllQueueTypesRequest) Reset() {
+	*x = GetAllQueueTypesRequest{}
+	mi := &file_mcsports_queue_v1_data_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetAllQueueTypesRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetAllQueueTypesRequest) ProtoMessage() {}
+
+func (x *GetAllQueueTypesRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_mcsports_queue_v1_data_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetAllQueueTypesRequest.ProtoReflect.Descriptor instead.
+func (*GetAllQueueTypesRequest) Descriptor() ([]byte, []int) {
+	return file_mcsports_queue_v1_data_proto_rawDescGZIP(), []int{10}
+}
+
+type GetAllQueueTypesResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Types         []*QueueType           `protobuf:"bytes,1,rep,name=types,proto3" json:"types,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetAllQueueTypesResponse) Reset() {
+	*x = GetAllQueueTypesResponse{}
+	mi := &file_mcsports_queue_v1_data_proto_msgTypes[11]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetAllQueueTypesResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetAllQueueTypesResponse) ProtoMessage() {}
+
+func (x *GetAllQueueTypesResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_mcsports_queue_v1_data_proto_msgTypes[11]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetAllQueueTypesResponse.ProtoReflect.Descriptor instead.
+func (*GetAllQueueTypesResponse) Descriptor() ([]byte, []int) {
+	return file_mcsports_queue_v1_data_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *GetAllQueueTypesResponse) GetTypes() []*QueueType {
+	if x != nil {
+		return x.Types
+	}
+	return nil
+}
+
+type GetQueueTypePlayerInformationRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Type          string                 `protobuf:"bytes,1,opt,name=type,proto3" json:"type,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetQueueTypePlayerInformationRequest) Reset() {
+	*x = GetQueueTypePlayerInformationRequest{}
+	mi := &file_mcsports_queue_v1_data_proto_msgTypes[12]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetQueueTypePlayerInformationRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetQueueTypePlayerInformationRequest) ProtoMessage() {}
+
+func (x *GetQueueTypePlayerInformationRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_mcsports_queue_v1_data_proto_msgTypes[12]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetQueueTypePlayerInformationRequest.ProtoReflect.Descriptor instead.
+func (*GetQueueTypePlayerInformationRequest) Descriptor() ([]byte, []int) {
+	return file_mcsports_queue_v1_data_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *GetQueueTypePlayerInformationRequest) GetType() string {
+	if x != nil {
+		return x.Type
+	}
+	return ""
+}
+
+type GetQueueTypePlayerInformationResponse struct {
+	state            protoimpl.MessageState `protogen:"open.v1"`
+	Playing          int32                  `protobuf:"varint,1,opt,name=playing,proto3" json:"playing,omitempty"`
+	Queueing         int32                  `protobuf:"varint,2,opt,name=queueing,proto3" json:"queueing,omitempty"`
+	PlayingPrivately int32                  `protobuf:"varint,3,opt,name=playing_privately,json=playingPrivately,proto3" json:"playing_privately,omitempty"`
+	TotalPopularity  int32                  `protobuf:"varint,4,opt,name=total_popularity,json=totalPopularity,proto3" json:"total_popularity,omitempty"`
+	unknownFields    protoimpl.UnknownFields
+	sizeCache        protoimpl.SizeCache
+}
+
+func (x *GetQueueTypePlayerInformationResponse) Reset() {
+	*x = GetQueueTypePlayerInformationResponse{}
+	mi := &file_mcsports_queue_v1_data_proto_msgTypes[13]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetQueueTypePlayerInformationResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetQueueTypePlayerInformationResponse) ProtoMessage() {}
+
+func (x *GetQueueTypePlayerInformationResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_mcsports_queue_v1_data_proto_msgTypes[13]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetQueueTypePlayerInformationResponse.ProtoReflect.Descriptor instead.
+func (*GetQueueTypePlayerInformationResponse) Descriptor() ([]byte, []int) {
+	return file_mcsports_queue_v1_data_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *GetQueueTypePlayerInformationResponse) GetPlaying() int32 {
+	if x != nil {
+		return x.Playing
+	}
+	return 0
+}
+
+func (x *GetQueueTypePlayerInformationResponse) GetQueueing() int32 {
+	if x != nil {
+		return x.Queueing
+	}
+	return 0
+}
+
+func (x *GetQueueTypePlayerInformationResponse) GetPlayingPrivately() int32 {
+	if x != nil {
+		return x.PlayingPrivately
+	}
+	return 0
+}
+
+func (x *GetQueueTypePlayerInformationResponse) GetTotalPopularity() int32 {
+	if x != nil {
+		return x.TotalPopularity
+	}
+	return 0
+}
+
 var File_mcsports_queue_v1_data_proto protoreflect.FileDescriptor
 
 const file_mcsports_queue_v1_data_proto_rawDesc = "" +
@@ -384,12 +664,29 @@ const file_mcsports_queue_v1_data_proto_rawDesc = "" +
 	"\bqueue_id\x18\x01 \x01(\tR\aqueueId\x122\n" +
 	"\aupdated\x18\x02 \x01(\v2\x18.mcsports.queue.v1.QueueR\aupdated\"G\n" +
 	"\x13UpdateQueueResponse\x120\n" +
-	"\x06result\x18\x01 \x01(\v2\x18.mcsports.queue.v1.QueueR\x06result2\xfd\x02\n" +
+	"\x06result\x18\x01 \x01(\v2\x18.mcsports.queue.v1.QueueR\x06result\"6\n" +
+	"\x17GetQueueByPlayerRequest\x12\x1b\n" +
+	"\tplayer_id\x18\x01 \x01(\tR\bplayerId\"L\n" +
+	"\x18GetQueueByPlayerResponse\x120\n" +
+	"\x06result\x18\x01 \x01(\v2\x18.mcsports.queue.v1.QueueR\x06result\"\x19\n" +
+	"\x17GetAllQueueTypesRequest\"N\n" +
+	"\x18GetAllQueueTypesResponse\x122\n" +
+	"\x05types\x18\x01 \x03(\v2\x1c.mcsports.queue.v1.QueueTypeR\x05types\":\n" +
+	"$GetQueueTypePlayerInformationRequest\x12\x12\n" +
+	"\x04type\x18\x01 \x01(\tR\x04type\"\xb5\x01\n" +
+	"%GetQueueTypePlayerInformationResponse\x12\x18\n" +
+	"\aplaying\x18\x01 \x01(\x05R\aplaying\x12\x1a\n" +
+	"\bqueueing\x18\x02 \x01(\x05R\bqueueing\x12+\n" +
+	"\x11playing_privately\x18\x03 \x01(\x05R\x10playingPrivately\x12)\n" +
+	"\x10total_popularity\x18\x04 \x01(\x05R\x0ftotalPopularity2\xec\x05\n" +
 	"\tQueueData\x12S\n" +
 	"\bGetQueue\x12\".mcsports.queue.v1.GetQueueRequest\x1a#.mcsports.queue.v1.GetQueueResponse\x12_\n" +
-	"\fGetAllQueues\x12&.mcsports.queue.v1.GetAllQueuesRequest\x1a'.mcsports.queue.v1.GetAllQueuesResponse\x12\\\n" +
+	"\fGetAllQueues\x12&.mcsports.queue.v1.GetAllQueuesRequest\x1a'.mcsports.queue.v1.GetAllQueuesResponse\x12k\n" +
+	"\x10GetQueueByPlayer\x12*.mcsports.queue.v1.GetQueueByPlayerRequest\x1a+.mcsports.queue.v1.GetQueueByPlayerResponse\x12\\\n" +
 	"\vDeleteQueue\x12%.mcsports.queue.v1.DeleteQueueRequest\x1a&.mcsports.queue.v1.DeleteQueueResponse\x12\\\n" +
-	"\vUpdateQueue\x12%.mcsports.queue.v1.UpdateQueueRequest\x1a&.mcsports.queue.v1.UpdateQueueResponseB\xc4\x01\n" +
+	"\vUpdateQueue\x12%.mcsports.queue.v1.UpdateQueueRequest\x1a&.mcsports.queue.v1.UpdateQueueResponse\x12k\n" +
+	"\x10GetAllQueueTypes\x12*.mcsports.queue.v1.GetAllQueueTypesRequest\x1a+.mcsports.queue.v1.GetAllQueueTypesResponse\x12\x92\x01\n" +
+	"\x1dGetQueueTypePlayerInformation\x127.mcsports.queue.v1.GetQueueTypePlayerInformationRequest\x1a8.mcsports.queue.v1.GetQueueTypePlayerInformationResponseB\xc4\x01\n" +
 	"\x15com.mcsports.queue.v1B\tDataProtoP\x01Z:github.com/bufbuild/buf-tour/gen/mcsports/queue/v1;queuev1\xa2\x02\x03MQX\xaa\x02\x11Mcsports.Queue.V1\xca\x02\x11Mcsports\\Queue\\V1\xe2\x02\x1dMcsports\\Queue\\V1\\GPBMetadata\xea\x02\x13Mcsports::Queue::V1b\x06proto3"
 
 var (
@@ -404,36 +701,51 @@ func file_mcsports_queue_v1_data_proto_rawDescGZIP() []byte {
 	return file_mcsports_queue_v1_data_proto_rawDescData
 }
 
-var file_mcsports_queue_v1_data_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
+var file_mcsports_queue_v1_data_proto_msgTypes = make([]protoimpl.MessageInfo, 14)
 var file_mcsports_queue_v1_data_proto_goTypes = []any{
-	(*GetQueueRequest)(nil),      // 0: mcsports.queue.v1.GetQueueRequest
-	(*GetQueueResponse)(nil),     // 1: mcsports.queue.v1.GetQueueResponse
-	(*GetAllQueuesRequest)(nil),  // 2: mcsports.queue.v1.GetAllQueuesRequest
-	(*GetAllQueuesResponse)(nil), // 3: mcsports.queue.v1.GetAllQueuesResponse
-	(*DeleteQueueRequest)(nil),   // 4: mcsports.queue.v1.DeleteQueueRequest
-	(*DeleteQueueResponse)(nil),  // 5: mcsports.queue.v1.DeleteQueueResponse
-	(*UpdateQueueRequest)(nil),   // 6: mcsports.queue.v1.UpdateQueueRequest
-	(*UpdateQueueResponse)(nil),  // 7: mcsports.queue.v1.UpdateQueueResponse
-	(*Queue)(nil),                // 8: mcsports.queue.v1.Queue
+	(*GetQueueRequest)(nil),                       // 0: mcsports.queue.v1.GetQueueRequest
+	(*GetQueueResponse)(nil),                      // 1: mcsports.queue.v1.GetQueueResponse
+	(*GetAllQueuesRequest)(nil),                   // 2: mcsports.queue.v1.GetAllQueuesRequest
+	(*GetAllQueuesResponse)(nil),                  // 3: mcsports.queue.v1.GetAllQueuesResponse
+	(*DeleteQueueRequest)(nil),                    // 4: mcsports.queue.v1.DeleteQueueRequest
+	(*DeleteQueueResponse)(nil),                   // 5: mcsports.queue.v1.DeleteQueueResponse
+	(*UpdateQueueRequest)(nil),                    // 6: mcsports.queue.v1.UpdateQueueRequest
+	(*UpdateQueueResponse)(nil),                   // 7: mcsports.queue.v1.UpdateQueueResponse
+	(*GetQueueByPlayerRequest)(nil),               // 8: mcsports.queue.v1.GetQueueByPlayerRequest
+	(*GetQueueByPlayerResponse)(nil),              // 9: mcsports.queue.v1.GetQueueByPlayerResponse
+	(*GetAllQueueTypesRequest)(nil),               // 10: mcsports.queue.v1.GetAllQueueTypesRequest
+	(*GetAllQueueTypesResponse)(nil),              // 11: mcsports.queue.v1.GetAllQueueTypesResponse
+	(*GetQueueTypePlayerInformationRequest)(nil),  // 12: mcsports.queue.v1.GetQueueTypePlayerInformationRequest
+	(*GetQueueTypePlayerInformationResponse)(nil), // 13: mcsports.queue.v1.GetQueueTypePlayerInformationResponse
+	(*Queue)(nil),                                 // 14: mcsports.queue.v1.Queue
+	(*QueueType)(nil),                             // 15: mcsports.queue.v1.QueueType
 }
 var file_mcsports_queue_v1_data_proto_depIdxs = []int32{
-	8, // 0: mcsports.queue.v1.GetQueueResponse.queue:type_name -> mcsports.queue.v1.Queue
-	8, // 1: mcsports.queue.v1.GetAllQueuesResponse.queues:type_name -> mcsports.queue.v1.Queue
-	8, // 2: mcsports.queue.v1.UpdateQueueRequest.updated:type_name -> mcsports.queue.v1.Queue
-	8, // 3: mcsports.queue.v1.UpdateQueueResponse.result:type_name -> mcsports.queue.v1.Queue
-	0, // 4: mcsports.queue.v1.QueueData.GetQueue:input_type -> mcsports.queue.v1.GetQueueRequest
-	2, // 5: mcsports.queue.v1.QueueData.GetAllQueues:input_type -> mcsports.queue.v1.GetAllQueuesRequest
-	4, // 6: mcsports.queue.v1.QueueData.DeleteQueue:input_type -> mcsports.queue.v1.DeleteQueueRequest
-	6, // 7: mcsports.queue.v1.QueueData.UpdateQueue:input_type -> mcsports.queue.v1.UpdateQueueRequest
-	1, // 8: mcsports.queue.v1.QueueData.GetQueue:output_type -> mcsports.queue.v1.GetQueueResponse
-	3, // 9: mcsports.queue.v1.QueueData.GetAllQueues:output_type -> mcsports.queue.v1.GetAllQueuesResponse
-	5, // 10: mcsports.queue.v1.QueueData.DeleteQueue:output_type -> mcsports.queue.v1.DeleteQueueResponse
-	7, // 11: mcsports.queue.v1.QueueData.UpdateQueue:output_type -> mcsports.queue.v1.UpdateQueueResponse
-	8, // [8:12] is the sub-list for method output_type
-	4, // [4:8] is the sub-list for method input_type
-	4, // [4:4] is the sub-list for extension type_name
-	4, // [4:4] is the sub-list for extension extendee
-	0, // [0:4] is the sub-list for field type_name
+	14, // 0: mcsports.queue.v1.GetQueueResponse.queue:type_name -> mcsports.queue.v1.Queue
+	14, // 1: mcsports.queue.v1.GetAllQueuesResponse.queues:type_name -> mcsports.queue.v1.Queue
+	14, // 2: mcsports.queue.v1.UpdateQueueRequest.updated:type_name -> mcsports.queue.v1.Queue
+	14, // 3: mcsports.queue.v1.UpdateQueueResponse.result:type_name -> mcsports.queue.v1.Queue
+	14, // 4: mcsports.queue.v1.GetQueueByPlayerResponse.result:type_name -> mcsports.queue.v1.Queue
+	15, // 5: mcsports.queue.v1.GetAllQueueTypesResponse.types:type_name -> mcsports.queue.v1.QueueType
+	0,  // 6: mcsports.queue.v1.QueueData.GetQueue:input_type -> mcsports.queue.v1.GetQueueRequest
+	2,  // 7: mcsports.queue.v1.QueueData.GetAllQueues:input_type -> mcsports.queue.v1.GetAllQueuesRequest
+	8,  // 8: mcsports.queue.v1.QueueData.GetQueueByPlayer:input_type -> mcsports.queue.v1.GetQueueByPlayerRequest
+	4,  // 9: mcsports.queue.v1.QueueData.DeleteQueue:input_type -> mcsports.queue.v1.DeleteQueueRequest
+	6,  // 10: mcsports.queue.v1.QueueData.UpdateQueue:input_type -> mcsports.queue.v1.UpdateQueueRequest
+	10, // 11: mcsports.queue.v1.QueueData.GetAllQueueTypes:input_type -> mcsports.queue.v1.GetAllQueueTypesRequest
+	12, // 12: mcsports.queue.v1.QueueData.GetQueueTypePlayerInformation:input_type -> mcsports.queue.v1.GetQueueTypePlayerInformationRequest
+	1,  // 13: mcsports.queue.v1.QueueData.GetQueue:output_type -> mcsports.queue.v1.GetQueueResponse
+	3,  // 14: mcsports.queue.v1.QueueData.GetAllQueues:output_type -> mcsports.queue.v1.GetAllQueuesResponse
+	9,  // 15: mcsports.queue.v1.QueueData.GetQueueByPlayer:output_type -> mcsports.queue.v1.GetQueueByPlayerResponse
+	5,  // 16: mcsports.queue.v1.QueueData.DeleteQueue:output_type -> mcsports.queue.v1.DeleteQueueResponse
+	7,  // 17: mcsports.queue.v1.QueueData.UpdateQueue:output_type -> mcsports.queue.v1.UpdateQueueResponse
+	11, // 18: mcsports.queue.v1.QueueData.GetAllQueueTypes:output_type -> mcsports.queue.v1.GetAllQueueTypesResponse
+	13, // 19: mcsports.queue.v1.QueueData.GetQueueTypePlayerInformation:output_type -> mcsports.queue.v1.GetQueueTypePlayerInformationResponse
+	13, // [13:20] is the sub-list for method output_type
+	6,  // [6:13] is the sub-list for method input_type
+	6,  // [6:6] is the sub-list for extension type_name
+	6,  // [6:6] is the sub-list for extension extendee
+	0,  // [0:6] is the sub-list for field type_name
 }
 
 func init() { file_mcsports_queue_v1_data_proto_init() }
@@ -448,7 +760,7 @@ func file_mcsports_queue_v1_data_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_mcsports_queue_v1_data_proto_rawDesc), len(file_mcsports_queue_v1_data_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   8,
+			NumMessages:   14,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
