@@ -15,14 +15,6 @@ message PartyResponse {
   Party party = 1;
 }
 
-message MemberPartyRequest {
-  string member_id = 1;
-}
-
-message MemberPartyResponse {
-  Party party = 1;
-}
-
 message MemberRoleRequest {
   string member_id = 1;
 }
@@ -33,6 +25,5 @@ message MemberRoleResponse {
 
 service PartyData {
   rpc GetParty(PartyRequest) returns (PartyResponse);
-  rpc GetMemberParty(MemberPartyRequest) returns (MemberPartyResponse);
   rpc GetMemberRole(MemberRoleRequest) returns (MemberRoleResponse);
 }
