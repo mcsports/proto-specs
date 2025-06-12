@@ -35,11 +35,18 @@ const (
 const (
 	// PartyDataGetPartyProcedure is the fully-qualified name of the PartyData's GetParty RPC.
 	PartyDataGetPartyProcedure = "/mcsports.party.v1.PartyData/GetParty"
+	// PartyDataGetMemberPartyProcedure is the fully-qualified name of the PartyData's GetMemberParty
+	// RPC.
+	PartyDataGetMemberPartyProcedure = "/mcsports.party.v1.PartyData/GetMemberParty"
+	// PartyDataGetMemberRoleProcedure is the fully-qualified name of the PartyData's GetMemberRole RPC.
+	PartyDataGetMemberRoleProcedure = "/mcsports.party.v1.PartyData/GetMemberRole"
 )
 
 // PartyDataClient is a client for the mcsports.party.v1.PartyData service.
 type PartyDataClient interface {
 	GetParty(context.Context, *connect.Request[v1.PartyRequest]) (*connect.Response[v1.PartyResponse], error)
+	GetMemberParty(context.Context, *connect.Request[v1.MemberPartyRequest]) (*connect.Response[v1.MemberPartyResponse], error)
+	GetMemberRole(context.Context, *connect.Request[v1.MemberRoleRequest]) (*connect.Response[v1.MemberRoleResponse], error)
 }
 
 // NewPartyDataClient constructs a client for the mcsports.party.v1.PartyData service. By default,
@@ -59,12 +66,26 @@ func NewPartyDataClient(httpClient connect.HTTPClient, baseURL string, opts ...c
 			connect.WithSchema(partyDataMethods.ByName("GetParty")),
 			connect.WithClientOptions(opts...),
 		),
+		getMemberParty: connect.NewClient[v1.MemberPartyRequest, v1.MemberPartyResponse](
+			httpClient,
+			baseURL+PartyDataGetMemberPartyProcedure,
+			connect.WithSchema(partyDataMethods.ByName("GetMemberParty")),
+			connect.WithClientOptions(opts...),
+		),
+		getMemberRole: connect.NewClient[v1.MemberRoleRequest, v1.MemberRoleResponse](
+			httpClient,
+			baseURL+PartyDataGetMemberRoleProcedure,
+			connect.WithSchema(partyDataMethods.ByName("GetMemberRole")),
+			connect.WithClientOptions(opts...),
+		),
 	}
 }
 
 // partyDataClient implements PartyDataClient.
 type partyDataClient struct {
-	getParty *connect.Client[v1.PartyRequest, v1.PartyResponse]
+	getParty       *connect.Client[v1.PartyRequest, v1.PartyResponse]
+	getMemberParty *connect.Client[v1.MemberPartyRequest, v1.MemberPartyResponse]
+	getMemberRole  *connect.Client[v1.MemberRoleRequest, v1.MemberRoleResponse]
 }
 
 // GetParty calls mcsports.party.v1.PartyData.GetParty.
@@ -72,9 +93,21 @@ func (c *partyDataClient) GetParty(ctx context.Context, req *connect.Request[v1.
 	return c.getParty.CallUnary(ctx, req)
 }
 
+// GetMemberParty calls mcsports.party.v1.PartyData.GetMemberParty.
+func (c *partyDataClient) GetMemberParty(ctx context.Context, req *connect.Request[v1.MemberPartyRequest]) (*connect.Response[v1.MemberPartyResponse], error) {
+	return c.getMemberParty.CallUnary(ctx, req)
+}
+
+// GetMemberRole calls mcsports.party.v1.PartyData.GetMemberRole.
+func (c *partyDataClient) GetMemberRole(ctx context.Context, req *connect.Request[v1.MemberRoleRequest]) (*connect.Response[v1.MemberRoleResponse], error) {
+	return c.getMemberRole.CallUnary(ctx, req)
+}
+
 // PartyDataHandler is an implementation of the mcsports.party.v1.PartyData service.
 type PartyDataHandler interface {
 	GetParty(context.Context, *connect.Request[v1.PartyRequest]) (*connect.Response[v1.PartyResponse], error)
+	GetMemberParty(context.Context, *connect.Request[v1.MemberPartyRequest]) (*connect.Response[v1.MemberPartyResponse], error)
+	GetMemberRole(context.Context, *connect.Request[v1.MemberRoleRequest]) (*connect.Response[v1.MemberRoleResponse], error)
 }
 
 // NewPartyDataHandler builds an HTTP handler from the service implementation. It returns the path
@@ -90,10 +123,26 @@ func NewPartyDataHandler(svc PartyDataHandler, opts ...connect.HandlerOption) (s
 		connect.WithSchema(partyDataMethods.ByName("GetParty")),
 		connect.WithHandlerOptions(opts...),
 	)
+	partyDataGetMemberPartyHandler := connect.NewUnaryHandler(
+		PartyDataGetMemberPartyProcedure,
+		svc.GetMemberParty,
+		connect.WithSchema(partyDataMethods.ByName("GetMemberParty")),
+		connect.WithHandlerOptions(opts...),
+	)
+	partyDataGetMemberRoleHandler := connect.NewUnaryHandler(
+		PartyDataGetMemberRoleProcedure,
+		svc.GetMemberRole,
+		connect.WithSchema(partyDataMethods.ByName("GetMemberRole")),
+		connect.WithHandlerOptions(opts...),
+	)
 	return "/mcsports.party.v1.PartyData/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		switch r.URL.Path {
 		case PartyDataGetPartyProcedure:
 			partyDataGetPartyHandler.ServeHTTP(w, r)
+		case PartyDataGetMemberPartyProcedure:
+			partyDataGetMemberPartyHandler.ServeHTTP(w, r)
+		case PartyDataGetMemberRoleProcedure:
+			partyDataGetMemberRoleHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -105,4 +154,12 @@ type UnimplementedPartyDataHandler struct{}
 
 func (UnimplementedPartyDataHandler) GetParty(context.Context, *connect.Request[v1.PartyRequest]) (*connect.Response[v1.PartyResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("mcsports.party.v1.PartyData.GetParty is not implemented"))
+}
+
+func (UnimplementedPartyDataHandler) GetMemberParty(context.Context, *connect.Request[v1.MemberPartyRequest]) (*connect.Response[v1.MemberPartyResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("mcsports.party.v1.PartyData.GetMemberParty is not implemented"))
+}
+
+func (UnimplementedPartyDataHandler) GetMemberRole(context.Context, *connect.Request[v1.MemberRoleRequest]) (*connect.Response[v1.MemberRoleResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("mcsports.party.v1.PartyData.GetMemberRole is not implemented"))
 }
