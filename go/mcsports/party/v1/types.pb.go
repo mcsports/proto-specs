@@ -150,8 +150,9 @@ func (x *Party) GetInvites() []*PartyInvite {
 type PartyMember struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Name          string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	Role          PartyRole              `protobuf:"varint,2,opt,name=role,proto3,enum=mcsports.party.v1.PartyRole" json:"role,omitempty"`
-	TimeJoined    *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=time_joined,json=timeJoined,proto3" json:"time_joined,omitempty"`
+	Uuid          string                 `protobuf:"bytes,2,opt,name=uuid,proto3" json:"uuid,omitempty"`
+	Role          PartyRole              `protobuf:"varint,3,opt,name=role,proto3,enum=mcsports.party.v1.PartyRole" json:"role,omitempty"`
+	TimeJoined    *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=time_joined,json=timeJoined,proto3" json:"time_joined,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -189,6 +190,13 @@ func (*PartyMember) Descriptor() ([]byte, []int) {
 func (x *PartyMember) GetName() string {
 	if x != nil {
 		return x.Name
+	}
+	return ""
+}
+
+func (x *PartyMember) GetUuid() string {
+	if x != nil {
+		return x.Uuid
 	}
 	return ""
 }
@@ -337,11 +345,12 @@ const file_mcsports_party_v1_types_proto_rawDesc = "" +
 	"\bowner_id\x18\x02 \x01(\tR\aownerId\x12<\n" +
 	"\bsettings\x18\x03 \x01(\v2 .mcsports.party.v1.PartySettingsR\bsettings\x128\n" +
 	"\amembers\x18\x04 \x03(\v2\x1e.mcsports.party.v1.PartyMemberR\amembers\x128\n" +
-	"\ainvites\x18\x05 \x03(\v2\x1e.mcsports.party.v1.PartyInviteR\ainvites\"\x90\x01\n" +
+	"\ainvites\x18\x05 \x03(\v2\x1e.mcsports.party.v1.PartyInviteR\ainvites\"\xa4\x01\n" +
 	"\vPartyMember\x12\x12\n" +
-	"\x04name\x18\x01 \x01(\tR\x04name\x120\n" +
-	"\x04role\x18\x02 \x01(\x0e2\x1c.mcsports.party.v1.PartyRoleR\x04role\x12;\n" +
-	"\vtime_joined\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\n" +
+	"\x04name\x18\x01 \x01(\tR\x04name\x12\x12\n" +
+	"\x04uuid\x18\x02 \x01(\tR\x04uuid\x120\n" +
+	"\x04role\x18\x03 \x01(\x0e2\x1c.mcsports.party.v1.PartyRoleR\x04role\x12;\n" +
+	"\vtime_joined\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\n" +
 	"timeJoined\"\x92\x01\n" +
 	"\vPartyInvite\x12!\n" +
 	"\finvited_name\x18\x01 \x01(\tR\vinvitedName\x12!\n" +
