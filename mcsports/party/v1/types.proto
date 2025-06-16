@@ -17,8 +17,9 @@ message Party {
 
 message PartyMember {
   string name = 1;
-  PartyRole role = 2;
-  google.protobuf.Timestamp time_joined = 3;
+  string uuid = 2;
+  PartyRole role = 3;
+  google.protobuf.Timestamp time_joined = 4;
 }
 
 message PartyInvite {
