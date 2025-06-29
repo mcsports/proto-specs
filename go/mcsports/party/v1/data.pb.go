@@ -109,27 +109,27 @@ func (x *PartyResponse) GetParty() *Party {
 	return nil
 }
 
-type MemberRoleRequest struct {
+type MemberRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	MemberId      string                 `protobuf:"bytes,1,opt,name=member_id,json=memberId,proto3" json:"member_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *MemberRoleRequest) Reset() {
-	*x = MemberRoleRequest{}
+func (x *MemberRequest) Reset() {
+	*x = MemberRequest{}
 	mi := &file_mcsports_party_v1_data_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *MemberRoleRequest) String() string {
+func (x *MemberRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*MemberRoleRequest) ProtoMessage() {}
+func (*MemberRequest) ProtoMessage() {}
 
-func (x *MemberRoleRequest) ProtoReflect() protoreflect.Message {
+func (x *MemberRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_mcsports_party_v1_data_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -141,39 +141,39 @@ func (x *MemberRoleRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use MemberRoleRequest.ProtoReflect.Descriptor instead.
-func (*MemberRoleRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use MemberRequest.ProtoReflect.Descriptor instead.
+func (*MemberRequest) Descriptor() ([]byte, []int) {
 	return file_mcsports_party_v1_data_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *MemberRoleRequest) GetMemberId() string {
+func (x *MemberRequest) GetMemberId() string {
 	if x != nil {
 		return x.MemberId
 	}
 	return ""
 }
 
-type MemberRoleResponse struct {
+type MemberResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Role          PartyRole              `protobuf:"varint,1,opt,name=role,proto3,enum=mcsports.party.v1.PartyRole" json:"role,omitempty"`
+	Member        *PartyMember           `protobuf:"bytes,1,opt,name=member,proto3" json:"member,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *MemberRoleResponse) Reset() {
-	*x = MemberRoleResponse{}
+func (x *MemberResponse) Reset() {
+	*x = MemberResponse{}
 	mi := &file_mcsports_party_v1_data_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *MemberRoleResponse) String() string {
+func (x *MemberResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*MemberRoleResponse) ProtoMessage() {}
+func (*MemberResponse) ProtoMessage() {}
 
-func (x *MemberRoleResponse) ProtoReflect() protoreflect.Message {
+func (x *MemberResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_mcsports_party_v1_data_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -185,16 +185,16 @@ func (x *MemberRoleResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use MemberRoleResponse.ProtoReflect.Descriptor instead.
-func (*MemberRoleResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use MemberResponse.ProtoReflect.Descriptor instead.
+func (*MemberResponse) Descriptor() ([]byte, []int) {
 	return file_mcsports_party_v1_data_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *MemberRoleResponse) GetRole() PartyRole {
+func (x *MemberResponse) GetMember() *PartyMember {
 	if x != nil {
-		return x.Role
+		return x.Member
 	}
-	return PartyRole_MEMBER
+	return nil
 }
 
 var File_mcsports_party_v1_data_proto protoreflect.FileDescriptor
@@ -205,14 +205,14 @@ const file_mcsports_party_v1_data_proto_rawDesc = "" +
 	"\fPartyRequest\x12\x1b\n" +
 	"\tmember_id\x18\x01 \x01(\tR\bmemberId\"?\n" +
 	"\rPartyResponse\x12.\n" +
-	"\x05party\x18\x01 \x01(\v2\x18.mcsports.party.v1.PartyR\x05party\"0\n" +
-	"\x11MemberRoleRequest\x12\x1b\n" +
-	"\tmember_id\x18\x01 \x01(\tR\bmemberId\"F\n" +
-	"\x12MemberRoleResponse\x120\n" +
-	"\x04role\x18\x01 \x01(\x0e2\x1c.mcsports.party.v1.PartyRoleR\x04role2\xb8\x01\n" +
+	"\x05party\x18\x01 \x01(\v2\x18.mcsports.party.v1.PartyR\x05party\",\n" +
+	"\rMemberRequest\x12\x1b\n" +
+	"\tmember_id\x18\x01 \x01(\tR\bmemberId\"H\n" +
+	"\x0eMemberResponse\x126\n" +
+	"\x06member\x18\x01 \x01(\v2\x1e.mcsports.party.v1.PartyMemberR\x06member2\xac\x01\n" +
 	"\tPartyData\x12M\n" +
-	"\bGetParty\x12\x1f.mcsports.party.v1.PartyRequest\x1a .mcsports.party.v1.PartyResponse\x12\\\n" +
-	"\rGetMemberRole\x12$.mcsports.party.v1.MemberRoleRequest\x1a%.mcsports.party.v1.MemberRoleResponseB\xc4\x01\n" +
+	"\bGetParty\x12\x1f.mcsports.party.v1.PartyRequest\x1a .mcsports.party.v1.PartyResponse\x12P\n" +
+	"\tGetMember\x12 .mcsports.party.v1.MemberRequest\x1a!.mcsports.party.v1.MemberResponseB\xc4\x01\n" +
 	"\x15com.mcsports.party.v1B\tDataProtoP\x01Z:github.com/bufbuild/buf-tour/gen/mcsports/party/v1;partyv1\xa2\x02\x03MPX\xaa\x02\x11Mcsports.Party.V1\xca\x02\x11Mcsports\\Party\\V1\xe2\x02\x1dMcsports\\Party\\V1\\GPBMetadata\xea\x02\x13Mcsports::Party::V1b\x06proto3"
 
 var (
@@ -229,20 +229,20 @@ func file_mcsports_party_v1_data_proto_rawDescGZIP() []byte {
 
 var file_mcsports_party_v1_data_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_mcsports_party_v1_data_proto_goTypes = []any{
-	(*PartyRequest)(nil),       // 0: mcsports.party.v1.PartyRequest
-	(*PartyResponse)(nil),      // 1: mcsports.party.v1.PartyResponse
-	(*MemberRoleRequest)(nil),  // 2: mcsports.party.v1.MemberRoleRequest
-	(*MemberRoleResponse)(nil), // 3: mcsports.party.v1.MemberRoleResponse
-	(*Party)(nil),              // 4: mcsports.party.v1.Party
-	(PartyRole)(0),             // 5: mcsports.party.v1.PartyRole
+	(*PartyRequest)(nil),   // 0: mcsports.party.v1.PartyRequest
+	(*PartyResponse)(nil),  // 1: mcsports.party.v1.PartyResponse
+	(*MemberRequest)(nil),  // 2: mcsports.party.v1.MemberRequest
+	(*MemberResponse)(nil), // 3: mcsports.party.v1.MemberResponse
+	(*Party)(nil),          // 4: mcsports.party.v1.Party
+	(*PartyMember)(nil),    // 5: mcsports.party.v1.PartyMember
 }
 var file_mcsports_party_v1_data_proto_depIdxs = []int32{
 	4, // 0: mcsports.party.v1.PartyResponse.party:type_name -> mcsports.party.v1.Party
-	5, // 1: mcsports.party.v1.MemberRoleResponse.role:type_name -> mcsports.party.v1.PartyRole
+	5, // 1: mcsports.party.v1.MemberResponse.member:type_name -> mcsports.party.v1.PartyMember
 	0, // 2: mcsports.party.v1.PartyData.GetParty:input_type -> mcsports.party.v1.PartyRequest
-	2, // 3: mcsports.party.v1.PartyData.GetMemberRole:input_type -> mcsports.party.v1.MemberRoleRequest
+	2, // 3: mcsports.party.v1.PartyData.GetMember:input_type -> mcsports.party.v1.MemberRequest
 	1, // 4: mcsports.party.v1.PartyData.GetParty:output_type -> mcsports.party.v1.PartyResponse
-	3, // 5: mcsports.party.v1.PartyData.GetMemberRole:output_type -> mcsports.party.v1.MemberRoleResponse
+	3, // 5: mcsports.party.v1.PartyData.GetMember:output_type -> mcsports.party.v1.MemberResponse
 	4, // [4:6] is the sub-list for method output_type
 	2, // [2:4] is the sub-list for method input_type
 	2, // [2:2] is the sub-list for extension type_name
