@@ -71,6 +71,55 @@ func (PartyRole) EnumDescriptor() ([]byte, []int) {
 	return file_mcsports_party_v1_types_proto_rawDescGZIP(), []int{0}
 }
 
+type PartyLeaveReason int32
+
+const (
+	PartyLeaveReason_LEFT PartyLeaveReason = 0
+	PartyLeaveReason_QUIT PartyLeaveReason = 1
+	PartyLeaveReason_KICK PartyLeaveReason = 2
+)
+
+// Enum value maps for PartyLeaveReason.
+var (
+	PartyLeaveReason_name = map[int32]string{
+		0: "LEFT",
+		1: "QUIT",
+		2: "KICK",
+	}
+	PartyLeaveReason_value = map[string]int32{
+		"LEFT": 0,
+		"QUIT": 1,
+		"KICK": 2,
+	}
+)
+
+func (x PartyLeaveReason) Enum() *PartyLeaveReason {
+	p := new(PartyLeaveReason)
+	*p = x
+	return p
+}
+
+func (x PartyLeaveReason) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (PartyLeaveReason) Descriptor() protoreflect.EnumDescriptor {
+	return file_mcsports_party_v1_types_proto_enumTypes[1].Descriptor()
+}
+
+func (PartyLeaveReason) Type() protoreflect.EnumType {
+	return &file_mcsports_party_v1_types_proto_enumTypes[1]
+}
+
+func (x PartyLeaveReason) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use PartyLeaveReason.Descriptor instead.
+func (PartyLeaveReason) EnumDescriptor() ([]byte, []int) {
+	return file_mcsports_party_v1_types_proto_rawDescGZIP(), []int{1}
+}
+
 type Party struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
@@ -364,7 +413,11 @@ const file_mcsports_party_v1_types_proto_rawDesc = "" +
 	"\n" +
 	"\x06MEMBER\x10\x00\x12\a\n" +
 	"\x03MOD\x10\x01\x12\t\n" +
-	"\x05OWNER\x10\x02B\xc5\x01\n" +
+	"\x05OWNER\x10\x02*0\n" +
+	"\x10PartyLeaveReason\x12\b\n" +
+	"\x04LEFT\x10\x00\x12\b\n" +
+	"\x04QUIT\x10\x01\x12\b\n" +
+	"\x04KICK\x10\x02B\xc5\x01\n" +
 	"\x15com.mcsports.party.v1B\n" +
 	"TypesProtoP\x01Z:github.com/bufbuild/buf-tour/gen/mcsports/party/v1;partyv1\xa2\x02\x03MPX\xaa\x02\x11Mcsports.Party.V1\xca\x02\x11Mcsports\\Party\\V1\xe2\x02\x1dMcsports\\Party\\V1\\GPBMetadata\xea\x02\x13Mcsports::Party::V1b\x06proto3"
 
@@ -380,23 +433,24 @@ func file_mcsports_party_v1_types_proto_rawDescGZIP() []byte {
 	return file_mcsports_party_v1_types_proto_rawDescData
 }
 
-var file_mcsports_party_v1_types_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
+var file_mcsports_party_v1_types_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
 var file_mcsports_party_v1_types_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_mcsports_party_v1_types_proto_goTypes = []any{
 	(PartyRole)(0),                // 0: mcsports.party.v1.PartyRole
-	(*Party)(nil),                 // 1: mcsports.party.v1.Party
-	(*PartyMember)(nil),           // 2: mcsports.party.v1.PartyMember
-	(*PartyInvite)(nil),           // 3: mcsports.party.v1.PartyInvite
-	(*PartySettings)(nil),         // 4: mcsports.party.v1.PartySettings
-	(*timestamppb.Timestamp)(nil), // 5: google.protobuf.Timestamp
+	(PartyLeaveReason)(0),         // 1: mcsports.party.v1.PartyLeaveReason
+	(*Party)(nil),                 // 2: mcsports.party.v1.Party
+	(*PartyMember)(nil),           // 3: mcsports.party.v1.PartyMember
+	(*PartyInvite)(nil),           // 4: mcsports.party.v1.PartyInvite
+	(*PartySettings)(nil),         // 5: mcsports.party.v1.PartySettings
+	(*timestamppb.Timestamp)(nil), // 6: google.protobuf.Timestamp
 }
 var file_mcsports_party_v1_types_proto_depIdxs = []int32{
-	4, // 0: mcsports.party.v1.Party.settings:type_name -> mcsports.party.v1.PartySettings
-	2, // 1: mcsports.party.v1.Party.members:type_name -> mcsports.party.v1.PartyMember
-	3, // 2: mcsports.party.v1.Party.invites:type_name -> mcsports.party.v1.PartyInvite
+	5, // 0: mcsports.party.v1.Party.settings:type_name -> mcsports.party.v1.PartySettings
+	3, // 1: mcsports.party.v1.Party.members:type_name -> mcsports.party.v1.PartyMember
+	4, // 2: mcsports.party.v1.Party.invites:type_name -> mcsports.party.v1.PartyInvite
 	0, // 3: mcsports.party.v1.PartyMember.role:type_name -> mcsports.party.v1.PartyRole
-	5, // 4: mcsports.party.v1.PartyMember.time_joined:type_name -> google.protobuf.Timestamp
-	5, // 5: mcsports.party.v1.PartyInvite.time_created:type_name -> google.protobuf.Timestamp
+	6, // 4: mcsports.party.v1.PartyMember.time_joined:type_name -> google.protobuf.Timestamp
+	6, // 5: mcsports.party.v1.PartyInvite.time_created:type_name -> google.protobuf.Timestamp
 	6, // [6:6] is the sub-list for method output_type
 	6, // [6:6] is the sub-list for method input_type
 	6, // [6:6] is the sub-list for extension type_name
@@ -414,7 +468,7 @@ func file_mcsports_party_v1_types_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_mcsports_party_v1_types_proto_rawDesc), len(file_mcsports_party_v1_types_proto_rawDesc)),
-			NumEnums:      1,
+			NumEnums:      2,
 			NumMessages:   4,
 			NumExtensions: 0,
 			NumServices:   0,
