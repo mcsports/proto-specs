@@ -15,15 +15,15 @@ message PartyResponse {
   Party party = 1;
 }
 
-message MemberRoleRequest {
+message MemberRequest {
   string member_id = 1;
 }
 
-message MemberRoleResponse {
-  PartyRole role = 1;
+message MemberResponse {
+  PartyMember member = 1;
 }
 
 service PartyData {
   rpc GetParty(PartyRequest) returns (PartyResponse);
-  rpc GetMemberRole(MemberRoleRequest) returns (MemberRoleResponse);
+  rpc GetMember(MemberRequest) returns (MemberResponse);
 }
