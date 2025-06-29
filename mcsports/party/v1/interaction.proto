@@ -56,7 +56,6 @@ message LeavePartyRequest {
   string executor_id = 1;
 }
 
-
 message LeavePartyResponse {
 
 }
@@ -97,6 +96,15 @@ message KickMemberResponse {
 
 }
 
+message JoinPartyRequest {
+  string executor_id = 1;
+  string party_owner_name = 2;
+}
+
+message JoinPartyResponse {
+
+}
+
 service PartyInteraction {
   rpc CreateParty(CreatePartyRequest) returns (CreatePartyResponse);
   rpc DeleteParty(DeletePartyRequest) returns (DeletePartyResponse);
@@ -107,4 +115,5 @@ service PartyInteraction {
   rpc DemoteMember(DemoteMemberRequest) returns (DemoteMemberResponse);
   rpc Chat(ChatRequest) returns (ChatResponse);
   rpc KickMember(KickMemberRequest) returns (KickMemberResponse);
+  rpc JoinParty(JoinPartyRequest) returns (JoinPartyResponse);
 }
