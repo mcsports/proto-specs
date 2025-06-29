@@ -39,3 +39,9 @@ enum PartyRole {
   MOD = 1;
   OWNER = 2;
 }
+
+enum PartyLeaveReason {
+  LEFT = 0;
+  QUIT = 1;
+  KICK = 2;
+}

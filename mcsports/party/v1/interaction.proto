@@ -54,6 +54,7 @@ message HandleInviteResponse {
 
 message LeavePartyRequest {
   string executor_id = 1;
+  PartyLeaveReason reason = 2;
 }
 
 message LeavePartyResponse {
