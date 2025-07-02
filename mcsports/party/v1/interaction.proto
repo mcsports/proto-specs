@@ -105,6 +105,15 @@ message JoinPartyResponse {
 
 }
 
+message ModifyPartySettingsRequest {
+  string executor_id = 1;
+  PartySettings settings = 2;
+}
+
+message ModifyPartySettingsResponse {
+
+}
+
 service PartyInteraction {
   rpc CreateParty(CreatePartyRequest) returns (CreatePartyResponse);
   rpc DeleteParty(DeletePartyRequest) returns (DeletePartyResponse);
@@ -116,4 +125,5 @@ service PartyInteraction {
   rpc Chat(ChatRequest) returns (ChatResponse);
   rpc KickMember(KickMemberRequest) returns (KickMemberResponse);
   rpc JoinParty(JoinPartyRequest) returns (JoinPartyResponse);
+  rpc ModifyPartySettings(ModifyPartySettingsRequest) returns (ModifyPartySettingsResponse);
 }
