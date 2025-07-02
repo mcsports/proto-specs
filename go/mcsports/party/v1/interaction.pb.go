@@ -918,6 +918,94 @@ func (*JoinPartyResponse) Descriptor() ([]byte, []int) {
 	return file_mcsports_party_v1_interaction_proto_rawDescGZIP(), []int{19}
 }
 
+type ModifyPartySettingsRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ExecutorId    string                 `protobuf:"bytes,1,opt,name=executor_id,json=executorId,proto3" json:"executor_id,omitempty"`
+	Settings      *PartySettings         `protobuf:"bytes,2,opt,name=settings,proto3" json:"settings,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ModifyPartySettingsRequest) Reset() {
+	*x = ModifyPartySettingsRequest{}
+	mi := &file_mcsports_party_v1_interaction_proto_msgTypes[20]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ModifyPartySettingsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ModifyPartySettingsRequest) ProtoMessage() {}
+
+func (x *ModifyPartySettingsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_mcsports_party_v1_interaction_proto_msgTypes[20]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ModifyPartySettingsRequest.ProtoReflect.Descriptor instead.
+func (*ModifyPartySettingsRequest) Descriptor() ([]byte, []int) {
+	return file_mcsports_party_v1_interaction_proto_rawDescGZIP(), []int{20}
+}
+
+func (x *ModifyPartySettingsRequest) GetExecutorId() string {
+	if x != nil {
+		return x.ExecutorId
+	}
+	return ""
+}
+
+func (x *ModifyPartySettingsRequest) GetSettings() *PartySettings {
+	if x != nil {
+		return x.Settings
+	}
+	return nil
+}
+
+type ModifyPartySettingsResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ModifyPartySettingsResponse) Reset() {
+	*x = ModifyPartySettingsResponse{}
+	mi := &file_mcsports_party_v1_interaction_proto_msgTypes[21]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ModifyPartySettingsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ModifyPartySettingsResponse) ProtoMessage() {}
+
+func (x *ModifyPartySettingsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_mcsports_party_v1_interaction_proto_msgTypes[21]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ModifyPartySettingsResponse.ProtoReflect.Descriptor instead.
+func (*ModifyPartySettingsResponse) Descriptor() ([]byte, []int) {
+	return file_mcsports_party_v1_interaction_proto_rawDescGZIP(), []int{21}
+}
+
 var File_mcsports_party_v1_interaction_proto protoreflect.FileDescriptor
 
 const file_mcsports_party_v1_interaction_proto_rawDesc = "" +
@@ -978,7 +1066,12 @@ const file_mcsports_party_v1_interaction_proto_rawDesc = "" +
 	"\vexecutor_id\x18\x01 \x01(\tR\n" +
 	"executorId\x12(\n" +
 	"\x10party_owner_name\x18\x02 \x01(\tR\x0epartyOwnerName\"\x13\n" +
-	"\x11JoinPartyResponse2\xac\a\n" +
+	"\x11JoinPartyResponse\"{\n" +
+	"\x1aModifyPartySettingsRequest\x12\x1f\n" +
+	"\vexecutor_id\x18\x01 \x01(\tR\n" +
+	"executorId\x12<\n" +
+	"\bsettings\x18\x02 \x01(\v2 .mcsports.party.v1.PartySettingsR\bsettings\"\x1d\n" +
+	"\x1bModifyPartySettingsResponse2\xa2\b\n" +
 	"\x10PartyInteraction\x12\\\n" +
 	"\vCreateParty\x12%.mcsports.party.v1.CreatePartyRequest\x1a&.mcsports.party.v1.CreatePartyResponse\x12\\\n" +
 	"\vDeleteParty\x12%.mcsports.party.v1.DeletePartyRequest\x1a&.mcsports.party.v1.DeletePartyResponse\x12_\n" +
@@ -991,7 +1084,8 @@ const file_mcsports_party_v1_interaction_proto_rawDesc = "" +
 	"\x04Chat\x12\x1e.mcsports.party.v1.ChatRequest\x1a\x1f.mcsports.party.v1.ChatResponse\x12Y\n" +
 	"\n" +
 	"KickMember\x12$.mcsports.party.v1.KickMemberRequest\x1a%.mcsports.party.v1.KickMemberResponse\x12V\n" +
-	"\tJoinParty\x12#.mcsports.party.v1.JoinPartyRequest\x1a$.mcsports.party.v1.JoinPartyResponseB\xcb\x01\n" +
+	"\tJoinParty\x12#.mcsports.party.v1.JoinPartyRequest\x1a$.mcsports.party.v1.JoinPartyResponse\x12t\n" +
+	"\x13ModifyPartySettings\x12-.mcsports.party.v1.ModifyPartySettingsRequest\x1a..mcsports.party.v1.ModifyPartySettingsResponseB\xcb\x01\n" +
 	"\x15com.mcsports.party.v1B\x10InteractionProtoP\x01Z:github.com/bufbuild/buf-tour/gen/mcsports/party/v1;partyv1\xa2\x02\x03MPX\xaa\x02\x11Mcsports.Party.V1\xca\x02\x11Mcsports\\Party\\V1\xe2\x02\x1dMcsports\\Party\\V1\\GPBMetadata\xea\x02\x13Mcsports::Party::V1b\x06proto3"
 
 var (
@@ -1006,61 +1100,66 @@ func file_mcsports_party_v1_interaction_proto_rawDescGZIP() []byte {
 	return file_mcsports_party_v1_interaction_proto_rawDescData
 }
 
-var file_mcsports_party_v1_interaction_proto_msgTypes = make([]protoimpl.MessageInfo, 20)
+var file_mcsports_party_v1_interaction_proto_msgTypes = make([]protoimpl.MessageInfo, 22)
 var file_mcsports_party_v1_interaction_proto_goTypes = []any{
-	(*CreatePartyRequest)(nil),    // 0: mcsports.party.v1.CreatePartyRequest
-	(*CreatePartyResponse)(nil),   // 1: mcsports.party.v1.CreatePartyResponse
-	(*DeletePartyRequest)(nil),    // 2: mcsports.party.v1.DeletePartyRequest
-	(*DeletePartyResponse)(nil),   // 3: mcsports.party.v1.DeletePartyResponse
-	(*InvitePlayerRequest)(nil),   // 4: mcsports.party.v1.InvitePlayerRequest
-	(*InvitePlayerResponse)(nil),  // 5: mcsports.party.v1.InvitePlayerResponse
-	(*HandleInviteRequest)(nil),   // 6: mcsports.party.v1.HandleInviteRequest
-	(*HandleInviteResponse)(nil),  // 7: mcsports.party.v1.HandleInviteResponse
-	(*LeavePartyRequest)(nil),     // 8: mcsports.party.v1.LeavePartyRequest
-	(*LeavePartyResponse)(nil),    // 9: mcsports.party.v1.LeavePartyResponse
-	(*PromoteMemberRequest)(nil),  // 10: mcsports.party.v1.PromoteMemberRequest
-	(*PromoteMemberResponse)(nil), // 11: mcsports.party.v1.PromoteMemberResponse
-	(*DemoteMemberRequest)(nil),   // 12: mcsports.party.v1.DemoteMemberRequest
-	(*DemoteMemberResponse)(nil),  // 13: mcsports.party.v1.DemoteMemberResponse
-	(*ChatRequest)(nil),           // 14: mcsports.party.v1.ChatRequest
-	(*ChatResponse)(nil),          // 15: mcsports.party.v1.ChatResponse
-	(*KickMemberRequest)(nil),     // 16: mcsports.party.v1.KickMemberRequest
-	(*KickMemberResponse)(nil),    // 17: mcsports.party.v1.KickMemberResponse
-	(*JoinPartyRequest)(nil),      // 18: mcsports.party.v1.JoinPartyRequest
-	(*JoinPartyResponse)(nil),     // 19: mcsports.party.v1.JoinPartyResponse
-	(*PartySettings)(nil),         // 20: mcsports.party.v1.PartySettings
-	(*Party)(nil),                 // 21: mcsports.party.v1.Party
-	(*v1.AdventureComponent)(nil), // 22: mcsports.friend.v1.AdventureComponent
+	(*CreatePartyRequest)(nil),          // 0: mcsports.party.v1.CreatePartyRequest
+	(*CreatePartyResponse)(nil),         // 1: mcsports.party.v1.CreatePartyResponse
+	(*DeletePartyRequest)(nil),          // 2: mcsports.party.v1.DeletePartyRequest
+	(*DeletePartyResponse)(nil),         // 3: mcsports.party.v1.DeletePartyResponse
+	(*InvitePlayerRequest)(nil),         // 4: mcsports.party.v1.InvitePlayerRequest
+	(*InvitePlayerResponse)(nil),        // 5: mcsports.party.v1.InvitePlayerResponse
+	(*HandleInviteRequest)(nil),         // 6: mcsports.party.v1.HandleInviteRequest
+	(*HandleInviteResponse)(nil),        // 7: mcsports.party.v1.HandleInviteResponse
+	(*LeavePartyRequest)(nil),           // 8: mcsports.party.v1.LeavePartyRequest
+	(*LeavePartyResponse)(nil),          // 9: mcsports.party.v1.LeavePartyResponse
+	(*PromoteMemberRequest)(nil),        // 10: mcsports.party.v1.PromoteMemberRequest
+	(*PromoteMemberResponse)(nil),       // 11: mcsports.party.v1.PromoteMemberResponse
+	(*DemoteMemberRequest)(nil),         // 12: mcsports.party.v1.DemoteMemberRequest
+	(*DemoteMemberResponse)(nil),        // 13: mcsports.party.v1.DemoteMemberResponse
+	(*ChatRequest)(nil),                 // 14: mcsports.party.v1.ChatRequest
+	(*ChatResponse)(nil),                // 15: mcsports.party.v1.ChatResponse
+	(*KickMemberRequest)(nil),           // 16: mcsports.party.v1.KickMemberRequest
+	(*KickMemberResponse)(nil),          // 17: mcsports.party.v1.KickMemberResponse
+	(*JoinPartyRequest)(nil),            // 18: mcsports.party.v1.JoinPartyRequest
+	(*JoinPartyResponse)(nil),           // 19: mcsports.party.v1.JoinPartyResponse
+	(*ModifyPartySettingsRequest)(nil),  // 20: mcsports.party.v1.ModifyPartySettingsRequest
+	(*ModifyPartySettingsResponse)(nil), // 21: mcsports.party.v1.ModifyPartySettingsResponse
+	(*PartySettings)(nil),               // 22: mcsports.party.v1.PartySettings
+	(*Party)(nil),                       // 23: mcsports.party.v1.Party
+	(*v1.AdventureComponent)(nil),       // 24: mcsports.friend.v1.AdventureComponent
 }
 var file_mcsports_party_v1_interaction_proto_depIdxs = []int32{
-	20, // 0: mcsports.party.v1.CreatePartyRequest.settings:type_name -> mcsports.party.v1.PartySettings
-	21, // 1: mcsports.party.v1.CreatePartyResponse.created_party:type_name -> mcsports.party.v1.Party
-	22, // 2: mcsports.party.v1.ChatRequest.message:type_name -> mcsports.friend.v1.AdventureComponent
-	0,  // 3: mcsports.party.v1.PartyInteraction.CreateParty:input_type -> mcsports.party.v1.CreatePartyRequest
-	2,  // 4: mcsports.party.v1.PartyInteraction.DeleteParty:input_type -> mcsports.party.v1.DeletePartyRequest
-	4,  // 5: mcsports.party.v1.PartyInteraction.InvitePlayer:input_type -> mcsports.party.v1.InvitePlayerRequest
-	6,  // 6: mcsports.party.v1.PartyInteraction.HandleInvite:input_type -> mcsports.party.v1.HandleInviteRequest
-	8,  // 7: mcsports.party.v1.PartyInteraction.LeaveParty:input_type -> mcsports.party.v1.LeavePartyRequest
-	10, // 8: mcsports.party.v1.PartyInteraction.PromoteMember:input_type -> mcsports.party.v1.PromoteMemberRequest
-	12, // 9: mcsports.party.v1.PartyInteraction.DemoteMember:input_type -> mcsports.party.v1.DemoteMemberRequest
-	14, // 10: mcsports.party.v1.PartyInteraction.Chat:input_type -> mcsports.party.v1.ChatRequest
-	16, // 11: mcsports.party.v1.PartyInteraction.KickMember:input_type -> mcsports.party.v1.KickMemberRequest
-	18, // 12: mcsports.party.v1.PartyInteraction.JoinParty:input_type -> mcsports.party.v1.JoinPartyRequest
-	1,  // 13: mcsports.party.v1.PartyInteraction.CreateParty:output_type -> mcsports.party.v1.CreatePartyResponse
-	3,  // 14: mcsports.party.v1.PartyInteraction.DeleteParty:output_type -> mcsports.party.v1.DeletePartyResponse
-	5,  // 15: mcsports.party.v1.PartyInteraction.InvitePlayer:output_type -> mcsports.party.v1.InvitePlayerResponse
-	7,  // 16: mcsports.party.v1.PartyInteraction.HandleInvite:output_type -> mcsports.party.v1.HandleInviteResponse
-	9,  // 17: mcsports.party.v1.PartyInteraction.LeaveParty:output_type -> mcsports.party.v1.LeavePartyResponse
-	11, // 18: mcsports.party.v1.PartyInteraction.PromoteMember:output_type -> mcsports.party.v1.PromoteMemberResponse
-	13, // 19: mcsports.party.v1.PartyInteraction.DemoteMember:output_type -> mcsports.party.v1.DemoteMemberResponse
-	15, // 20: mcsports.party.v1.PartyInteraction.Chat:output_type -> mcsports.party.v1.ChatResponse
-	17, // 21: mcsports.party.v1.PartyInteraction.KickMember:output_type -> mcsports.party.v1.KickMemberResponse
-	19, // 22: mcsports.party.v1.PartyInteraction.JoinParty:output_type -> mcsports.party.v1.JoinPartyResponse
-	13, // [13:23] is the sub-list for method output_type
-	3,  // [3:13] is the sub-list for method input_type
-	3,  // [3:3] is the sub-list for extension type_name
-	3,  // [3:3] is the sub-list for extension extendee
-	0,  // [0:3] is the sub-list for field type_name
+	22, // 0: mcsports.party.v1.CreatePartyRequest.settings:type_name -> mcsports.party.v1.PartySettings
+	23, // 1: mcsports.party.v1.CreatePartyResponse.created_party:type_name -> mcsports.party.v1.Party
+	24, // 2: mcsports.party.v1.ChatRequest.message:type_name -> mcsports.friend.v1.AdventureComponent
+	22, // 3: mcsports.party.v1.ModifyPartySettingsRequest.settings:type_name -> mcsports.party.v1.PartySettings
+	0,  // 4: mcsports.party.v1.PartyInteraction.CreateParty:input_type -> mcsports.party.v1.CreatePartyRequest
+	2,  // 5: mcsports.party.v1.PartyInteraction.DeleteParty:input_type -> mcsports.party.v1.DeletePartyRequest
+	4,  // 6: mcsports.party.v1.PartyInteraction.InvitePlayer:input_type -> mcsports.party.v1.InvitePlayerRequest
+	6,  // 7: mcsports.party.v1.PartyInteraction.HandleInvite:input_type -> mcsports.party.v1.HandleInviteRequest
+	8,  // 8: mcsports.party.v1.PartyInteraction.LeaveParty:input_type -> mcsports.party.v1.LeavePartyRequest
+	10, // 9: mcsports.party.v1.PartyInteraction.PromoteMember:input_type -> mcsports.party.v1.PromoteMemberRequest
+	12, // 10: mcsports.party.v1.PartyInteraction.DemoteMember:input_type -> mcsports.party.v1.DemoteMemberRequest
+	14, // 11: mcsports.party.v1.PartyInteraction.Chat:input_type -> mcsports.party.v1.ChatRequest
+	16, // 12: mcsports.party.v1.PartyInteraction.KickMember:input_type -> mcsports.party.v1.KickMemberRequest
+	18, // 13: mcsports.party.v1.PartyInteraction.JoinParty:input_type -> mcsports.party.v1.JoinPartyRequest
+	20, // 14: mcsports.party.v1.PartyInteraction.ModifyPartySettings:input_type -> mcsports.party.v1.ModifyPartySettingsRequest
+	1,  // 15: mcsports.party.v1.PartyInteraction.CreateParty:output_type -> mcsports.party.v1.CreatePartyResponse
+	3,  // 16: mcsports.party.v1.PartyInteraction.DeleteParty:output_type -> mcsports.party.v1.DeletePartyResponse
+	5,  // 17: mcsports.party.v1.PartyInteraction.InvitePlayer:output_type -> mcsports.party.v1.InvitePlayerResponse
+	7,  // 18: mcsports.party.v1.PartyInteraction.HandleInvite:output_type -> mcsports.party.v1.HandleInviteResponse
+	9,  // 19: mcsports.party.v1.PartyInteraction.LeaveParty:output_type -> mcsports.party.v1.LeavePartyResponse
+	11, // 20: mcsports.party.v1.PartyInteraction.PromoteMember:output_type -> mcsports.party.v1.PromoteMemberResponse
+	13, // 21: mcsports.party.v1.PartyInteraction.DemoteMember:output_type -> mcsports.party.v1.DemoteMemberResponse
+	15, // 22: mcsports.party.v1.PartyInteraction.Chat:output_type -> mcsports.party.v1.ChatResponse
+	17, // 23: mcsports.party.v1.PartyInteraction.KickMember:output_type -> mcsports.party.v1.KickMemberResponse
+	19, // 24: mcsports.party.v1.PartyInteraction.JoinParty:output_type -> mcsports.party.v1.JoinPartyResponse
+	21, // 25: mcsports.party.v1.PartyInteraction.ModifyPartySettings:output_type -> mcsports.party.v1.ModifyPartySettingsResponse
+	15, // [15:26] is the sub-list for method output_type
+	4,  // [4:15] is the sub-list for method input_type
+	4,  // [4:4] is the sub-list for extension type_name
+	4,  // [4:4] is the sub-list for extension extendee
+	0,  // [0:4] is the sub-list for field type_name
 }
 
 func init() { file_mcsports_party_v1_interaction_proto_init() }
@@ -1075,7 +1174,7 @@ func file_mcsports_party_v1_interaction_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_mcsports_party_v1_interaction_proto_rawDesc), len(file_mcsports_party_v1_interaction_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   20,
+			NumMessages:   22,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
