@@ -1,6 +1,6 @@
 plugins {
     id("java")
-    id("com.google.protobuf") version "0.9.4"
+    id("com.google.protobuf") version "0.9.6"
     id("maven-publish")
 }
 
@@ -9,16 +9,16 @@ java {
 }
 
 dependencies {
-    implementation("com.google.protobuf:protobuf-java:4.31.0")
-    implementation("io.grpc:grpc-protobuf:1.71.0")
-    implementation("io.grpc:grpc-stub:1.71.0")
+    implementation("com.google.protobuf:protobuf-java:4.33.5")
+    implementation("io.grpc:grpc-protobuf:1.79.0")
+    implementation("io.grpc:grpc-stub:1.79.0")
     implementation("javax.annotation:javax.annotation-api:1.3.2")
 }
 
 protobuf {
-    protoc { artifact = "com.google.protobuf:protoc:4.30.1" }
+    protoc { artifact = "com.google.protobuf:protoc:4.33.4" }
     plugins {
-        register("grpc") { artifact = "io.grpc:protoc-gen-grpc-java:1.71.0" }
+        register("grpc") { artifact = "io.grpc:protoc-gen-grpc-java:1.79.0" }
     }
     generateProtoTasks {
         all().configureEach {
@@ -29,12 +29,15 @@ protobuf {
 
 publishing {
     repositories {
-        maven {
-            name = "Reposilite"
-            url = uri(findProperty("reposiliteUrl") ?: "")
-            credentials {
-                username = findProperty("reposiliteUsername") as String?
-                password = findProperty("reposilitePassword") as String?
+        val reposiliteUrl = findProperty("reposiliteUrl") as String?
+        if(reposiliteUrl != null) {
+            maven {
+                name = "Reposilite"
+                url = uri(reposiliteUrl)
+                credentials {
+                    username = findProperty("reposiliteUsername") as String?
+                    password = findProperty("reposilitePassword") as String?
+                }
             }
         }
     }

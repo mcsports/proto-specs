@@ -1,24 +1,24 @@
 plugins {
-    id("org.jetbrains.kotlin.jvm") version "2.0.20"
-    id("com.google.protobuf") version "0.9.4"
+    id("org.jetbrains.kotlin.jvm") version "2.2.20"
+    id("com.google.protobuf") version "0.9.6"
     id("maven-publish")
 }
 
 dependencies {
     api(project(":proto-java"))
-    implementation("com.google.protobuf:protobuf-kotlin:4.31.0")
-    implementation("io.grpc:grpc-protobuf:1.71.0")
-    implementation("io.grpc:grpc-stub:1.71.0")
-    implementation("io.grpc:grpc-kotlin-stub:1.4.1")
+    implementation("com.google.protobuf:protobuf-kotlin:4.33.5")
+    implementation("io.grpc:grpc-protobuf:1.79.0")
+    implementation("io.grpc:grpc-stub:1.79.0")
+    implementation("io.grpc:grpc-kotlin-stub:1.5.0")
 }
 
 protobuf {
-    protoc { artifact = "com.google.protobuf:protoc:4.30.1" }
+    protoc { artifact = "com.google.protobuf:protoc:4.33.4" }
     plugins {
         register("grpc") {
-            artifact = "io.grpc:protoc-gen-grpc-java:1.71.0"
+            artifact = "io.grpc:protoc-gen-grpc-java:1.79.0"
         }
-        register("grpckt") { artifact = "io.grpc:protoc-gen-grpc-kotlin:1.71.0" }
+        register("grpckt") { artifact = "io.grpc:protoc-gen-grpc-kotlin:1.79.0" }
     }
     generateProtoTasks {
         all().configureEach {
@@ -32,12 +32,15 @@ protobuf {
 
 publishing {
     repositories {
-        maven {
-            name = "Reposilite"
-            url = uri(findProperty("reposiliteUrl") ?: "")
-            credentials {
-                username = findProperty("reposiliteUsername") as String?
-                password = findProperty("reposilitePassword") as String?
+        val reposiliteUrl = findProperty("reposiliteUrl") as String?
+        if(reposiliteUrl != null) {
+            maven {
+                name = "Reposilite"
+                url = uri(reposiliteUrl)
+                credentials {
+                    username = findProperty("reposiliteUsername") as String?
+                    password = findProperty("reposilitePassword") as String?
+                }
             }
         }
     }
