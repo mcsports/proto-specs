@@ -15,8 +15,9 @@ message ListFriendsRequest {
 }
 
 message ListFriendsResponse {
-  uint32 pages = 1;
-  repeated PlayerData friend = 2;
+  uint32 total_friends = 1;
+  uint32 pages = 2;
+  repeated PlayerData friend = 3;
 }
 
 message ListFriendInvitesRequest {
@@ -27,8 +28,9 @@ message ListFriendInvitesRequest {
 }
 
 message ListFriendInvitesResponse {
-  uint32 pages = 1;
-  repeated PlayerData friend = 2;
+  uint32 total_requests = 1;
+  uint32 pages = 2;
+  repeated PlayerData friend = 3;
 }
 
 message CheckFriendsRequest {
