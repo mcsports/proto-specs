@@ -1,24 +1,25 @@
 plugins {
-    id("org.jetbrains.kotlin.jvm") version "2.3.10"
-    id("com.google.protobuf") version "0.9.6"
+    alias(libs.plugins.kotlin)
+    alias(libs.plugins.protobuf)
     id("maven-publish")
 }
 
 dependencies {
     api(project(":proto-java"))
-    implementation("com.google.protobuf:protobuf-kotlin:4.33.5")
-    implementation("io.grpc:grpc-protobuf:1.79.0")
-    implementation("io.grpc:grpc-stub:1.79.0")
-    implementation("io.grpc:grpc-kotlin-stub:1.5.0")
+    implementation(libs.protobuf.kotlin)
+
+    implementation(libs.grpc.protobuf)
+    implementation(libs.grpc.stub)
+    implementation(libs.grpc.kotlin.stub)
 }
 
 protobuf {
-    protoc { artifact = "com.google.protobuf:protoc:4.33.4" }
+    protoc { artifact = libs.protobuf.compiler.get().toString() }
     plugins {
         register("grpc") {
-            artifact = "io.grpc:protoc-gen-grpc-java:1.79.0"
+            artifact = libs.grpc.java.generator.get().toString()
         }
-        register("grpckt") { artifact = "io.grpc:protoc-gen-grpc-kotlin:1.79.0" }
+        register("grpckt") { artifact = libs.grpc.kotlin.generator.get().toString() }
     }
     generateProtoTasks {
         all().configureEach {

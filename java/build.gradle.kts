@@ -1,6 +1,6 @@
 plugins {
     id("java")
-    id("com.google.protobuf") version "0.9.6"
+    alias(libs.plugins.protobuf)
     id("maven-publish")
 }
 
@@ -9,16 +9,16 @@ java {
 }
 
 dependencies {
-    implementation("com.google.protobuf:protobuf-java:4.33.5")
-    implementation("io.grpc:grpc-protobuf:1.79.0")
-    implementation("io.grpc:grpc-stub:1.79.0")
-    implementation("javax.annotation:javax.annotation-api:1.3.2")
+    implementation(libs.protobuf.java)
+    implementation(libs.grpc.protobuf)
+    implementation(libs.grpc.stub)
+    implementation(libs.javax.annotations)
 }
 
 protobuf {
-    protoc { artifact = "com.google.protobuf:protoc:4.33.4" }
+    protoc { artifact = libs.protobuf.compiler.get().toString() }
     plugins {
-        register("grpc") { artifact = "io.grpc:protoc-gen-grpc-java:1.79.0" }
+        register("grpc") { artifact = libs.grpc.java.generator.get().toString() }
     }
     generateProtoTasks {
         all().configureEach {
